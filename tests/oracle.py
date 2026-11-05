@@ -68,6 +68,12 @@ def corpus():
                     probe = "W " + " ".join(map(str, limits)) + " " + str(len(row)) + " " + " ".join(token(x) for x in row)
                     expected = "W " + token(encoded_row(row)) if delta == 0 else f"E {kind.title()}Limit 0 1 {len(row)}"
                     cases.append((f"writer-{i}-{kind}-budget-{delta}", probe, expected))
+            for row_delta, total_delta in ((-1, -2), (-2, -1), (0, -1)):
+                limits = (DEFAULT[0], size + row_delta, size + total_delta, DEFAULT[3])
+                probe = "W " + " ".join(map(str, limits)) + " " + str(len(row)) + " " + " ".join(token(x) for x in row)
+                error = "RowLimit" if row_delta < 0 else "TotalLimit"
+                cases.append((f"writer-{i}-combined-{row_delta}-{total_delta}", probe,
+                              f"E {error} 0 1 {len(row)}"))
     for _ in range(500):
         records = [rows[rng.randrange(len(rows))] for _ in range(rng.randrange(6))]
         ending = "\r\n" if rng.randrange(2) else "\n"

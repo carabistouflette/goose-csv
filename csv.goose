@@ -158,12 +158,11 @@ inline fn _advance(reader: Reader&, byte: u8) -> bool, bool {
     return true, complete;
 }
 inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
-    var consumed:  i64 = 0;
-    var scan_from: i64 = 0;
+    var consumed: i64 = 0;
     while consumed < chunk.len {
         let byte = chunk[consumed];
         let quoted = reader._phase == Phase.Quoted;
-        if consumed >= scan_from && chunk.len - consumed >= 16 && ((quoted && byte != '"') ||
+        if chunk.len - consumed >= 16 && ((quoted && byte != '"') ||
             ((reader._phase == Phase.Start || reader._phase == Phase.Bare) && byte != ',' && byte != '"' && byte != '\r' && byte != '\n')) {
             // Cap work before scanning; boundary bytes use the shared scalar step.
             let available = min(chunk.len - consumed, min(reader._limits.max_total_bytes - reader._total,
@@ -186,9 +185,17 @@ inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress
                 reader._bytes.append(chunk[consumed..consumed + count]);
                 if !quoted { reader._phase = Phase.Bare; reader._active = true; }
                 reader._total += count; reader._row_bytes += count; consumed += count;
-                // Dense quoted input resumes scalar stepping briefly. Long runs
-                // become eligible again after at most 32 accepted wire bytes.
-                if quoted && count < 16 { scan_from = consumed + min(32, chunk.len - consumed); }
+                // Keep dense quoted spans on a plain byte loop briefly, without
+                // charging every scalar byte another fast-path eligibility test.
+                if quoted && count < 16 {
+                    let end = consumed + min(32, chunk.len - consumed);
+                    for next in chunk[consumed..end] {
+                        let accepted, complete = _advance(reader, next);
+                        if !accepted { return error_progress(reader, consumed); }
+                        consumed++;
+                        if complete { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
+                    }
+                }
                 continue;
             }
         }
@@ -248,6 +255,7 @@ fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> S
     var size: i64 = 2; // canonical CRLF, including for a zero-field row
     if size > writer._limits.max_row_bytes { return writer_status(writer, Error.RowLimit); }
     if size > writer._limits.max_total_bytes - writer._total { return writer_status(writer, Error.TotalLimit); }
+    let capacity = min(writer._limits.max_row_bytes, writer._limits.max_total_bytes - writer._total);
     // One byte records quoting, escapes and the scalar rendering fallback.
     var plans: u8[>..] = [];
     for i in fields.len {
@@ -281,8 +289,11 @@ fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> S
         }
         // text and escape counts are each <= MAX_FIELD_BYTES, so this cannot wrap.
         let additional = text.len + escapes + (if quoted { 2 } else { 0 }) + (if i > 0 { 1 } else { 0 });
-        if additional > writer._limits.max_row_bytes - size { return writer_status(writer, Error.RowLimit, i + 1); }
-        if additional > writer._limits.max_total_bytes - writer._total - size { return writer_status(writer, Error.TotalLimit, i + 1); }
+        if additional > capacity - size {
+            // Preserve RowLimit precedence even when this field crosses both caps.
+            if additional > writer._limits.max_row_bytes - size { return writer_status(writer, Error.RowLimit, i + 1); }
+            return writer_status(writer, Error.TotalLimit, i + 1);
+        }
         size += additional;
         var plan: u8 = 0;
         if quoted {
