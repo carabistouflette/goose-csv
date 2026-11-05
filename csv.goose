@@ -158,11 +158,12 @@ inline fn _advance(reader: Reader&, byte: u8) -> bool, bool {
     return true, complete;
 }
 inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
-    var consumed: i64 = 0;
+    var consumed:  i64 = 0;
+    var scan_from: i64 = 0;
     while consumed < chunk.len {
         let byte = chunk[consumed];
         let quoted = reader._phase == Phase.Quoted;
-        if chunk.len - consumed >= 16 && ((quoted && byte != '"') ||
+        if consumed >= scan_from && chunk.len - consumed >= 16 && ((quoted && byte != '"') ||
             ((reader._phase == Phase.Start || reader._phase == Phase.Bare) && byte != ',' && byte != '"' && byte != '\r' && byte != '\n')) {
             // Cap work before scanning; boundary bytes use the shared scalar step.
             let available = min(chunk.len - consumed, min(reader._limits.max_total_bytes - reader._total,
@@ -185,6 +186,9 @@ inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress
                 reader._bytes.append(chunk[consumed..consumed + count]);
                 if !quoted { reader._phase = Phase.Bare; reader._active = true; }
                 reader._total += count; reader._row_bytes += count; consumed += count;
+                // Dense quoted input resumes scalar stepping briefly. Long runs
+                // become eligible again after at most 32 accepted wire bytes.
+                if quoted && count < 16 { scan_from = consumed + min(32, chunk.len - consumed); }
                 continue;
             }
         }
@@ -313,8 +317,9 @@ fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> S
                     }
                 }
             }
-            writer._scratch.append(text[start..]); writer._scratch.push('"');
-        } else { writer._scratch.append(text); }
+            if start < text.len { writer._scratch.append(text[start..]); }
+            writer._scratch.push('"');
+        } else if text.len > 0 { writer._scratch.append(text); }
     }
     writer._scratch.append("\r\n");
     assert(writer._scratch.len == size);
