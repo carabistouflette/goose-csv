@@ -74,6 +74,7 @@ def workloads():
     found = {name: [row] * max(1, 65536 // len(canonical([row]))) for name, row in original.items()}
     # Escapes span caller/output buffers and the native 64 KiB internal buffer.
     found["long-escaped"] = [[(b'x,"a\r\nb"' * 18000) + b"tail", b"last"]]
+    found["quote-cluster"] = [[b"x" * 8192 + b'"' * 128 + b"tail" * 2048, b"last"]] * 4
     rng = random.Random(SEED)
     found["mixed-records"] = [
         [str(i).encode(), f"account-{rng.randrange(1000000):06d}".encode(),

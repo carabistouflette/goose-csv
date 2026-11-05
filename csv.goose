@@ -8,8 +8,11 @@ const MAX_TOTAL_BYTES: i64              = 1152921504606846976;
 const MAX_FIELDS:      i64              = 65536;
 const NO_FIELDS:       (const u8[:])[0] = [];
 // Prepared once; the pinned standard runtime supplies bounded portable scanning.
-const _BARE_STOPS: ByteSet = byte_set(",\"\r\n");
-const _QUOTE_STOP: ByteSet = byte_set("\"");
+const _BARE_STOPS:   ByteSet = byte_set(",\"\r\n");
+const _QUOTE_STOP:   ByteSet = byte_set("\"");
+const _PLAN_QUOTED:  u8      = 1;
+const _PLAN_ESCAPES: u8      = 2;
+const _PLAN_SCALAR:  u8      = 4;
 struct Limits {
     max_field_bytes: i64 = 1048576,
     max_row_bytes:   i64 = 4194304,
@@ -111,6 +114,86 @@ fn emit(reader: Reader&, row: Row&) {
     reader._row_bytes = 0; reader._field_no = 1; reader._field_start = 0;
     reader._active = false; reader._phase = Phase.Start; reader._records++;
 }
+fn _advance(reader: Reader&, byte: u8) -> Step {
+    // Budgets are checked before counting the candidate byte or growing storage.
+    if reader._total >= reader._limits.max_total_bytes {
+        fail(reader, Error.TotalLimit); return Step.Error;
+    }
+    if reader._row_bytes >= reader._limits.max_row_bytes {
+        fail(reader, Error.RowLimit); return Step.Error;
+    }
+    var complete = false;
+    if reader._phase == Phase.AfterCr {
+        if byte != '\n' { fail(reader, Error.ExpectedLf); return Step.Error; }
+        complete = true;
+    } else if reader._phase == Phase.Quoted {
+        if byte == '"' { reader._phase = Phase.QuoteEnd; }
+        else if !append_byte(reader, byte) { return Step.Error; }
+    } else if reader._phase == Phase.QuoteEnd && byte == '"' {
+        if !append_byte(reader, byte) { return Step.Error; }
+        reader._phase = Phase.Quoted;
+    } else if byte == ',' {
+        if !comma(reader) { return Step.Error; }
+    } else if byte == '\r' || byte == '\n' {
+        if byte == '\n' && !reader._allow_lf {
+            fail(reader, Error.UnexpectedLf); return Step.Error;
+        }
+        if !end_record(reader) { return Step.Error; }
+        if byte == '\r' { reader._phase = Phase.AfterCr; }
+        else { complete = true; }
+    } else if reader._phase == Phase.QuoteEnd {
+        fail(reader, Error.AfterQuote); return Step.Error;
+    } else if byte == '"' {
+        if reader._phase != Phase.Start {
+            fail(reader, Error.UnexpectedQuote); return Step.Error;
+        }
+        if !current_field(reader) { return Step.Error; }
+        reader._phase = Phase.Quoted; reader._active = true;
+    } else {
+        if !append_byte(reader, byte) { return Step.Error; }
+        reader._phase = Phase.Bare; reader._active = true;
+    }
+    reader._total++; reader._row_bytes++;
+    return if complete { Step.Row } else { Step.NeedInput };
+}
+fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
+    var consumed: i64 = 0;
+    while consumed < chunk.len {
+        let byte = chunk[consumed];
+        let quoted = reader._phase == Phase.Quoted;
+        if chunk.len - consumed >= 16 && ((quoted && byte != '"') ||
+            ((reader._phase == Phase.Start || reader._phase == Phase.Bare) && byte != ',' && byte != '"' && byte != '\r' && byte != '\n')) {
+            // Cap work before scanning; boundary bytes use the shared scalar step.
+            let available = min(chunk.len - consumed, min(reader._limits.max_total_bytes - reader._total,
+                min(reader._limits.max_row_bytes - reader._row_bytes,
+                    reader._limits.max_field_bytes - (reader._bytes.len - reader._field_start))));
+            if available >= 16 {
+                if !current_field(reader) { return error_progress(reader, consumed); }
+                // Short ordinary runs avoid a native search call entirely.
+                var count: i64 = 0;
+                while count < 16 {
+                    let next = chunk[consumed + count];
+                    if next == '"' || (!quoted && (next == ',' || next == '\r' || next == '\n')) { break; }
+                    count++;
+                }
+                if count == 16 && available > 16 {
+                    let input = chunk[consumed + 16..consumed + available];
+                    let stop = if quoted { find_any(input, _QUOTE_STOP) } else { find_any(input, _BARE_STOPS) };
+                    count += if stop < 0 { input.len } else { stop };
+                }
+                reader._bytes.append(chunk[consumed..consumed + count]);
+                if !quoted { reader._phase = Phase.Bare; reader._active = true; }
+                reader._total += count; reader._row_bytes += count; consumed += count;
+                continue;
+            }
+        }
+        let step = _advance(reader, byte);
+        if step == Step.Error { return error_progress(reader, consumed); }
+        consumed++;
+        if step == Step.Row { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
+    }
+    return Progress { step: Step.NeedInput, consumed: consumed, .. };
+}
 fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     if reader._phase == Phase.Failed { return error_progress(reader); }
     if reader._phase == Phase.Inactive {
@@ -120,72 +203,13 @@ fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
         if chunk.len == 0 { return Progress { step: Step.End, .. }; }
         fail(reader, Error.InvalidState); return error_progress(reader);
     }
+    if chunk.len >= 16 { return _read_runs(reader, chunk, row); }
     var consumed: i64 = 0;
-    while consumed < chunk.len {
-        let byte = chunk[consumed];
-        // Budgets are checked before counting the candidate byte or growing storage.
-        if reader._total >= reader._limits.max_total_bytes {
-            fail(reader, Error.TotalLimit); return error_progress(reader, consumed);
-        }
-        if reader._row_bytes >= reader._limits.max_row_bytes {
-            fail(reader, Error.RowLimit); return error_progress(reader, consumed);
-        }
-        // A run cannot cross syntax or any budget. The scalar path handles the
-        // first boundary byte, preserving error precedence and exact coordinates.
-        if chunk.len - consumed >= 16 && ((reader._phase == Phase.Quoted && byte != '"') ||
-            ((reader._phase == Phase.Start || reader._phase == Phase.Bare) && byte != ',' && byte != '"' && byte != '\r' && byte != '\n')) {
-            if !current_field(reader) { return error_progress(reader, consumed); }
-            let available = min(chunk.len - consumed, min(reader._limits.max_total_bytes - reader._total,
-                min(reader._limits.max_row_bytes - reader._row_bytes,
-                    reader._limits.max_field_bytes - (reader._bytes.len - reader._field_start))));
-            if available >= 16 {
-                let input = chunk[consumed..consumed + available];
-                let stop = if reader._phase == Phase.Quoted { find_any(input, _QUOTE_STOP) } else { find_any(input, _BARE_STOPS) };
-                let count = if stop < 0 { available } else { stop };
-                if count > 0 {
-                    reader._bytes.append(input[..count]);
-                    if reader._phase != Phase.Quoted { reader._phase = Phase.Bare; reader._active = true; }
-                    reader._total += count; reader._row_bytes += count; consumed += count;
-                    continue;
-                }
-            }
-        }
-        var complete = false;
-        if reader._phase == Phase.AfterCr {
-            if byte != '\n' { fail(reader, Error.ExpectedLf); return error_progress(reader, consumed); }
-            complete = true;
-        } else if reader._phase == Phase.Quoted {
-            if byte == '"' { reader._phase = Phase.QuoteEnd; }
-            else if !append_byte(reader, byte) { return error_progress(reader, consumed); }
-        } else if reader._phase == Phase.QuoteEnd && byte == '"' {
-            if !append_byte(reader, byte) { return error_progress(reader, consumed); }
-            reader._phase = Phase.Quoted;
-        } else if byte == ',' {
-            if !comma(reader) { return error_progress(reader, consumed); }
-        } else if byte == '\r' || byte == '\n' {
-            if byte == '\n' && !reader._allow_lf {
-                fail(reader, Error.UnexpectedLf); return error_progress(reader, consumed);
-            }
-            if !end_record(reader) { return error_progress(reader, consumed); }
-            if byte == '\r' { reader._phase = Phase.AfterCr; }
-            else { complete = true; }
-        } else if reader._phase == Phase.QuoteEnd {
-            fail(reader, Error.AfterQuote); return error_progress(reader, consumed);
-        } else if byte == '"' {
-            if reader._phase != Phase.Start {
-                fail(reader, Error.UnexpectedQuote); return error_progress(reader, consumed);
-            }
-            if !current_field(reader) { return error_progress(reader, consumed); }
-            reader._phase = Phase.Quoted; reader._active = true;
-        } else {
-            if !append_byte(reader, byte) { return error_progress(reader, consumed); }
-            reader._phase = Phase.Bare; reader._active = true;
-        }
-        reader._total++; reader._row_bytes++; consumed++;
-        if complete {
-            emit(reader, row);
-            return Progress { step: Step.Row, consumed: consumed, .. };
-        }
+    for byte in chunk {
+        let step = _advance(reader, byte);
+        if step == Step.Error { return error_progress(reader, consumed); }
+        consumed++;
+        if step == Step.Row { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
     }
     return Progress { step: Step.NeedInput, consumed: consumed, .. };
 }
@@ -219,41 +243,67 @@ fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> S
     var size: i64 = 2; // canonical CRLF, including for a zero-field row
     if size > writer._limits.max_row_bytes { return writer_status(writer, Error.RowLimit); }
     if size > writer._limits.max_total_bytes - writer._total { return writer_status(writer, Error.TotalLimit); }
-    var quotes: bool[>..] = [];
+    // One byte records quoting, escapes and the scalar rendering fallback.
+    var plans: u8[>..] = [];
     for i in fields.len {
         let text = fields[i];
         if text.len > writer._limits.max_field_bytes { return writer_status(writer, Error.FieldLimit, i + 1); }
         var quoted = fields.len == 1 && text.len == 0;
         var escapes: i64 = 0;
-        let first = find_any(text, _BARE_STOPS);
-        if first >= 0 {
-            quoted = true;
-            var at = first;
-            while at < text.len {
-                if text[at] == '"' { escapes++; }
-                let next = find_any(text[at + 1..], _QUOTE_STOP);
-                if next < 0 { break; }
-                at += next + 1;
+        if text.len < 32 {
+            for byte in text {
+                if byte == '"' { quoted = true; escapes++; }
+                else if byte == ',' || byte == '\r' || byte == '\n' { quoted = true; }
+            }
+        } else {
+            let first = find_any(text, _BARE_STOPS);
+            if first >= 0 {
+                quoted = true;
+                var at = first;
+                while at < text.len {
+                    if text[at] == '"' { escapes++; }
+                    let next = find_any(text[at + 1..], _QUOTE_STOP);
+                    if next < 0 { break; }
+                    at += next + 1;
+                    // Closely spaced quotes use one simple count pass.
+                    if next < 16 {
+                        for byte in text[at..] { if byte == '"' { escapes++; } }
+                        break;
+                    }
+                }
             }
         }
         // text and escape counts are each <= MAX_FIELD_BYTES, so this cannot wrap.
         let additional = text.len + escapes + (if quoted { 2 } else { 0 }) + (if i > 0 { 1 } else { 0 });
         if additional > writer._limits.max_row_bytes - size { return writer_status(writer, Error.RowLimit, i + 1); }
         if additional > writer._limits.max_total_bytes - writer._total - size { return writer_status(writer, Error.TotalLimit, i + 1); }
-        size += additional; quotes.push(quoted);
+        size += additional;
+        let plan = (if quoted { _PLAN_QUOTED } else { 0 as u8 }) | (if escapes > 0 { _PLAN_ESCAPES } else { 0 as u8 }) |
+            (if text.len < 32 || escapes > text.len / 16 { _PLAN_SCALAR } else { 0 as u8 });
+        plans.push(plan);
     }
     writer._scratch.clear();
     for i in fields.len {
         if i > 0 { writer._scratch.push(','); }
         let text = fields[i];
-        if quotes[i] {
+        if (plans[i] & _PLAN_QUOTED) != 0 {
             writer._scratch.push('"');
             var start: i64 = 0;
-            while start < text.len {
-                let found = find_any(text[start..], _QUOTE_STOP);
-                if found < 0 { break; }
-                let at = start + found;
-                writer._scratch.append(text[start..at]); writer._scratch.append("\"\""); start = at + 1;
+            if (plans[i] & _PLAN_ESCAPES) != 0 {
+                if (plans[i] & _PLAN_SCALAR) != 0 {
+                    for at in text.len {
+                        if text[at] == '"' {
+                            writer._scratch.append(text[start..at]); writer._scratch.append("\"\""); start = at + 1;
+                        }
+                    }
+                } else {
+                    while start < text.len {
+                        let found = find_any(text[start..], _QUOTE_STOP);
+                        if found < 0 { break; }
+                        let at = start + found;
+                        writer._scratch.append(text[start..at]); writer._scratch.append("\"\""); start = at + 1;
+                    }
+                }
             }
             writer._scratch.append(text[start..]); writer._scratch.push('"');
         } else { writer._scratch.append(text); }

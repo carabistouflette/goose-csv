@@ -44,13 +44,28 @@ def corpus():
         rows.append([rng.randbytes(rng.randrange(41)) for _ in range(rng.randrange(9))])
     for n in (15, 16, 17, 31, 32, 33, 63, 64, 65, 255, 256, 257):
         run = b"x" * n
-        rows.extend([[run], [run + b'"' + run, b"tail"], [run + b"\r\n" + run]])
+        rows.extend([[run], [run + b'"' + run, b"tail"], [run + b"\r\n" + run],
+                     [b'"' * n], [b"," + run], [b'""' + run],
+                     [b"," + b'"a' * n], [run + b'"' * 8 + run]])
         samples.extend([run + b",tail\r\n", b'"' + run + b'""' + run + b'"\r\n',
                         b'"' + run + b"\r\n" + run + b'"\r\n'])
+    for gap in (15, 16, 17):
+        rows.append([b"," + (b"x" * gap + b'"') * 8])
+    for n in (31, 32, 33):
+        rows.append([b'"' + b"x" * (n - 2) + b'"'])
     for i, row in enumerate(rows):
         command = "W " + " ".join(map(str, DEFAULT)) + " " + str(len(row))
         if row: command += " " + " ".join(token(x) for x in row)
         cases.append((f"writer-{i}", command, "W " + token(encoded_row(row))))
+        if i >= 707:
+            size = len(encoded_row(row))
+            for kind in ("row", "total"):
+                for delta in (0, -1):
+                    limits = (DEFAULT[0], size + delta if kind == "row" else DEFAULT[1],
+                              size + delta if kind == "total" else DEFAULT[2], DEFAULT[3])
+                    probe = "W " + " ".join(map(str, limits)) + " " + str(len(row)) + " " + " ".join(token(x) for x in row)
+                    expected = "W " + token(encoded_row(row)) if delta == 0 else f"E {kind.title()}Limit 0 1 {len(row)}"
+                    cases.append((f"writer-{i}-{kind}-budget-{delta}", probe, expected))
     for _ in range(500):
         records = [rows[rng.randrange(len(rows))] for _ in range(rng.randrange(6))]
         ending = "\r\n" if rng.randrange(2) else "\n"
