@@ -118,6 +118,20 @@ fn run_checks() {
         failure(plain, csv::Limits { max_fields: 0, .. }, csv::Error.FieldCountLimit, 0, 1, 1);
     }
 }
+fn window_checks() {
+    for n in [27, 28, 29] {
+        var tail: u8[>..] = []; for _ in n { tail.push('y'); }
+        let data = str("x\"", tail);
+        let fields: (const u8[:])[1] = [data[..]];
+        let wire = str("\"x\"\"", tail, "\"\r\n");
+        all_splits(wire, fields);
+        all_splits(wire[..wire.len - 2], fields);
+    }
+    for n in [28, 29, 30] {
+        var tail: u8[>..] = []; for _ in n { tail.push('y'); }
+        failure(str("ok\n\"x\"\"", tail, "\"!"), csv::Limits { .. }, csv::Error.AfterQuote, n + 8, 2, 1);
+    }
+}
 fn reader_checks() {
     all_splits("a,b\r\n", ["a", "b"]);
     all_splits("\"a\"\"b\",c\r\n", ["a\"b", "c"]);
@@ -306,6 +320,6 @@ fn many_field_checks() {
     assert(csv::field_count(row) == csv::MAX_FIELDS);
 }
 fn main() {
-    reader_checks(); run_checks(); lifecycle_checks(); writer_checks(); large_field_checks(); many_field_checks();
+    reader_checks(); run_checks(); window_checks(); lifecycle_checks(); writer_checks(); large_field_checks(); many_field_checks();
     print("csv public API: split boundaries, limits, ownership, lifecycle and atomic writer checks passed");
 }

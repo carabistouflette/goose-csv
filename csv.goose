@@ -114,7 +114,7 @@ fn emit(reader: Reader&, row: Row&) {
     reader._row_bytes = 0; reader._field_no = 1; reader._field_start = 0;
     reader._active = false; reader._phase = Phase.Start; reader._records++;
 }
-// Reader roots pass many component references; inline only the per-byte step.
+// Keep byte transitions inline so Root components stay visible to optimization.
 inline fn _advance(reader: Reader&, byte: u8) -> bool, bool {
     // Budgets are checked before counting the candidate byte or growing storage.
     if reader._total >= reader._limits.max_total_bytes {
@@ -158,53 +158,71 @@ inline fn _advance(reader: Reader&, byte: u8) -> bool, bool {
     return true, complete;
 }
 inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
-    var consumed: i64 = 0;
-    while consumed < chunk.len {
-        let byte = chunk[consumed];
+    var rest: const u8[:] = chunk;
+    while rest.len >= 16 {
+        let byte = rest[0];
         let quoted = reader._phase == Phase.Quoted;
-        if chunk.len - consumed >= 16 && ((quoted && byte != '"') ||
-            ((reader._phase == Phase.Start || reader._phase == Phase.Bare) && byte != ',' && byte != '"' && byte != '\r' && byte != '\n')) {
+        if (quoted && byte != '"') ||
+            ((reader._phase == Phase.Start || reader._phase == Phase.Bare) && byte != ',' && byte != '"' && byte != '\r' && byte != '\n') {
             // Cap work before scanning; boundary bytes use the shared scalar step.
-            let available = min(chunk.len - consumed, min(reader._limits.max_total_bytes - reader._total,
+            let available = min(rest.len, min(reader._limits.max_total_bytes - reader._total,
                 min(reader._limits.max_row_bytes - reader._row_bytes,
                     reader._limits.max_field_bytes - (reader._bytes.len - reader._field_start))));
             if available >= 16 {
-                if !current_field(reader) { return error_progress(reader, consumed); }
-                // Short ordinary runs avoid a native search call entirely.
+                if !current_field(reader) { return error_progress(reader, chunk.len - rest.len); }
                 var count: i64 = 0;
                 while count < 16 {
-                    let next = chunk[consumed + count];
+                    let next = rest[count];
                     if next == '"' || (!quoted && (next == ',' || next == '\r' || next == '\n')) { break; }
                     count++;
                 }
                 if count == 16 && available > 16 {
-                    let input = chunk[consumed + 16..consumed + available];
+                    let input = rest[16..available];
                     let stop = if quoted { find_any(input, _QUOTE_STOP) } else { find_any(input, _BARE_STOPS) };
                     count += if stop < 0 { input.len } else { stop };
                 }
-                reader._bytes.append(chunk[consumed..consumed + count]);
+                reader._bytes.append(rest[..count]);
                 if !quoted { reader._phase = Phase.Bare; reader._active = true; }
-                reader._total += count; reader._row_bytes += count; consumed += count;
-                // Keep dense quoted spans on a plain byte loop briefly, without
-                // charging every scalar byte another fast-path eligibility test.
+                reader._total += count; reader._row_bytes += count;
+                rest = rest[count..];
                 if quoted && count < 16 {
-                    let end = consumed + min(32, chunk.len - consumed);
-                    for next in chunk[consumed..end] {
+                    let size = min(32, rest.len);
+                    var accepted_bytes: i64 = 0;
+                    for next in rest[..size] {
                         let accepted, complete = _advance(reader, next);
-                        if !accepted { return error_progress(reader, consumed); }
-                        consumed++;
-                        if complete { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
+                        if !accepted { return error_progress(reader, chunk.len - rest.len + accepted_bytes); }
+                        accepted_bytes++;
+                        if complete {
+                            let consumed = chunk.len - rest.len + accepted_bytes;
+                            emit(reader, row);
+                            return Progress { step: Step.Row, consumed: consumed, .. };
+                        }
                     }
+                    rest = rest[size..];
                 }
                 continue;
             }
         }
         let accepted, complete = _advance(reader, byte);
-        if !accepted { return error_progress(reader, consumed); }
-        consumed++;
-        if complete { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
+        if !accepted { return error_progress(reader, chunk.len - rest.len); }
+        rest = rest[1..];
+        if complete {
+            let consumed = chunk.len - rest.len;
+            emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. };
+        }
     }
-    return Progress { step: Step.NeedInput, consumed: consumed, .. };
+    var accepted_bytes: i64 = 0;
+    for byte in rest {
+        let accepted, complete = _advance(reader, byte);
+        if !accepted { return error_progress(reader, chunk.len - rest.len + accepted_bytes); }
+        accepted_bytes++;
+        if complete {
+            let consumed = chunk.len - rest.len + accepted_bytes;
+            emit(reader, row);
+            return Progress { step: Step.Row, consumed: consumed, .. };
+        }
+    }
+    return Progress { step: Step.NeedInput, consumed: chunk.len, .. };
 }
 inline fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     if reader._phase == Phase.Failed { return error_progress(reader); }
@@ -215,15 +233,7 @@ inline fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
         if chunk.len == 0 { return Progress { step: Step.End, .. }; }
         fail(reader, Error.InvalidState); return error_progress(reader);
     }
-    if chunk.len >= 16 { return _read_runs(reader, chunk, row); }
-    var consumed: i64 = 0;
-    for byte in chunk {
-        let accepted, complete = _advance(reader, byte);
-        if !accepted { return error_progress(reader, consumed); }
-        consumed++;
-        if complete { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
-    }
-    return Progress { step: Step.NeedInput, consumed: consumed, .. };
+    return _read_runs(reader, chunk, row);
 }
 fn finish(reader: Reader&, row: Row&) -> Progress {
     if reader._phase == Phase.Failed { return error_progress(reader); }
