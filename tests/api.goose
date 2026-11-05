@@ -220,7 +220,68 @@ fn writer_checks() {
     assert(csv::init(writer, csv::Limits { max_field_bytes: 0, max_row_bytes: 2, max_total_bytes: 2, max_fields: 0 }).error == csv::Error.None);
     assert(csv::write(writer, no_fields, out).error == csv::Error.None && out == "\r\n");
 }
+// Exercise real storage at the published field and field-count ceilings,
+// in addition to the small exact-budget and overflow-option regressions.
+fn large_field_checks() {
+    var source: u8[>..] = [];
+    let piece = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    for _ in csv::MAX_FIELD_BYTES / piece.len { source.append(piece); }
+    let limits = csv::Limits { max_field_bytes: csv::MAX_FIELD_BYTES, max_row_bytes: csv::MAX_ROW_BYTES, .. };
+    var reader = csv::Reader { .. }; var row = csv::Row { .. };
+    assert(csv::init(reader, limits).error == csv::Error.None);
+    var offset: i64 = 0;
+    while offset < source.len {
+        let end = min(source.len, offset + 65536);
+        let next = csv::read(reader, source[offset..end], row);
+        assert(next.step == csv::Step.NeedInput && next.consumed == end - offset); offset = end;
+    }
+    assert(csv::finish(reader, row).step == csv::Step.Row && csv::field_count(row) == 1);
+    assert(csv::field(row, 0) == source && csv::finish(reader, row).step == csv::Step.End);
+    var writer = csv::Writer { .. }; var output: u8[>..] = [];
+    assert(csv::init(writer, limits).error == csv::Error.None);
+    let valid: (const u8[:])[1] = [csv::field(row, 0)];
+    assert(csv::write(writer, valid, output).error == csv::Error.None);
+    assert(output.len == csv::MAX_FIELD_BYTES + 2 && output[..csv::MAX_FIELD_BYTES] == source);
+    assert(output[csv::MAX_FIELD_BYTES..] == "\r\n");
+    source.push('x');
+    assert(csv::init(reader, limits).error == csv::Error.None);
+    let failed = csv::read(reader, source, row);
+    assert(failed.step == csv::Step.Error && failed.status.error == csv::Error.FieldLimit);
+    assert(failed.consumed == csv::MAX_FIELD_BYTES && failed.status.offset == csv::MAX_FIELD_BYTES);
+    assert(csv::field(row, 0).len == csv::MAX_FIELD_BYTES);
+    let invalid: (const u8[:])[1] = [source[..]];
+    let rejected = csv::write(writer, invalid, output);
+    assert(rejected.error == csv::Error.FieldLimit && rejected.offset == csv::MAX_FIELD_BYTES + 2 && rejected.record == 2);
+    assert(output.len == csv::MAX_FIELD_BYTES + 2 && output[..csv::MAX_FIELD_BYTES] == csv::field(row, 0));
+    let retry: (const u8[:])[1] = [csv::field(row, 0)];
+    assert(csv::write(writer, retry, output).error == csv::Error.None);
+}
+fn many_field_checks() {
+    var fields: (const u8[:])[>..] = [];
+    for _ in csv::MAX_FIELDS { fields.push(""); }
+    let limits = csv::Limits { max_fields: csv::MAX_FIELDS, .. };
+    var writer = csv::Writer { .. }; var output: u8[>..] = [];
+    assert(csv::init(writer, limits).error == csv::Error.None);
+    assert(csv::write(writer, fields, output).error == csv::Error.None && output.len == csv::MAX_FIELDS + 1);
+    var reader = csv::Reader { .. }; var row = csv::Row { .. };
+    assert(csv::init(reader, limits).error == csv::Error.None);
+    let next = csv::read(reader, output, row);
+    assert(next.step == csv::Step.Row && next.consumed == output.len);
+    assert(csv::field_count(row) == csv::MAX_FIELDS && csv::field(row, 0).len == 0 && csv::field(row, csv::MAX_FIELDS - 1).len == 0);
+    assert(csv::finish(reader, row).step == csv::Step.End);
+    fields.push("");
+    let rejected = csv::write(writer, fields, output);
+    assert(rejected.error == csv::Error.FieldCountLimit && rejected.field == csv::MAX_FIELDS + 1 && rejected.record == 2);
+    assert(output.len == csv::MAX_FIELDS + 1);
+    assert(csv::init(reader, limits).error == csv::Error.None);
+    var commas: u8[>..] = [];
+    for _ in csv::MAX_FIELDS { commas.push(','); }
+    let failed = csv::read(reader, commas, row);
+    assert(failed.step == csv::Step.Error && failed.status.error == csv::Error.FieldCountLimit);
+    assert(failed.consumed == csv::MAX_FIELDS - 1 && failed.status.offset == csv::MAX_FIELDS - 1 && failed.status.field == csv::MAX_FIELDS + 1);
+    assert(csv::field_count(row) == csv::MAX_FIELDS);
+}
 fn main() {
-    reader_checks(); lifecycle_checks(); writer_checks();
+    reader_checks(); lifecycle_checks(); writer_checks(); large_field_checks(); many_field_checks();
     print("csv public API: split boundaries, limits, ownership, lifecycle and atomic writer checks passed");
 }
