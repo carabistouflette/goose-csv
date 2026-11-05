@@ -55,7 +55,7 @@ def corpus():
     for n in (31, 32, 33):
         rows.append([b'"' + b"x" * (n - 2) + b'"'])
         rows.extend([[b"x" * n + b","], [b"x" * n + b"\r\n"], [b"x" * (n - 1) + b'""tail']])
-    for n in (27, 28, 29):
+    for n in (25, 26, 27, 28, 29):
         field = b'x"' + b"y" * n
         rows.append([field])
         samples.extend([encoded_row([field]), encoded_row([field]) + b"tail\r\n"])
@@ -118,7 +118,7 @@ def corpus():
             (run, (n - 1, n - 1, n - 1, DEFAULT[3]), True, "TotalLimit", n - 1, 1, 1),
             (run, (*DEFAULT[:3], 0), True, "FieldCountLimit", 0, 1, 1),
         ])
-    for n in (28, 29, 30):
+    for n in (26, 27, 28, 29, 30):
         invalid.append((b'"x""' + b"y" * n + b'"!', DEFAULT, True, "AfterQuote", n + 5, 1, 1))
     for i, (wire, limits, allow, error, offset, record, field) in enumerate(invalid):
         # Deliberately stricter quote/error expectations than Python recovery.

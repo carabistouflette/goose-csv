@@ -162,8 +162,25 @@ inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress
     while rest.len >= 16 {
         let byte = rest[0];
         let quoted = reader._phase == Phase.Quoted;
-        if (quoted && byte != '"') ||
-            ((reader._phase == Phase.Start || reader._phase == Phase.Bare) && byte != ',' && byte != '"' && byte != '\r' && byte != '\n') {
+        // Syntax-heavy input uses the original byte transition in bounded
+        // batches. Quoted commas and line endings remain ordinary field data.
+        if byte == '"' || (!quoted && (byte == ',' || byte == '\r' || byte == '\n')) {
+            let size = min(32, rest.len);
+            var accepted_bytes: i64 = 0;
+            for next in rest[..size] {
+                let accepted, complete = _advance(reader, next);
+                if !accepted { return error_progress(reader, chunk.len - rest.len + accepted_bytes); }
+                accepted_bytes++;
+                if complete {
+                    let consumed = chunk.len - rest.len + accepted_bytes;
+                    emit(reader, row);
+                    return Progress { step: Step.Row, consumed: consumed, .. };
+                }
+            }
+            rest = rest[size..];
+            continue;
+        }
+        if quoted || reader._phase == Phase.Start || reader._phase == Phase.Bare {
             // Cap work before scanning; boundary bytes use the shared scalar step.
             let available = min(rest.len, min(reader._limits.max_total_bytes - reader._total,
                 min(reader._limits.max_row_bytes - reader._row_bytes,
@@ -185,21 +202,6 @@ inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress
                 if !quoted { reader._phase = Phase.Bare; reader._active = true; }
                 reader._total += count; reader._row_bytes += count;
                 rest = rest[count..];
-                if quoted && count < 16 {
-                    let size = min(32, rest.len);
-                    var accepted_bytes: i64 = 0;
-                    for next in rest[..size] {
-                        let accepted, complete = _advance(reader, next);
-                        if !accepted { return error_progress(reader, chunk.len - rest.len + accepted_bytes); }
-                        accepted_bytes++;
-                        if complete {
-                            let consumed = chunk.len - rest.len + accepted_bytes;
-                            emit(reader, row);
-                            return Progress { step: Step.Row, consumed: consumed, .. };
-                        }
-                    }
-                    rest = rest[size..];
-                }
                 continue;
             }
         }

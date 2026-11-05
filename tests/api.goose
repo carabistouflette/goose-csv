@@ -119,7 +119,7 @@ fn run_checks() {
     }
 }
 fn window_checks() {
-    for n in [27, 28, 29] {
+    for n in [25, 26, 27, 28, 29] {
         var tail: u8[>..] = []; for _ in n { tail.push('y'); }
         let data = str("x\"", tail);
         let fields: (const u8[:])[1] = [data[..]];
@@ -127,7 +127,7 @@ fn window_checks() {
         all_splits(wire, fields);
         all_splits(wire[..wire.len - 2], fields);
     }
-    for n in [28, 29, 30] {
+    for n in [26, 27, 28, 29, 30] {
         var tail: u8[>..] = []; for _ in n { tail.push('y'); }
         failure(str("ok\n\"x\"\"", tail, "\"!"), csv::Limits { .. }, csv::Error.AfterQuote, n + 8, 2, 1);
     }
