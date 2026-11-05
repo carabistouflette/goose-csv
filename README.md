@@ -5,7 +5,7 @@ Experimental interface; initially Linux x86-64 validation. No stability promise
 before 1.0. Applications own I/O, encoding, headers, types and spreadsheet policy.
 
 ```goose
-import csv from "../goose-csv"; // neighboring local checkout
+import csv from "carabistouflette/goose-csv@e17b37d6864c3f4cacc56108880e29a865907e42";
 import std;
 fn main() {
     var reader = csv::Reader { .. };
@@ -78,5 +78,5 @@ matching compiler. Run `make setup`, `make format check test test-debug`, both
 GCC/Clang `make sanitize SANITIZER_CC=...`, and `make bench`.
 
 See [contributing](CONTRIBUTING.md), [security](SECURITY.md),
-[notices](THIRD_PARTY_NOTICES.md). Publication records will identify exact tested
-sources, corpus, compilers, measurements and limitations.
+[notices](THIRD_PARTY_NOTICES.md). See [validation](docs/VALIDATION.md) and [baseline methodology](bench/README.md)
+for exact tested sources, corpus, compilers, measurements and limitations.

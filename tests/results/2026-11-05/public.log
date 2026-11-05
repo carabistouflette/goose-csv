@@ -1,0 +1,38 @@
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" format --check csv.goose tests examples bench
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" check tests/api.goose
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" check tests/oracle.goose
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" check tests/fuzz.goose
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" check examples/stream.goose
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" check bench/bench.goose
+python3 -m py_compile tests/*.py scripts/*.py bench/*.py
+git diff --check
+mkdir -p .build
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" run tests/api.goose
+csv public API: split boundaries, limits, ownership, lifecycle and atomic writer checks passed
+python3 tests/oracle.py --goose "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" --output .build/oracle-jit.json
+csv Python oracle: 3716 differential/contract cases passed; corpus b4a7baf25fcac684e05810d10e55d57b2fe4cad929f780cb32c081a436136fb6
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" run tests/fuzz.goose -- 10000
+csv seeded mutation fuzz: 10000 cases, seed 81297, checksum 1172115575
+make native
+make[1]: Entering directory '/home/arobin/Work/Projects/goose-libs/libraries/goose-csv'
+mkdir -p .build
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" build tests/api.goose --standalone --cc "gcc" -O2 -o .build/api
+built .build/api
+./.build/api
+csv public API: split boundaries, limits, ownership, lifecycle and atomic writer checks passed
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" build tests/oracle.goose --standalone --cc "gcc" -O2 -o .build/oracle
+built .build/oracle
+python3 tests/oracle.py --binary .build/oracle --output .build/oracle-native.json
+csv Python oracle: 3716 differential/contract cases passed; corpus b4a7baf25fcac684e05810d10e55d57b2fe4cad929f780cb32c081a436136fb6
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" build tests/fuzz.goose --standalone --cc "gcc" -O2 -o .build/fuzz
+built .build/fuzz
+./.build/fuzz 10000
+csv seeded mutation fuzz: 10000 cases, seed 81297, checksum 1172115575
+make[1]: Leaving directory '/home/arobin/Work/Projects/goose-libs/libraries/goose-csv'
+mkdir -p .build
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" run tests/api.goose --debug
+csv public API: split boundaries, limits, ownership, lifecycle and atomic writer checks passed
+python3 tests/oracle.py --goose "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" --debug --output .build/oracle-debug.json
+csv Python oracle: 3716 differential/contract cases passed; corpus b4a7baf25fcac684e05810d10e55d57b2fe4cad929f780cb32c081a436136fb6
+"/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose" run tests/fuzz.goose --debug -- 10000
+csv seeded mutation fuzz: 10000 cases, seed 81297, checksum 1172115575
