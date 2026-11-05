@@ -74,3 +74,17 @@ misuse semantics, typed empty fields and diagnostic/provenance claims. This is
 finite Linux validation, not certification. Root state must not be modified or
 deserialized; caller encoding, I/O and spreadsheet policy remain explicit. Parent
 and sibling pins/source are unchanged.
+
+## Comparison optimization checkpoint
+
+The separately measured clean implementation
+`0376fece8625827d6ef2754d48d40df8204ec24f` passes the expanded 5,601-case corpus
+in JIT/debug/native and GCC/Clang ASan+UBSan modes, with 10,000 seeded fuzz cases
+per mode. The same corpus also passes against the exact frozen released scalar
+implementation. Corpus SHA-256:
+`5bdfd290ed53838a275a6f9f1793b24534ffc5a5e75421e81c305b3e69392b1d`.
+The [comparison report](COMPARISON.md) links exact source/test/compiler receipts,
+380 native qualification records (125 shared-valid-data matches and 255 feature
+probes), three full timed passes and all rejected/original trials. Comparator
+libraries are optional benchmark-only dependencies. This does not relabel the
+initial evidence above or advance the frozen alpha release.

@@ -1,0 +1,1510 @@
+{
+  "source": "0376fece8625827d6ef2754d48d40df8204ec24f",
+  "runs": [
+    ".build/comparison/candidate-0376fec.json",
+    ".build/comparison/candidate-0376fec-confirm-1.json",
+    ".build/comparison/candidate-0376fec-confirm-2.json"
+  ],
+  "rows": [
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 1,
+      "engine": "A",
+      "n": 21,
+      "median": 89.41245867834036,
+      "low": 58.52909554626649,
+      "high": 97.90122295961078
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 1,
+      "engine": "B",
+      "n": 21,
+      "median": 83.67110666249111,
+      "low": 56.30272468897692,
+      "high": 97.53087294485302
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 1,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 38.278935831921885,
+      "low": 26.583499586713405,
+      "high": 41.601053236019894
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 1,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 53.796955081004064,
+      "low": 12.195886149890883,
+      "high": 58.424899088925685
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 1,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 36.7170457688687,
+      "low": 27.411024747932704,
+      "high": 40.71068218948527
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 1,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 110.14696525003461,
+      "low": 84.68845094303494,
+      "high": 129.58967211245698
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 64,
+      "engine": "A",
+      "n": 21,
+      "median": 115.96445340626481,
+      "low": 88.05084904385363,
+      "high": 134.02028847717136
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 64,
+      "engine": "B",
+      "n": 21,
+      "median": 107.41271046834075,
+      "low": 67.14789320838116,
+      "high": 129.60523582802122
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 64,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 144.41140841921273,
+      "low": 94.38673293715527,
+      "high": 169.54968733324847
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 64,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 141.25644958530194,
+      "low": 100.98685879538215,
+      "high": 172.3501180063621
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 64,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 146.8575266039793,
+      "low": 112.13517697865927,
+      "high": 175.22128761220807
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 64,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 127.10907044021396,
+      "low": 83.6078892431704,
+      "high": 136.2650728832747
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 125.5934947398708,
+      "low": 85.92862828735868,
+      "high": 138.62451418115634
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 120.28338922283753,
+      "low": 79.82496168681885,
+      "high": 132.21149726765427
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 148.51805424854192,
+      "low": 104.65830705485031,
+      "high": 177.78453960092503
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 161.19526721570222,
+      "low": 115.15283583039229,
+      "high": 180.08782475576177
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 167.30860679717037,
+      "low": 106.39107963122619,
+      "high": 187.49186492783014
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 130.52899637164887,
+      "low": 79.3947986259873,
+      "high": 138.26278521800236
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 65536,
+      "engine": "A",
+      "n": 21,
+      "median": 120.10066876137898,
+      "low": 75.18316463718149,
+      "high": 140.3216033930597
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 65536,
+      "engine": "B",
+      "n": 21,
+      "median": 111.88856433177709,
+      "low": 82.49638863990766,
+      "high": 130.80783749510746
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 65536,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 158.72612254530745,
+      "low": 109.31270876911803,
+      "high": 172.49552542223074
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 65536,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 163.121392608069,
+      "low": 115.81050789396932,
+      "high": 181.31352202037795
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 65536,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 176.36649240812872,
+      "low": 118.12289127997049,
+      "high": 186.60345917607873
+    },
+    {
+      "fixture": "simple",
+      "operation": "parse",
+      "chunk": 65536,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 131.53638464355095,
+      "low": 89.07372805167654,
+      "high": 139.0250732088309
+    },
+    {
+      "fixture": "simple",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 406.3609995048614,
+      "low": 283.7726187528371,
+      "high": 484.72867590928365
+    },
+    {
+      "fixture": "simple",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 405.4598118629318,
+      "low": 191.4577111223142,
+      "high": 483.7761160174209
+    },
+    {
+      "fixture": "simple",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 520.9672292883323,
+      "low": 317.07765459851174,
+      "high": 628.6121376300658
+    },
+    {
+      "fixture": "simple",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 341.55381385499163,
+      "low": 229.0234760220315,
+      "high": 395.2877785891503
+    },
+    {
+      "fixture": "simple",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 570.0824521506922,
+      "low": 397.0999591381478,
+      "high": 649.7342354076613
+    },
+    {
+      "fixture": "simple",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 677.3799734552186,
+      "low": 450.44489228368633,
+      "high": 779.5683880980395
+    },
+    {
+      "fixture": "quoted",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 197.04697190536606,
+      "low": 137.04118036079018,
+      "high": 229.3887677162546
+    },
+    {
+      "fixture": "quoted",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 180.05736426282127,
+      "low": 126.00525669253524,
+      "high": 218.17127946325033
+    },
+    {
+      "fixture": "quoted",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 276.8683244727683,
+      "low": 179.2168369451121,
+      "high": 305.1244106270905
+    },
+    {
+      "fixture": "quoted",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 280.4749954274107,
+      "low": 181.73113149794835,
+      "high": 308.531805203167
+    },
+    {
+      "fixture": "quoted",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 249.77801752074691,
+      "low": 166.978106197908,
+      "high": 294.186626726087
+    },
+    {
+      "fixture": "quoted",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 200.54444117316626,
+      "low": 127.16128374196688,
+      "high": 234.3017136433852
+    },
+    {
+      "fixture": "quoted",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 474.1492918975851,
+      "low": 312.3887475267982,
+      "high": 518.9998236985332
+    },
+    {
+      "fixture": "quoted",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 516.0072367179175,
+      "low": 328.067265807759,
+      "high": 570.9618621529689
+    },
+    {
+      "fixture": "quoted",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 526.8379770126656,
+      "low": 355.807016714762,
+      "high": 567.455321270232
+    },
+    {
+      "fixture": "quoted",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 403.9266386804713,
+      "low": 269.13760821583105,
+      "high": 472.15712523251443
+    },
+    {
+      "fixture": "quoted",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 585.7931819314263,
+      "low": 394.72654050137254,
+      "high": 657.9173707412067
+    },
+    {
+      "fixture": "quoted",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 911.869273260539,
+      "low": 603.1174324699807,
+      "high": 1011.5076016600924
+    },
+    {
+      "fixture": "empty256",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 88.63619966068399,
+      "low": 58.49155970742841,
+      "high": 99.34990512032122
+    },
+    {
+      "fixture": "empty256",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 82.8355339982661,
+      "low": 60.31362059522599,
+      "high": 98.99154051692209
+    },
+    {
+      "fixture": "empty256",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 87.60450684740172,
+      "low": 56.656901782874435,
+      "high": 98.86198408059111
+    },
+    {
+      "fixture": "empty256",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 85.83768554819649,
+      "low": 55.30352696864723,
+      "high": 97.90736960247479
+    },
+    {
+      "fixture": "empty256",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 81.89539275152566,
+      "low": 54.15403787405497,
+      "high": 94.88090381529852
+    },
+    {
+      "fixture": "empty256",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 75.93222642400494,
+      "low": 49.68358447358586,
+      "high": 84.8305621650873
+    },
+    {
+      "fixture": "empty256",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 144.245326219185,
+      "low": 98.42553858142497,
+      "high": 164.53930968991284
+    },
+    {
+      "fixture": "empty256",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 229.09632118676427,
+      "low": 166.18820221910283,
+      "high": 258.74419584626327
+    },
+    {
+      "fixture": "empty256",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 87.94540872531948,
+      "low": 61.08977683092955,
+      "high": 96.33166381252371
+    },
+    {
+      "fixture": "empty256",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 78.9341452293398,
+      "low": 22.010141453349366,
+      "high": 93.06193011836729
+    },
+    {
+      "fixture": "empty256",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 208.1462243730638,
+      "low": 150.56557344165256,
+      "high": 232.38607781573785
+    },
+    {
+      "fixture": "empty256",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 605.3865098807819,
+      "low": 450.81474246635173,
+      "high": 754.1166588034936
+    },
+    {
+      "fixture": "utf8",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 119.71838957570458,
+      "low": 95.70970581096685,
+      "high": 145.14118236898364
+    },
+    {
+      "fixture": "utf8",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 107.78923758242841,
+      "low": 77.78781461727449,
+      "high": 131.2377328431173
+    },
+    {
+      "fixture": "utf8",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 158.80166956284643,
+      "low": 109.07723955786237,
+      "high": 180.89089251089027
+    },
+    {
+      "fixture": "utf8",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 161.98515717544404,
+      "low": 114.59709643737176,
+      "high": 188.2552362194064
+    },
+    {
+      "fixture": "utf8",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 159.29854897791492,
+      "low": 89.68414172422375,
+      "high": 181.50626811618767
+    },
+    {
+      "fixture": "utf8",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 145.15980357907304,
+      "low": 90.6780218734684,
+      "high": 155.70436434961425
+    },
+    {
+      "fixture": "utf8",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 317.40738534946496,
+      "low": 209.77129490717124,
+      "high": 362.4060071507529
+    },
+    {
+      "fixture": "utf8",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 313.1671056343104,
+      "low": 213.8907955382679,
+      "high": 354.25236095698745
+    },
+    {
+      "fixture": "utf8",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 394.5977847250588,
+      "low": 265.31741991468874,
+      "high": 450.75802151173934
+    },
+    {
+      "fixture": "utf8",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 280.8905275288395,
+      "low": 189.6369785979081,
+      "high": 322.67998439093805
+    },
+    {
+      "fixture": "utf8",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 373.0751869639751,
+      "low": 223.14468127274782,
+      "high": 410.8125312912487
+    },
+    {
+      "fixture": "utf8",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 644.8374494559993,
+      "low": 388.529682809902,
+      "high": 718.7822452134468
+    },
+    {
+      "fixture": "binary",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 312.1437447647393,
+      "low": 201.08553747632698,
+      "high": 350.3198062490281
+    },
+    {
+      "fixture": "binary",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 1577.7583428488003,
+      "low": 1086.4093023859489,
+      "high": 1791.0638777078657
+    },
+    {
+      "fixture": "binary",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 912.5230241478952,
+      "low": 618.9985632983603,
+      "high": 1024.9464860912083
+    },
+    {
+      "fixture": "binary",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 990.2669494286083,
+      "low": 657.312192033437,
+      "high": 1080.4907227603246
+    },
+    {
+      "fixture": "binary",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 2331.303347769088,
+      "low": 1462.949808881521,
+      "high": 2508.7772196794913
+    },
+    {
+      "fixture": "binary",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 476.76140721179746,
+      "low": 297.0485363774613,
+      "high": 537.474139023823
+    },
+    {
+      "fixture": "binary",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 479.3722914748119,
+      "low": 340.7025388727179,
+      "high": 534.0519371288549
+    },
+    {
+      "fixture": "binary",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 2125.2597937323253,
+      "low": 1570.1493377081479,
+      "high": 2361.8953945253193
+    },
+    {
+      "fixture": "binary",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 3452.079485141487,
+      "low": 2012.9207890725443,
+      "high": 3796.7187848616877
+    },
+    {
+      "fixture": "binary",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 3403.840089695526,
+      "low": 2099.2341627083247,
+      "high": 3916.0116896266386
+    },
+    {
+      "fixture": "binary",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 3826.636820027872,
+      "low": 2413.925095103997,
+      "high": 4220.930904332578
+    },
+    {
+      "fixture": "binary",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 1197.4804542341924,
+      "low": 736.4131267046495,
+      "high": 1336.8614478852746
+    },
+    {
+      "fixture": "long256k",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 329.0402693673458,
+      "low": 214.09442194917145,
+      "high": 362.13789456917436
+    },
+    {
+      "fixture": "long256k",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 5329.133829309931,
+      "low": 3102.406207752111,
+      "high": 5853.747665938724
+    },
+    {
+      "fixture": "long256k",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 1457.2322233552934,
+      "low": 907.9842585911967,
+      "high": 1602.4517972738204
+    },
+    {
+      "fixture": "long256k",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 1622.967174365981,
+      "low": 995.7760155024359,
+      "high": 1693.6352708472944
+    },
+    {
+      "fixture": "long256k",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 7446.021862662946,
+      "low": 4046.695522498073,
+      "high": 7897.7088081189295
+    },
+    {
+      "fixture": "long256k",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 515.5762167509032,
+      "low": 330.04216821648765,
+      "high": 563.5185599441656
+    },
+    {
+      "fixture": "long256k",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 649.6765963969192,
+      "low": 397.0148149063998,
+      "high": 735.7825735322596
+    },
+    {
+      "fixture": "long256k",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 5557.678251269115,
+      "low": 2962.6289811315037,
+      "high": 6508.746462749997
+    },
+    {
+      "fixture": "long256k",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 2250.2585598901646,
+      "low": 1274.3248962043485,
+      "high": 2568.8784655069953
+    },
+    {
+      "fixture": "long256k",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 2387.086246928764,
+      "low": 1506.6999956511659,
+      "high": 2843.615863197675
+    },
+    {
+      "fixture": "long256k",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 2520.3936824741804,
+      "low": 1583.5962912458576,
+      "high": 2821.993410556457
+    },
+    {
+      "fixture": "long256k",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 1004.2497102763197,
+      "low": 699.3267975935111,
+      "high": 1173.10489668947
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 363.2734506034572,
+      "low": 254.1011069491071,
+      "high": 420.2259408167866
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 347.38744514536387,
+      "low": 185.04775490489754,
+      "high": 443.3170809797874
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 410.6759194451221,
+      "low": 265.898034618918,
+      "high": 516.1045722636126
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 483.6673757496833,
+      "low": 296.4933245215806,
+      "high": 545.6979846473596
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 356.2669671190396,
+      "low": 243.76295791740745,
+      "high": 426.6346654606021
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 324.2661330380365,
+      "low": 202.11476038069836,
+      "high": 349.4583506960291
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 518.2305454608672,
+      "low": 332.54224315673054,
+      "high": 576.7530198103466
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 687.0613585991019,
+      "low": 463.1655233256002,
+      "high": 752.9387581901734
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 349.63806245285525,
+      "low": 241.15372778653725,
+      "high": 421.0732897647517
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 378.5674652469708,
+      "low": 256.36884191524075,
+      "high": 420.7792830172475
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 405.14832740679105,
+      "low": 271.00108797990833,
+      "high": 466.99696835901847
+    },
+    {
+      "fixture": "long-escaped",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 1088.2212876624499,
+      "low": 770.9366560649134,
+      "high": 1408.6094368725526
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 338.90658070653774,
+      "low": 218.0253915566567,
+      "high": 375.78869475882317
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 3244.4372112431715,
+      "low": 1890.5830041820873,
+      "high": 3538.7854069050827
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 1438.7635696274845,
+      "low": 895.893064578542,
+      "high": 1574.7933081426268
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 1426.200702423218,
+      "low": 1009.5504713580713,
+      "high": 1611.2554115599808
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 5061.659504581556,
+      "low": 3435.325234152055,
+      "high": 5980.088733756649
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 504.38183496243846,
+      "low": 348.4922734721327,
+      "high": 585.0644977089203
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 493.39254344784626,
+      "low": 322.48332672504466,
+      "high": 548.0567392560955
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 2466.621062196148,
+      "low": 1692.560790419834,
+      "high": 2794.162094854528
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 2521.0765597211557,
+      "low": 1639.0477002607806,
+      "high": 3111.4215438111555
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 2897.291809695075,
+      "low": 1883.4764748948583,
+      "high": 3314.867173425114
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 2694.5351881818106,
+      "low": 1885.306116427707,
+      "high": 3073.462789599827
+    },
+    {
+      "fixture": "quote-cluster",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 881.4662187158254,
+      "low": 605.4701912289759,
+      "high": 968.5489333903498
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 171.07536092460026,
+      "low": 110.015565178785,
+      "high": 191.78973632415824
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 155.3750911732714,
+      "low": 105.14993681913678,
+      "high": 182.99802249780134
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 257.6964171364573,
+      "low": 168.61923303558174,
+      "high": 292.65718211312054
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 266.979425931563,
+      "low": 178.93351414249983,
+      "high": 294.57210486001145
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 298.9881629990686,
+      "low": 185.51478178900453,
+      "high": 331.0501938150422
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 191.33160383088696,
+      "low": 129.7790406436482,
+      "high": 215.17271387411608
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 423.28620950544723,
+      "low": 298.00127062830137,
+      "high": 465.16701583564225
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 405.36713200114485,
+      "low": 285.7513506429821,
+      "high": 444.45587504792104
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 595.5933954264158,
+      "low": 396.1534996537847,
+      "high": 671.7344709157414
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 446.723452998029,
+      "low": 256.8694087130786,
+      "high": 513.2445117108837
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 656.2266305217006,
+      "low": 419.0957311634387,
+      "high": 736.7982356623356
+    },
+    {
+      "fixture": "mixed-records",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 541.8902445506817,
+      "low": 347.92632644527566,
+      "high": 590.2484501938259
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 179.47815330726453,
+      "low": 114.01171070894966,
+      "high": 203.15053681446417
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 161.3889909701978,
+      "low": 112.15541325503685,
+      "high": 193.48271267107575
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 305.7281141344567,
+      "low": 198.00094309176842,
+      "high": 338.07928260775236
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 314.6694728422703,
+      "low": 205.1106726149972,
+      "high": 339.4141157802007
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 391.56047092353015,
+      "low": 172.79321425501757,
+      "high": 429.2160393964369
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 196.13303770710712,
+      "low": 142.47178932068016,
+      "high": 228.8827930214354
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 540.3312676422823,
+      "low": 387.9221797047737,
+      "high": 647.3386852227205
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 579.0670722528582,
+      "low": 386.49026689564045,
+      "high": 658.5081170595238
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 1136.082283259719,
+      "low": 782.1370615864791,
+      "high": 1232.3381717761072
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 709.9488638521822,
+      "low": 455.6499939467262,
+      "high": 783.0744171456296
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 1084.9770569049201,
+      "low": 676.6065144971523,
+      "high": 1194.5367238648298
+    },
+    {
+      "fixture": "wide-variable",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 836.280896284561,
+      "low": 526.3685948776398,
+      "high": 920.6752913918832
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 165.25775811527706,
+      "low": 115.27335197697529,
+      "high": 185.58839035199486
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 187.93547822591927,
+      "low": 119.7278775161913,
+      "high": 209.06418974767342
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 123.11155130756623,
+      "low": 81.28649318046689,
+      "high": 138.55030146694543
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 119.68842780415446,
+      "low": 42.43044631752506,
+      "high": 143.33913269228512
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 211.83587973347701,
+      "low": 168.12643001698714,
+      "high": 284.4819010627877
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "parse",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 75.35091034114711,
+      "low": 55.237620571435976,
+      "high": 91.61367305707795
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "A",
+      "n": 21,
+      "median": 151.45918832290988,
+      "low": 109.04586838784847,
+      "high": 193.905906010099
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "B",
+      "n": 21,
+      "median": 161.4031435010636,
+      "low": 116.06085190984777,
+      "high": 219.42172688050314
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "rust-csv",
+      "n": 21,
+      "median": 251.32909477699175,
+      "low": 173.4984050079073,
+      "high": 303.24604546131377
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "csv-core",
+      "n": 21,
+      "median": 215.90444551607789,
+      "low": 172.95516077959115,
+      "high": 290.0040893296473
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "simd-csv",
+      "n": 21,
+      "median": 273.08949918743167,
+      "low": 177.7868416516101,
+      "high": 338.1530516267517
+    },
+    {
+      "fixture": "escape-heavy",
+      "operation": "write",
+      "chunk": 4096,
+      "engine": "libcsv",
+      "n": 21,
+      "median": 323.66614654743125,
+      "low": 252.63651527922167,
+      "high": 415.5094472163975
+    }
+  ]
+}

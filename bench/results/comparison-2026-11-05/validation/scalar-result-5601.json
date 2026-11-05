@@ -1,0 +1,55 @@
+{
+  "tier": "frozen released scalar implementation against expanded independent corpus",
+  "baseline_revision": "4ec59cf17685f85e537cac264527d28af8ab9f2f",
+  "snapshot": {
+    "csv.goose": "960908743ad097c8df52f6457bb0c0c8f1e3f833f4212c82828da2acc942174f",
+    "tests/oracle.goose": "6236264c19c5ec4f7dbea4a1c5e603a6511b7ef5f6481abb8dd2a9d7540945f3",
+    "tests/support.goose": "73feaaeeff180514d4bfe3144ed20132bcfe5d8456e44b3f381f080f0e5bcbbf"
+  },
+  "oracle_python_sha256": "ddaf22911dd4a58bacd0adb2daab548a3a55d1fc36fe2ba84bac76ae2baa44e5",
+  "cases": 5601,
+  "writer_cases": 823,
+  "parser_inputs": 560,
+  "contract_errors": 137,
+  "corpus_sha256": "5bdfd290ed53838a275a6f9f1793b24534ffc5a5e75421e81c305b3e69392b1d",
+  "stdout_sha256": "122d143b1b83af13b4af7c63a67f962a4b77bae8bd53853d7682687a0b77cca5",
+  "expected_sha256": "122d143b1b83af13b4af7c63a67f962a4b77bae8bd53853d7682687a0b77cca5",
+  "goose": {
+    "path": "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+    "sha256": "d6992f984453e28b1e9fc2540236063c0c9db67634a99b57a9a46ea58704c313",
+    "version": "goose eadca40 (runtime 3025e5810379)"
+  },
+  "gcc_sha256": "8aac907d6fbf40394b424b5fa4a2ad1aa291dac7d3a0315c5b415c1f5ace1287",
+  "compiler_commands": [
+    [
+      "/usr/bin/gcc",
+      "--version",
+      "-O2",
+      "-UNDEBUG"
+    ],
+    [
+      "/usr/bin/gcc",
+      "--version",
+      "-O2",
+      "-UNDEBUG"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-O2",
+      "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/scalar-reference/generated.c",
+      "-o",
+      "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/scalar-reference/oracle",
+      "-lm",
+      "-pthread",
+      "-ldl",
+      "-O2",
+      "-UNDEBUG"
+    ]
+  ],
+  "generated_c_sha256": "18197001c08fa31c16726707410038905952ccef7b30aef927fc6cbeed0c73eb",
+  "binary_sha256": "dfad00a1af1036d5c5b847788d814c9f21dca153e4beede294a38152cccbf10a",
+  "notes": [
+    "Semantics regression gate only; no timing/performance conclusion",
+    "No checkout/index/tag/pin writes; released csv.goose read from exact Git blob"
+  ]
+}

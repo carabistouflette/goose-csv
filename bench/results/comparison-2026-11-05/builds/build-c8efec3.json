@@ -1,0 +1,1038 @@
+{
+  "inputs": {
+    "source": {
+      "head": "c8efec3bd915d84086a574f2ef81f68d14f94f2e",
+      "status": "",
+      "files": {
+        ".github/workflows/ci.yml": {
+          "sha256": "30b7b2611b0da68c67223cf9f98397b05bdec3680e10b192b21cf83e452fd46f",
+          "mode": 33152
+        },
+        ".gitignore": {
+          "sha256": "05e54dbc334efb147afc9252c28ccd90f2facab20fd426da7608841ff165f1e1",
+          "mode": 33152
+        },
+        "CHANGELOG.md": {
+          "sha256": "007ad6b2de980ea97051c47d3e244b0233a12f07648ca4e41c19f04495b02671",
+          "mode": 33152
+        },
+        "CONTRIBUTING.md": {
+          "sha256": "d54fdda2c0624287259b23aab08e2c23e832ddaa24ba81dee9333cc6710d1d0c",
+          "mode": 33152
+        },
+        "GOOSE_REVISION": {
+          "sha256": "64e14b181dfe96743211738fb0f1b1f7798ea940da2ca50ff122e6f028c24e15",
+          "mode": 33152
+        },
+        "LICENSE": {
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "mode": 33152
+        },
+        "Makefile": {
+          "sha256": "cf169ef978b5d443ccf47627c9dc34b86b0e96662c64b5ce54a829ebc9073126",
+          "mode": 33152
+        },
+        "README.md": {
+          "sha256": "66e5e64087936fc7d27d95c5d5a82e5170c07ae62b3936026764a43ea8407148",
+          "mode": 33152
+        },
+        "SECURITY.md": {
+          "sha256": "2e69b1b3e4b651aa94a601c791a733df7191bb799a12c1167831a9321e93f332",
+          "mode": 33152
+        },
+        "THIRD_PARTY_NOTICES.md": {
+          "sha256": "f0a815cf990f4dfba092c6fc01d0bb153a215c932ae818a240cd1b9aa222b5cb",
+          "mode": 33152
+        },
+        "bench/README.md": {
+          "sha256": "4c4302d73319926c4d09f82824c31f0c3afaf5f709cb23662b620f7b507333db",
+          "mode": 33152
+        },
+        "bench/bench.goose": {
+          "sha256": "ac301ec51d0f0cfb4296a9a12b63a681e0bf76ad768f4a5df8b857cf71e91557",
+          "mode": 33152
+        },
+        "bench/compare/CONTRACT.md": {
+          "sha256": "d301493037004ea0f4039cbd1627c8d8e66ba89edd02a18a6d0bf5930485fd45",
+          "mode": 33152
+        },
+        "bench/compare/README.md": {
+          "sha256": "1011bf5c78f53446114e8ef29364c9c0f2c7d9826f813ff5c954d2cdf9085428",
+          "mode": 33152
+        },
+        "bench/compare/REVIEWS.md": {
+          "sha256": "a0fde697bb905ed80ce1e43f840a70dc7a715cd0bad6bacd05433daad3bab0da",
+          "mode": 33152
+        },
+        "bench/compare/build.py": {
+          "sha256": "99d21a56b1be1f685a91ebaf6234beec23a3f647ab83bfcccea221ade1eaa161",
+          "mode": 33152
+        },
+        "bench/compare/driver.goose": {
+          "sha256": "d8af74514388ffc2e8590ea81219d7f8b737b1ccb57738718e49e53fcb355514",
+          "mode": 33152
+        },
+        "bench/compare/fixtures.py": {
+          "sha256": "c45a7bc7194cab0a388728f2d6acabf2adf7e18e5c194e2507b32214cb7b9c7f",
+          "mode": 33152
+        },
+        "bench/compare/libcsv_driver.c": {
+          "sha256": "890ae819ca50ec29bb5209f2c8768b2345a9c4f082522d591307ef7461f146fc",
+          "mode": 33152
+        },
+        "bench/compare/measure.py": {
+          "sha256": "b037d6f2510875e0e169e8c6674f1a7dffbfa30466d91a7df6fd54db92150670",
+          "mode": 33152
+        },
+        "bench/compare/qualify.py": {
+          "sha256": "c0e1cd5ad28e1e5b8f3b3ba5a68b2677c0b7a31f4ead14ac67ae71867b384a45",
+          "mode": 33152
+        },
+        "bench/compare/rust/Cargo.lock": {
+          "sha256": "aba4e9f1b0fbed3246fdf9b58175d1e34c575251b4fbbd28de9c805e7c1f196a",
+          "mode": 33152
+        },
+        "bench/compare/rust/Cargo.toml": {
+          "sha256": "50f94e83dcf7fad7c60fb697018c9f3083f7c441648c1e1e7786e8b4c519dc6a",
+          "mode": 33152
+        },
+        "bench/compare/rust/src/main.rs": {
+          "sha256": "8ed55eb200d143f90802fcd8c51dcf2d195096634029c3043e44d61625535281",
+          "mode": 33152
+        },
+        "bench/measure.py": {
+          "sha256": "5154d5485a07a73e54cf2753e532b3be6374c4305b87a56ae351cbfacec2aca8",
+          "mode": 33152
+        },
+        "bench/results/2026-11-05/raw.json": {
+          "sha256": "2b4cdfa480da810da4412e2e3b5eec069689adda1888f950053e81db5542bfea",
+          "mode": 33152
+        },
+        "bench/results/2026-11-05/run.log": {
+          "sha256": "98bba9bbe92980f70fc8dd5db9683645ddf0f5b424533c53371e51fecc3c8151",
+          "mode": 33152
+        },
+        "csv.goose": {
+          "sha256": "8b76e92fdf2c9134bc279ee0674245d40f90533beb35284d85f32b79067da825",
+          "mode": 33152
+        },
+        "docs/ALTERNATIVES.md": {
+          "sha256": "55c6d43966c8193c4375d2b4d876edba0791089f55a3047c557eeaf051f57570",
+          "mode": 33152
+        },
+        "docs/DESIGN.md": {
+          "sha256": "35459f9be1d4b07440cdb9191067b52b8aa5439bce9aa3c5930300b7adb2ecaa",
+          "mode": 33152
+        },
+        "docs/VALIDATION.md": {
+          "sha256": "16cbceae3021428fef34c996e067c0dcefeadba855f7782ed6441af501001108",
+          "mode": 33152
+        },
+        "examples/stream.goose": {
+          "sha256": "78fdb77b154fe280b63dd5da7bea4b57d8dac486241c19ba245a54b45a1c3354",
+          "mode": 33152
+        },
+        "scripts/provenance.py": {
+          "sha256": "42a117b333881bc42f25c2fa79861867e31183e7d7f73e5c6be3335d8edacc0c",
+          "mode": 33152
+        },
+        "scripts/sanitize.py": {
+          "sha256": "6ac293b0c853d284218c061d8264497d4beec8ec33b673a8bb44005019c23423",
+          "mode": 33152
+        },
+        "scripts/setup-goose.sh": {
+          "sha256": "a258081d49cd91986ebbc17a5b2bec7b0acbde54821416143bbac7feec6977e2",
+          "mode": 33216
+        },
+        "tests/api.goose": {
+          "sha256": "57dfbe49092cd1ca7aa4b47149eea3407a67fbb01ed259d0e3ce16a4ffb64129",
+          "mode": 33152
+        },
+        "tests/fuzz.goose": {
+          "sha256": "b87666d6345dbc6abeb8b0bcf94c86560c7c40b232a972bfb60a83f6365544fa",
+          "mode": 33152
+        },
+        "tests/oracle.goose": {
+          "sha256": "6236264c19c5ec4f7dbea4a1c5e603a6511b7ef5f6481abb8dd2a9d7540945f3",
+          "mode": 33152
+        },
+        "tests/oracle.py": {
+          "sha256": "8b565d8d7a1714a17535351f49afd0c83962f455747680de14853660985ab4ce",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/clang-sanitize.json": {
+          "sha256": "05be1bb6ac07e8b250aacb5ddbfe9d1d086aacba363aab9e3872479df5b31dac",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/clang-sanitize.log": {
+          "sha256": "ce714af04019e5730c35012e574e1fb84ae35296a08ed78737206c50d0a9c383",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/gcc-sanitize.json": {
+          "sha256": "998f2d1f8998bd7bbd9ac5c1f4747d1c1d07d2e4d83fb5f2cf59bc02f4dcb628",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/gcc-sanitize.log": {
+          "sha256": "db33ee0d4cab5d349700972f6de8a8ea1cce46b1a0f62df758e549ff0daebe98",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/oracle-debug.json": {
+          "sha256": "296a36da17dc0fe9a7cd57c52da336866aa8185f41a8e228edeb61b91a065818",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/oracle-jit.json": {
+          "sha256": "d8229fcc388b8ff571007b88a61bc33aba2a9c3e66ba0d4a67d321b670b13a80",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/oracle-native.json": {
+          "sha256": "15d372e7ec534eb38169e81844173db0b9eadba5bb1d51d638677b0ddb45256f",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/public.log": {
+          "sha256": "4620dc9f4fba9cee8ff12ae1b2aed596b8ab6b3ecebf9a9133803d0a55da40b3",
+          "mode": 33152
+        },
+        "tests/support.goose": {
+          "sha256": "73feaaeeff180514d4bfe3144ed20132bcfe5d8456e44b3f381f080f0e5bcbbf",
+          "mode": 33152
+        }
+      }
+    },
+    "goose_revision": "eadca409f68210893f366e60d0c2f0dc29a339be",
+    "tools": {
+      "goose": {
+        "path": "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "sha256": "d6992f984453e28b1e9fc2540236063c0c9db67634a99b57a9a46ea58704c313",
+        "version": "goose eadca40 (runtime 3025e5810379)"
+      },
+      "cc": {
+        "path": "/usr/bin/gcc",
+        "sha256": "8aac907d6fbf40394b424b5fa4a2ad1aa291dac7d3a0315c5b415c1f5ace1287",
+        "version": "gcc (GCC) 16.2.1 20260810\nCopyright (C) 2026 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+      },
+      "python": {
+        "path": "/usr/bin/python3.14",
+        "sha256": "122ce07db306cd111fd10e27125460362610452983a64903c470afd66b6403bd",
+        "version": "3.14.9 (main, Oct 25 2026, 14:52:47) [GCC 16.2.1 20260810]"
+      }
+    }
+  },
+  "goose": {
+    "csv_revision": "WORKTREE",
+    "csv_sha256": "8b76e92fdf2c9134bc279ee0674245d40f90533beb35284d85f32b79067da825",
+    "source_snapshot": {
+      "csv.goose": "8b76e92fdf2c9134bc279ee0674245d40f90533beb35284d85f32b79067da825",
+      "tests/support.goose": "73feaaeeff180514d4bfe3144ed20132bcfe5d8456e44b3f381f080f0e5bcbbf",
+      "bench/compare/driver.goose": "d8af74514388ffc2e8590ea81219d7f8b737b1ccb57738718e49e53fcb355514"
+    },
+    "generated_c_sha256": "b0204e2f49dc0da0fab4bef00e886f201c1e5a582c932a02c2ca03873485e849",
+    "compiler_commands": [
+      {
+        "argv": [
+          "/usr/bin/gcc",
+          "--version"
+        ],
+        "sources": []
+      },
+      {
+        "argv": [
+          "/usr/bin/gcc",
+          "--version"
+        ],
+        "sources": []
+      },
+      {
+        "argv": [
+          "/usr/bin/gcc",
+          "-O2",
+          "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison/generated.c",
+          "-o",
+          "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison/goose",
+          "-lm",
+          "-pthread",
+          "-ldl",
+          "-O3",
+          "-g",
+          "-march=native",
+          "-fno-omit-frame-pointer",
+          "-flto",
+          "-UNDEBUG"
+        ],
+        "sources": [
+          {
+            "original": "/home/arobin/.goose/build/prog/driver-716a3a79/driver.c",
+            "sha256": "b0204e2f49dc0da0fab4bef00e886f201c1e5a582c932a02c2ca03873485e849"
+          }
+        ]
+      }
+    ],
+    "binary": {
+      "path": "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison/goose",
+      "sha256": "a0864895659d540b749563257fc9e79acc8da4052da4e00283be6f2850056cef",
+      "sections": {
+        ".text": "76c90a7f50610c949dd667453aa9dec48bde6fac2e34d6e8fda517f12ff8b7ea",
+        ".rodata": "3231819af8124b69916168f9aa4529a802293814d73abb0574a3bbbeb19f5430",
+        ".data": "090a7ec503d534dfdd1b11fd6e9da5760500bdc4568b4f928e3009464b29de99",
+        ".eh_frame": "88184e75b4ff46299e74f7582d7f10876cfa55c1005636432490eadef1b15ecb"
+      }
+    }
+  },
+  "alternatives": {
+    "libcsv": {
+      "revision": "b1d5212831842ee5869d99bc208a21837e4037d5",
+      "files": {
+        "COPYING": "2337fbb1cccac9c6cc7303442760d83bbb3ae5d44e11237cda95f83f1ad700ce",
+        "ChangeLog": "200b47ef0015d7bd21364fc0881a02ee839628d7bfee0a50b160a3083c953f70",
+        "FAQ": "cba675f7ec3a7ee99f2a516b96475396146ad85be4f46fafbbc7fb600065842c",
+        "INSTALL": "a8ce36c7ec021809bc927f80696758d9a22838ca7a83e7b44c0e3c129a78a272",
+        "Makefile.am": "c2cc0cbf1a355363a9800faac7672134ff05ebcebc82542ce8266401367b55f4",
+        "Makefile.in": "447e3225928bccf49a3dc3c1307f44317242026493ca34015d87062bfc09af28",
+        "README": "7aab8eaae7087ac476f791ed02371e295a6da40f6aa4a0713323a7fe60c20821",
+        "aclocal.m4": "bd3888fe3806a91f5e19a6da77db5a26be6fed1e22f47c9d363751efdfa7d324",
+        "compile": "c8af04e62bad4ab75dafd22119026e5e3943f385bdcbe7731a4938102453754c",
+        "config.guess": "1d9048b0ac9d4d1dfce7aa4e3a0b59ccfd32db2f7693814aa6f4c778560f5669",
+        "config.sub": "5bf0da2576ebb21ab60a9d9291a85b40af0e956a9eafb709ca8b20dcb105f4ee",
+        "configure": "263e0705393393f3030a405ce392f5601c65cb3221f606041758b96044c1b1cd",
+        "configure.ac": "be0906a1481d3c2eb956b72a3893b45debc22fe763cd709dfe7a19888e5be01b",
+        "csv.3": "3438c170ddb40e82e6d57679bc6991c593bdd447587e8bf5b8bd937b6587f67d",
+        "csv.h": "0b89a06b1052014f75942618aa05e90cb6d2f3bfad69fd2afeac79471f1efd60",
+        "csv.pdf": "33d42d34feec00f83e9a87867abfe8c4dd0edc2e81e012b6fe06ad0c04c497ac",
+        "depcomp": "732bcd6b9e23f241e015d71b0a3a862104053aba20718c1f56b292cee7e29371",
+        "fix-timestamps.sh": "df399d1f27d1d7a434275c1bcffca3593e168c8a18383f71caf148176cf18d45",
+        "install-sh": "608b76d735bb2ec2bcb1271644c3d5e7a428fb8d2338e114e8a48ebf91ccfd23",
+        "libcsv.c": "75f39188a5c24ebe3faabbf0249a8732e82544b2158e4af99419cee2b97f8e81",
+        "ltmain.sh": "7d3e9fe226d81f93c605df55b88f76c979d9e3bcd8b7eea775296a8ee04795ae",
+        "missing": "f038345dab184e538098d22a8edc423762da66a90ebe269f23bfef85287cd30c",
+        "test-driver": "7a61b6f471355eeab543191d9eb1e3efbb81709f0e3389c811721f43a9c68938",
+        "test_csv.c": "92a8a05d5c5e1ce593ae6926979264e90e086fc0ef458fa1c13a56b2188afc6a",
+        "examples/csvfix.c": "378f3eb647b0bc10261ee0da14a24c3f74d42c1a4b4cca3b955790d57053e9ae",
+        "examples/csvinfo.c": "ad937ba4588b94a247c2614154e6819b63c13ba277bc33002099345b5913bfb8",
+        "examples/csvtest.c": "c2104b8ad1792a05f2e464e2301ca313e343fa9d72f60807738673747b373e18",
+        "examples/csvvalid.c": "c2290c6f9790f39039386d5edac76118ff1d8bdbda9d95fd999277af1e1ef7d2",
+        "m4/libtool.m4": "b9b328e874d9278ec27f2b47f6ed11c1f2eca4a9cb9ebf945e990f65324db97b",
+        "m4/ltoptions.m4": "42cf144d09271b31c1cde8979df1f0a07d09fc1bd15edf07d029ee2db53126e2",
+        "m4/ltsugar.m4": "e8bfa437be7af72bf41b86e7e714bc8b8545046c339f80cfb5e69681bc97f90d",
+        "m4/ltversion.m4": "d10626cfa21a7023b425838971ba1c856fe1daeb05f7d2cdfd40c234b781891a",
+        "m4/lt~obsolete.m4": "ee8a1723c8c022eb20bb2d03450cc37f92ec6c3db2c7b8c313eb3f5e935249fc",
+        "tests/test_01.csv": "012a740c2ecfc69f07fcd445e45f283ed5b56c955368a58afc77f2c8be1d7089",
+        "tests/test_02.csv": "f5d44688c30f5a811d6cb906bdc5736c6f62125b31f47099b4635b4391622440",
+        "tests/test_03.csv": "911d1f23a2ca6f9ef8b0c50f6a13844c3e2d9685844c791b81186a3c32e56030",
+        "tests/test_04.csv": "958279a72e778d88be8ab7eaec1035fd4d57c918409d9cad9853889508552377",
+        "tests/test_05.csv": "2e6a25ec6e12d43547ed2f7e5fa546c48a7c405dca5002640eaf86caac1b201e",
+        "tests/test_06.csv": "f0d1ce853f60a75d9d92da0170cb2f8acd63d7904ea878a433b9513931f6c532",
+        "tests/test_07.csv": "078ce274bcd740bb814c1a1b9317e341cac631b4cca9e7ef1ad3df05d89fe207",
+        "tests/test_08.csv": "48927e31f4e4063098ba7b759b168d4ddff4f37dda9414f4a0c796d34d2a991f",
+        "tests/test_10.csv": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7",
+        "tests/test_11.csv": "e86adb22a82e160c0985e9fc897868eb486154f55402583287913a168c9d9412",
+        "tests/test_12.csv": "545c38b0922de19734fbffde62792c37c2aef6a3216cfa472449173165220f7d",
+        "tests/test_13.csv": "6cc43f858fbb763301637b5af970e2a46b46f461f27e5a0f41e009c59b827b25"
+      },
+      "compiler_command": [
+        "/usr/bin/gcc",
+        "-std=c11",
+        "-O3",
+        "-g",
+        "-march=native",
+        "-fno-omit-frame-pointer",
+        "-flto",
+        "-UNDEBUG",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-deps/libcsv",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/bench/compare/libcsv_driver.c",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-deps/libcsv/libcsv.c",
+        "-o",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison/libcsv"
+      ],
+      "license": "LGPL-2.1-or-later; benchmark-only, no library source/binary vendored"
+    },
+    "rust": {
+      "tools": {
+        "cargo": {
+          "path": "/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo",
+          "sha256": "d006175a9a2a7a16e66f7a40a8e13b6123b114058ee5c9d26e9268c57fe7241a",
+          "version": "cargo 1.101.0-nightly (29c5daa1a 2026-10-07)"
+        },
+        "rustc": {
+          "path": "/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc",
+          "sha256": "ee1c504a3a86322e473259c90eeaf464952acad669d90f7134e87ed43e062934",
+          "version": "rustc 1.101.0-nightly (822182db4 2026-10-13)"
+        }
+      },
+      "cargo_config_overrides": [
+        "build.rustc-wrapper=\"\"",
+        "build.incremental=false",
+        "profile.release.opt-level=3",
+        "profile.release.codegen-units=1",
+        "profile.release.lto=\"thin\"",
+        "profile.release.overflow-checks=true",
+        "profile.release.debug=false",
+        "profile.release.strip=\"none\"",
+        "profile.release.panic=\"unwind\"",
+        "profile.release.debug-assertions=false",
+        "profile.release.incremental=false"
+      ],
+      "loaded_config_files": {
+        "/home/arobin/.cargo/config.toml": "7c2e443b3d907ecfaa4160b4bc8792c81300d744b9754445e50eed4ede16a9f4"
+      },
+      "command": [
+        "/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo",
+        "--config",
+        "build.rustc-wrapper=\"\"",
+        "--config",
+        "build.incremental=false",
+        "--config",
+        "profile.release.opt-level=3",
+        "--config",
+        "profile.release.codegen-units=1",
+        "--config",
+        "profile.release.lto=\"thin\"",
+        "--config",
+        "profile.release.overflow-checks=true",
+        "--config",
+        "profile.release.debug=false",
+        "--config",
+        "profile.release.strip=\"none\"",
+        "--config",
+        "profile.release.panic=\"unwind\"",
+        "--config",
+        "profile.release.debug-assertions=false",
+        "--config",
+        "profile.release.incremental=false",
+        "build",
+        "--release",
+        "--locked",
+        "--verbose",
+        "--verbose",
+        "--manifest-path",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/bench/compare/rust/Cargo.toml"
+      ],
+      "stdout": "[serde_core 1.0.229] cargo:rerun-if-changed=build.rs\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(if_docsrs_then_no_serde_core)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_core_cstr)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_core_error)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_core_net)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_core_num_saturating)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_diagnostic_namespace)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_serde_derive)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_std_atomic)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_std_atomic64)\n[serde_core 1.0.229] cargo:rustc-check-cfg=cfg(no_target_has_atomic)\n",
+      "stderr": "   Compiling serde_core v1.0.229\n   Compiling memchr v2.8.3\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CRATE_NAME=build_script_build CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/Cargo.toml CARGO_PKG_AUTHORS='Erick Tryzelaar <erick.tryzelaar@gmail.com>:David Tolnay <dtolnay@gmail.com>' CARGO_PKG_DESCRIPTION='Serde traits only, with no support for derive -- use the `serde` crate instead' CARGO_PKG_HOMEPAGE='https://serde.rs' CARGO_PKG_LICENSE='MIT OR Apache-2.0' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=serde_core CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/serde-rs/serde' CARGO_PKG_RUST_VERSION=1.56 CARGO_PKG_VERSION=1.0.229 CARGO_PKG_VERSION_MAJOR=1 CARGO_PKG_VERSION_MINOR=0 CARGO_PKG_VERSION_PATCH=229 CARGO_PKG_VERSION_PRE='' LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name build_script_build --edition=2021 /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/build.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type bin --emit=dep-info,link -C embed-bitcode=no -C debug-assertions=off -C overflow-checks=on --cfg 'feature=\"default\"' --cfg 'feature=\"result\"' --cfg 'feature=\"std\"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"alloc\", \"default\", \"rc\", \"result\", \"std\", \"unstable\"))' -C metadata=05a3606da5595165 --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/serde_core/2db61f48a97de28c/out --cap-lints warn -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies`\n   Compiling itoa v1.0.18\n   Compiling ryu v1.0.23\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CRATE_NAME=memchr CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memchr-2.8.3 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memchr-2.8.3/Cargo.toml CARGO_PKG_AUTHORS='Andrew Gallant <jamslam@gmail.com>:bluss' CARGO_PKG_DESCRIPTION='Provides extremely fast (uses SIMD on x86_64, aarch64 and wasm32) routines for\n1, 2 or 3 byte search and single substring search.\n' CARGO_PKG_HOMEPAGE='https://github.com/BurntSushi/memchr' CARGO_PKG_LICENSE='Unlicense OR MIT' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=memchr CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/BurntSushi/memchr' CARGO_PKG_RUST_VERSION=1.61 CARGO_PKG_VERSION=2.8.3 CARGO_PKG_VERSION_MAJOR=2 CARGO_PKG_VERSION_MINOR=8 CARGO_PKG_VERSION_PATCH=3 CARGO_PKG_VERSION_PRE='' LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name memchr --edition=2021 /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memchr-2.8.3/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type lib --emit=dep-info,metadata,link -Z embed-metadata=no -C opt-level=3 -C linker-plugin-lto -C codegen-units=1 -C overflow-checks=on --cfg 'feature=\"alloc\"' --cfg 'feature=\"default\"' --cfg 'feature=\"std\"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"alloc\", \"core\", \"default\", \"libc\", \"logging\", \"rustc-dep-of-std\", \"std\", \"use_std\"))' -C metadata=a571c6d8b1e059ac -C extra-filename=-bb255688a00bce47 --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/memchr/bb255688a00bce47/out --cap-lints warn -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies`\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CRATE_NAME=itoa CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/itoa-1.0.18 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/itoa-1.0.18/Cargo.toml CARGO_PKG_AUTHORS='David Tolnay <dtolnay@gmail.com>' CARGO_PKG_DESCRIPTION='Fast integer primitive to string conversion' CARGO_PKG_HOMEPAGE='' CARGO_PKG_LICENSE='MIT OR Apache-2.0' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=itoa CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/dtolnay/itoa' CARGO_PKG_RUST_VERSION=1.68 CARGO_PKG_VERSION=1.0.18 CARGO_PKG_VERSION_MAJOR=1 CARGO_PKG_VERSION_MINOR=0 CARGO_PKG_VERSION_PATCH=18 CARGO_PKG_VERSION_PRE='' LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name itoa --edition=2021 /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/itoa-1.0.18/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type lib --emit=dep-info,metadata,link -Z embed-metadata=no -C opt-level=3 -C linker-plugin-lto -C codegen-units=1 -C overflow-checks=on --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"no-panic\"))' -C metadata=64a62a1242724642 -C extra-filename=-d1ed341738ac7a8d --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/itoa/d1ed341738ac7a8d/out --cap-lints warn -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies`\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CRATE_NAME=ryu CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ryu-1.0.23 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ryu-1.0.23/Cargo.toml CARGO_PKG_AUTHORS='David Tolnay <dtolnay@gmail.com>' CARGO_PKG_DESCRIPTION='Fast floating point to string conversion' CARGO_PKG_HOMEPAGE='' CARGO_PKG_LICENSE='Apache-2.0 OR BSL-1.0' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=ryu CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/dtolnay/ryu' CARGO_PKG_RUST_VERSION=1.71 CARGO_PKG_VERSION=1.0.23 CARGO_PKG_VERSION_MAJOR=1 CARGO_PKG_VERSION_MINOR=0 CARGO_PKG_VERSION_PATCH=23 CARGO_PKG_VERSION_PRE='' LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name ryu --edition=2021 /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ryu-1.0.23/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type lib --emit=dep-info,metadata,link -Z embed-metadata=no -C opt-level=3 -C linker-plugin-lto -C codegen-units=1 -C overflow-checks=on --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"no-panic\", \"small\"))' -C metadata=6520dbae4528c48b -C extra-filename=-5b55d21a2eb919af --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/ryu/5b55d21a2eb919af/out --cap-lints warn -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies`\nwarning: use of deprecated constant `core::u8::MAX`: replaced by the `MAX` associated constant on this type\n   --> /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memchr-2.8.3/src/arch/all/packedpair/mod.rs:179:41\n    |\n179 |         let max = usize::from(core::u8::MAX);\n    |                                         ^^^\n    |\n    = note: `#[warn(deprecated)]` on by default\n\nwarning: use of deprecated constant `core::u32::MAX`: replaced by the `MAX` associated constant on this type\n   --> /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/memchr-2.8.3/src/memmem/searcher.rs:916:34\n    |\n916 |             Err(_) => core::u32::MAX,\n    |                                  ^^^\n\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CFG_FEATURE=default,result,std CARGO_CFG_FMT_DEBUG=full CARGO_CFG_OVERFLOW_CHECKS='' CARGO_CFG_PANIC=unwind CARGO_CFG_RELOCATION_MODEL=pic CARGO_CFG_TARGET_ABI='' CARGO_CFG_TARGET_ARCH=x86_64 CARGO_CFG_TARGET_ENDIAN=little CARGO_CFG_TARGET_ENV=gnu CARGO_CFG_TARGET_FAMILY=unix CARGO_CFG_TARGET_FEATURE=adx,aes,avx,avx2,avxifma,avxneconvert,avxvnni,avxvnniint16,avxvnniint8,bmi1,bmi2,clflushopt,cmpxchg16b,f16c,fma,fxsr,gfni,lahfsahf,lzcnt,movbe,movdir64b,movdiri,pclmulqdq,popcnt,prfchw,rdrand,rdseed,sha,sha512,sm3,sm4,sse,sse2,sse3,sse4.1,sse4.2,ssse3,vaes,vpclmulqdq,x87,xsave,xsavec,xsaveopt,xsaves CARGO_CFG_TARGET_HAS_ATOMIC=16,32,64,8,ptr CARGO_CFG_TARGET_HAS_ATOMIC_LOAD_STORE=16,32,64,8,ptr CARGO_CFG_TARGET_HAS_ATOMIC_PRIMITIVE_ALIGNMENT=16,32,64,8,ptr CARGO_CFG_TARGET_HAS_RELIABLE_F128='' CARGO_CFG_TARGET_HAS_RELIABLE_F16='' CARGO_CFG_TARGET_HAS_RELIABLE_F16_MATH='' CARGO_CFG_TARGET_HAS_THREADS='' CARGO_CFG_TARGET_OBJECT_FORMAT=elf CARGO_CFG_TARGET_OS=linux CARGO_CFG_TARGET_POINTER_WIDTH=64 CARGO_CFG_TARGET_THREAD_LOCAL='' CARGO_CFG_TARGET_VENDOR=unknown CARGO_CFG_UB_CHECKS='' CARGO_CFG_UNIX='' CARGO_ENCODED_RUSTFLAGS='-Ctarget-cpu=native-Cforce-frame-pointers=yes-Clinker=/usr/bin/gcc' CARGO_FEATURE_DEFAULT=1 CARGO_FEATURE_RESULT=1 CARGO_FEATURE_STD=1 CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/Cargo.toml CARGO_PKG_AUTHORS='Erick Tryzelaar <erick.tryzelaar@gmail.com>:David Tolnay <dtolnay@gmail.com>' CARGO_PKG_DESCRIPTION='Serde traits only, with no support for derive -- use the `serde` crate instead' CARGO_PKG_HOMEPAGE='https://serde.rs' CARGO_PKG_LICENSE='MIT OR Apache-2.0' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=serde_core CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/serde-rs/serde' CARGO_PKG_RUST_VERSION=1.56 CARGO_PKG_VERSION=1.0.229 CARGO_PKG_VERSION_MAJOR=1 CARGO_PKG_VERSION_MINOR=0 CARGO_PKG_VERSION_PATCH=229 CARGO_PKG_VERSION_PRE='' CARGO_TRIM_PATHS_REMAP='' CARGO_TRIM_PATHS_SCOPE=none DEBUG=false HOST=x86_64-unknown-linux-gnu LD_LIBRARY_PATH='/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release:/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib:/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' NUM_JOBS=8 OPT_LEVEL=3 OUT_DIR=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/serde_core/6abacd60f0965c44/out PROFILE=release RUSTC=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc RUSTC_WRAPPER='' RUSTDOC=rustdoc TARGET=x86_64-unknown-linux-gnu /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/serde_core/2db61f48a97de28c/out/build_script_build`\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CRATE_NAME=serde_core CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/Cargo.toml CARGO_PKG_AUTHORS='Erick Tryzelaar <erick.tryzelaar@gmail.com>:David Tolnay <dtolnay@gmail.com>' CARGO_PKG_DESCRIPTION='Serde traits only, with no support for derive -- use the `serde` crate instead' CARGO_PKG_HOMEPAGE='https://serde.rs' CARGO_PKG_LICENSE='MIT OR Apache-2.0' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=serde_core CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/serde-rs/serde' CARGO_PKG_RUST_VERSION=1.56 CARGO_PKG_VERSION=1.0.229 CARGO_PKG_VERSION_MAJOR=1 CARGO_PKG_VERSION_MINOR=0 CARGO_PKG_VERSION_PATCH=229 CARGO_PKG_VERSION_PRE='' LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' OUT_DIR=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/serde_core/6abacd60f0965c44/out /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name serde_core --edition=2021 /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type lib --emit=dep-info,metadata,link -Z embed-metadata=no -C opt-level=3 -C linker-plugin-lto -C codegen-units=1 -C overflow-checks=on --cfg 'feature=\"default\"' --cfg 'feature=\"result\"' --cfg 'feature=\"std\"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"alloc\", \"default\", \"rc\", \"result\", \"std\", \"unstable\"))' -C metadata=0f405e9e1830f845 -C extra-filename=-a86b6f22c5f5c3c7 --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/serde_core/a86b6f22c5f5c3c7/out --cap-lints warn -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies --check-cfg 'cfg(if_docsrs_then_no_serde_core)' --check-cfg 'cfg(no_core_cstr)' --check-cfg 'cfg(no_core_error)' --check-cfg 'cfg(no_core_net)' --check-cfg 'cfg(no_core_num_saturating)' --check-cfg 'cfg(no_diagnostic_namespace)' --check-cfg 'cfg(no_serde_derive)' --check-cfg 'cfg(no_std_atomic)' --check-cfg 'cfg(no_std_atomic64)' --check-cfg 'cfg(no_target_has_atomic)'`\n   Compiling csv-core v0.1.13\n   Compiling simd-csv v0.14.0\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CRATE_NAME=csv_core CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/csv-core-0.1.13 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/csv-core-0.1.13/Cargo.toml CARGO_PKG_AUTHORS='Andrew Gallant <jamslam@gmail.com>' CARGO_PKG_DESCRIPTION='Bare bones CSV parsing with no_std support.' CARGO_PKG_HOMEPAGE='https://github.com/BurntSushi/rust-csv' CARGO_PKG_LICENSE=Unlicense/MIT CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=csv-core CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/BurntSushi/rust-csv' CARGO_PKG_RUST_VERSION='' CARGO_PKG_VERSION=0.1.13 CARGO_PKG_VERSION_MAJOR=0 CARGO_PKG_VERSION_MINOR=1 CARGO_PKG_VERSION_PATCH=13 CARGO_PKG_VERSION_PRE='' LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name csv_core --edition=2018 /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/csv-core-0.1.13/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type lib --emit=dep-info,metadata,link -Z embed-metadata=no -C opt-level=3 -C linker-plugin-lto -C codegen-units=1 -C overflow-checks=on --cfg 'feature=\"default\"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"default\", \"libc\"))' -C metadata=7fbf79ebf8468158 -C extra-filename=-5162289bcbc1839b --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/csv-core/5162289bcbc1839b/out --extern memchr=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/memchr/bb255688a00bce47/out/libmemchr-bb255688a00bce47.rmeta --cap-lints warn -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies`\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CRATE_NAME=simd_csv CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/simd-csv-0.14.0 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/simd-csv-0.14.0/Cargo.toml CARGO_PKG_AUTHORS='Guillaume Plique <guillaume.plique@sciencespo.fr>' CARGO_PKG_DESCRIPTION='Specialized Rust CSV readers/writers leveraging SIMD instructions.' CARGO_PKG_HOMEPAGE='https://github.com/medialab/simd-csv' CARGO_PKG_LICENSE=MIT CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=simd-csv CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/medialab/simd-csv' CARGO_PKG_RUST_VERSION='' CARGO_PKG_VERSION=0.14.0 CARGO_PKG_VERSION_MAJOR=0 CARGO_PKG_VERSION_MINOR=14 CARGO_PKG_VERSION_PATCH=0 CARGO_PKG_VERSION_PRE='' LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name simd_csv --edition=2021 /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/simd-csv-0.14.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type lib --emit=dep-info,metadata,link -Z embed-metadata=no -C opt-level=3 -C linker-plugin-lto -C codegen-units=1 -C overflow-checks=on --cfg 'feature=\"default\"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values(\"binary\", \"default\", \"str\"))' -C metadata=c9c5fb74fc1164bd -C extra-filename=-4e4b31652640f737 --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/simd-csv/4e4b31652640f737/out --extern memchr=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/memchr/bb255688a00bce47/out/libmemchr-bb255688a00bce47.rmeta --cap-lints warn -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies`\nwarning: `memchr` (lib) generated 2 warnings\n   Compiling csv v1.4.0\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_CRATE_NAME=csv CARGO_MANIFEST_DIR=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/csv-1.4.0 CARGO_MANIFEST_PATH=/home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/csv-1.4.0/Cargo.toml CARGO_PKG_AUTHORS='Andrew Gallant <jamslam@gmail.com>' CARGO_PKG_DESCRIPTION='Fast CSV parsing with support for serde.' CARGO_PKG_HOMEPAGE='https://github.com/BurntSushi/rust-csv' CARGO_PKG_LICENSE=Unlicense/MIT CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=csv CARGO_PKG_README=README.md CARGO_PKG_REPOSITORY='https://github.com/BurntSushi/rust-csv' CARGO_PKG_RUST_VERSION=1.73 CARGO_PKG_VERSION=1.4.0 CARGO_PKG_VERSION_MAJOR=1 CARGO_PKG_VERSION_MINOR=4 CARGO_PKG_VERSION_PATCH=0 CARGO_PKG_VERSION_PRE='' LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name csv --edition=2021 /home/arobin/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/csv-1.4.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type lib --emit=dep-info,metadata,link -Z embed-metadata=no -C opt-level=3 -C linker-plugin-lto -C codegen-units=1 -C overflow-checks=on --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values())' -C metadata=c0ad9bd26bfc4f26 -C extra-filename=-85a53bdabbf9e487 --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/csv/85a53bdabbf9e487/out -L dependency=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/memchr/bb255688a00bce47/out --extern csv_core=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/csv-core/5162289bcbc1839b/out/libcsv_core-5162289bcbc1839b.rmeta --extern itoa=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/itoa/d1ed341738ac7a8d/out/libitoa-d1ed341738ac7a8d.rmeta --extern ryu=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/ryu/5b55d21a2eb919af/out/libryu-5b55d21a2eb919af.rmeta --extern serde_core=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/serde_core/a86b6f22c5f5c3c7/out/libserde_core-a86b6f22c5f5c3c7.rmeta --cap-lints warn -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies`\n   Compiling goose-csv-compare v0.1.0 (/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/bench/compare/rust)\n     Running `CARGO=/home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/cargo CARGO_BIN_NAME=goose-csv-compare CARGO_CRATE_NAME=goose_csv_compare CARGO_MANIFEST_DIR=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/bench/compare/rust CARGO_MANIFEST_PATH=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/bench/compare/rust/Cargo.toml CARGO_PKG_AUTHORS='' CARGO_PKG_DESCRIPTION='' CARGO_PKG_HOMEPAGE='' CARGO_PKG_LICENSE='' CARGO_PKG_LICENSE_FILE='' CARGO_PKG_NAME=goose-csv-compare CARGO_PKG_README='' CARGO_PKG_REPOSITORY='' CARGO_PKG_RUST_VERSION='' CARGO_PKG_VERSION=0.1.0 CARGO_PKG_VERSION_MAJOR=0 CARGO_PKG_VERSION_MINOR=1 CARGO_PKG_VERSION_PATCH=0 CARGO_PKG_VERSION_PRE='' CARGO_PRIMARY_PACKAGE=1 LD_LIBRARY_PATH='/tmp/.mount_T3-CodNMEeKj/usr/lib:/tmp/.mount_T3-CodiNOEie/usr/lib' /home/arobin/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc --crate-name goose_csv_compare --edition=2021 src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat,unused-externs-silent --crate-type bin --emit=dep-info,link -C opt-level=3 -C lto=thin -C codegen-units=1 -C overflow-checks=on --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values())' -C metadata=a55db0aff8d3fde3 --out-dir /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/goose-csv-compare/52359ff07e4ecaa2/out -L dependency=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/csv-core/5162289bcbc1839b/out -L dependency=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/itoa/d1ed341738ac7a8d/out -L dependency=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/memchr/bb255688a00bce47/out -L dependency=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/ryu/5b55d21a2eb919af/out -L dependency=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/serde_core/a86b6f22c5f5c3c7/out --extern csv=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/csv/85a53bdabbf9e487/out/libcsv-85a53bdabbf9e487.rlib --extern csv=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/csv/85a53bdabbf9e487/out/libcsv-85a53bdabbf9e487.rmeta --extern csv_core=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/csv-core/5162289bcbc1839b/out/libcsv_core-5162289bcbc1839b.rlib --extern csv_core=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/csv-core/5162289bcbc1839b/out/libcsv_core-5162289bcbc1839b.rmeta --extern simd_csv=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/simd-csv/4e4b31652640f737/out/libsimd_csv-4e4b31652640f737.rlib --extern simd_csv=/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison-rust-target/release/build/simd-csv/4e4b31652640f737/out/libsimd_csv-4e4b31652640f737.rmeta -C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc --force-warn=unused_crate_dependencies`\n    Finished `release` profile [optimized] target(s) in 10.04s\n",
+      "flags": "-C target-cpu=native -C force-frame-pointers=yes -C linker=/usr/bin/gcc",
+      "manifest_sha256": "50f94e83dcf7fad7c60fb697018c9f3083f7c441648c1e1e7786e8b4c519dc6a",
+      "lock_sha256": "aba4e9f1b0fbed3246fdf9b58175d1e34c575251b4fbbd28de9c805e7c1f196a",
+      "packages": [
+        {
+          "name": "csv",
+          "version": "1.4.0",
+          "license": "Unlicense/MIT",
+          "archive_sha256": "52cd9d68cf7efc6ddfaaee42e7288d3a99d613d4b50f76ce9827ae0c6e14f938",
+          "files": {
+            ".cargo_vcs_info.json": "d4013401bb6bf2fa9f102eb2af2892b7034b8b6096d5200c47a6c4cb3cc28fb1",
+            ".gitignore": "d471402ab06e94fb67bda462107845d5b20d9813b6f759fa4ac7f79448f3665c",
+            "COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+            "Cargo.lock": "51d5f880cdb67f8fe3fde3077f4a51c854af354b146393c7ff61018427e17c4b",
+            "Cargo.toml": "8a767a182c4c14e4db88f592b6f508913425eb7ca1bd8a92f0f8db054884577a",
+            "Cargo.toml.orig": "9edf0f197e736f3eeb49798b2c3fd777cef6e0c63df678967beb94c982808d9e",
+            "ISSUE_TEMPLATE.md": "f5f67eefb88d9e468488bb2ff85f9a3f5b8d81493577e3dc1fc5b106f3f97f13",
+            "LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+            "README.md": "d9b838c5fc5d0519bac4dc4d7d2ed433d1baa73812f6e4eba080f4395407a1aa",
+            "UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+            "benches/bench.rs": "5bb3b7eff2cbbd8b1b5afdbfeb9458053af69d00d9f9b67dcec32317b6231261",
+            "examples/cookbook-read-basic.rs": "3b5c4b58225c0454cee5e8fd986ebf32308d0b29c00a65ef839c0c0174305e1e",
+            "examples/cookbook-read-colon.rs": "f8eb18ceffd4d9711ed0883c3229c0332006d5af1b60458dd36589e1fd2434ae",
+            "examples/cookbook-read-no-headers.rs": "1faaad98bd11d25a29e532930c2e5d4b82f09dd02d20640274a8479cf4ce2e94",
+            "examples/cookbook-read-serde.rs": "2424b9317bb75fd89c261f3e61b0485575e70cc8794f83d6b88ffa6a6eab2b00",
+            "examples/cookbook-write-basic.rs": "42571a2495d424514b1a8497abfeb5e274b160e8406898d98c1e70f6322e4121",
+            "examples/cookbook-write-serde.rs": "5191dac5efcd6cf0d5945f931478e5aa17178ea50f48f62cdf521e6b4d7ae3fb",
+            "examples/data/bench/game.csv": "111b76a0c8c943163c195c00ca820a80e6bde62dfe02faecb8f7bf9917338b99",
+            "examples/data/bench/gtfs-mbta-stop-times.csv": "8fbd19f00e471e438827352afa05b52f77940cf8f9fb1d748d18d7bc80528cbf",
+            "examples/data/bench/nfl.csv": "f19c3fc40ba0ba279a6e9dd84d275729cc71cb529ff39c2a864939f084b9aaad",
+            "examples/data/bench/worldcitiespop.csv": "f41fdd110e2e8adc42e6e4c91ea9b26d73190c915018422f482c3c223b9a6560",
+            "examples/data/smallpop-colon.csv": "147af96c89157754c4e09eef575819c70d3d4de6d6571429dcaa637b474cb976",
+            "examples/data/smallpop-no-headers.csv": "a439ca164e1c4832e2fe0001c81bd72eb31eaf5e266fc6a2035ec8c366e47bab",
+            "examples/data/smallpop.csv": "ff20d8230413b6f9bbce5d1207bb122dacd4f9f0e329b5ef9e8440c4766a24c9",
+            "examples/data/strange.csv": "c6b5150e0795b2326cedf941fa288b5123be06b4e7b9a83b7adea125ba0eb5d3",
+            "examples/data/uspop-latin1.csv": "cadf08609c2f76c9e4aa642d4470de704a5633e690b18cef28bbcaa9958bffbb",
+            "examples/data/uspop-null.csv": "73cd9fb70c3feb3b5c4311d14bad0d2137e9fb20eb98d851edb0eccc3022075c",
+            "examples/data/uspop.csv": "7905738476d6f32508d32b03432c6b504f743afb63eeb751b72a5e3abdedbb14",
+            "examples/tutorial-error-01.rs": "cbab738a3e4dda2227f2b6b092a603c74ddb17de665493c446f8b677d0d36151",
+            "examples/tutorial-error-02.rs": "12241280dd63da7e44c59526d29b1f7ddf0d22493bbc9a8f3beb756d2071450a",
+            "examples/tutorial-error-03.rs": "d3ff594e9a5f2e5938bff2ee746542f33731e78eb0afe33be77df57e6e9783de",
+            "examples/tutorial-error-04.rs": "4d405abc1d773f5f71b9a32e0a703a7ba7bd4013478f31025beaecc891f48402",
+            "examples/tutorial-perf-alloc-01.rs": "61a66265b9b6092261b66961e0b7d25c5311da0a647cd1abcc4d5b3f144485ab",
+            "examples/tutorial-perf-alloc-02.rs": "596fa082e83dde0b1d5ca595b2d23bcd3402ed0e138cb150c18b25c248f8cdf7",
+            "examples/tutorial-perf-alloc-03.rs": "1027cc4115a29911268d5eb922c13f680fdbacc9beba796dfec61b2375130252",
+            "examples/tutorial-perf-core-01.rs": "1249666ffca882ab191127687e9796ab787654b416df591db78be686748dc1c6",
+            "examples/tutorial-perf-serde-01.rs": "a50019f1c7046bb9a22273aa39b692b8beb473e0ed9d1a0ce9c1d6194cd9819f",
+            "examples/tutorial-perf-serde-02.rs": "bcc469da1e9da573c85c60cdadbaea62a8235134e989c34a8e3f86f04d684e07",
+            "examples/tutorial-perf-serde-03.rs": "656952d5b8b3e160999e7b0de6d5a59132a06ce87279c92ca25f9b1b446e82b7",
+            "examples/tutorial-pipeline-pop-01.rs": "516936265428e89330422b1f6705f3b08b2f31be9671c9686f531e9071792f76",
+            "examples/tutorial-pipeline-search-01.rs": "e803507aa0f3e17a8cd10f30e3cec4fba5f7f771fe9e2f1eca8099c487280e53",
+            "examples/tutorial-pipeline-search-02.rs": "07b357e4d218e9d66be36debfe1172026c2da922baf948c42b79f7becab36cc2",
+            "examples/tutorial-read-01.rs": "a46e9e0f6add4ee3458ea9f4b782a204bc6e9a1fba5a14e540371df4de829789",
+            "examples/tutorial-read-delimiter-01.rs": "2af64d91ea7bd8c83b78051525c82ba32c769507583a9307ef111fc8a430aac5",
+            "examples/tutorial-read-headers-01.rs": "44cd567313de68fbb503aba681ddbb9b0b52aaaebe52ab060593b62416d93abd",
+            "examples/tutorial-read-headers-02.rs": "9aafcfc3d9b74205a82b103a77e39494eeddfe5681c5d257346885e8ee893fba",
+            "examples/tutorial-read-serde-01.rs": "b636fdfab8e33948cb074f35e1d6b5612bdf02add8fd3019104c1f156ce111bd",
+            "examples/tutorial-read-serde-02.rs": "2a759d93f446d6456c6c2bf40da042ef42a60ffa5662cbe848a887f59342b6df",
+            "examples/tutorial-read-serde-03.rs": "cc2fac702a2c7e4d4e399be2e5e3fbf0d447fed19de03cdca6ba0ce9ccd0ff19",
+            "examples/tutorial-read-serde-04.rs": "0d5a359467cbca8d69d329dac5155378533b0f4361293d6c0ed4f56f1d89b038",
+            "examples/tutorial-read-serde-invalid-01.rs": "3dd527683dd8aa601babe4a9707ac794a76c29f8c613a4dc52f399f5e73f0852",
+            "examples/tutorial-read-serde-invalid-02.rs": "709799b8e464c7ed084c92cbe79186b355164ef93516a0bf82e7fba58be6974b",
+            "examples/tutorial-setup-01.rs": "725cf9d59dfada5bb17eb025a180352bca16d54bf30201014fa21edde98748ca",
+            "examples/tutorial-write-01.rs": "6a64126489788253132649b2e2460c56402875a7f111e03b35df0182f9d71e50",
+            "examples/tutorial-write-02.rs": "9d55adf1fe3e8f4ea5fe914dae3c541dac715846ac86e2e5f5228151ea7bc137",
+            "examples/tutorial-write-delimiter-01.rs": "7169b89de0ea5e8d1c370ab06520e2630c668bb38bfd6664574ae8b23a465268",
+            "examples/tutorial-write-serde-01.rs": "ebb9c2dcbc3a85c852629051d78c972647c842fb2ec79cad9d5797a7f97f3ec3",
+            "examples/tutorial-write-serde-02.rs": "4da8dc77a19e19cdffe21f718e8f0bc72b254fd80001a5a09280ab2512fe2345",
+            "rustfmt.toml": "1ca600239a27401c4a43f363cf3f38183a212affc1f31bff3ae93234bbaec228",
+            "src/byte_record.rs": "26622b1c4f19b9fc45721ea989a4e8ad00a8a779210c3ac0ab2ade2f18ef2640",
+            "src/cookbook.rs": "5ea0f1f1e9033f6c2a9e3b907409a965367213675128e962086073a19b42e0a5",
+            "src/debug.rs": "8a75db5f0b2063d9855af9f3198af047cc65b072175951234273a4655e3c767b",
+            "src/deserializer.rs": "fcc3700130d22824ec3f5d2da24cb4bef48ac95402fe5d8112b9d71435fa8037",
+            "src/error.rs": "b26d087bb4c1c1c4f5bce43db850f3dc840d754d43229252a1dc68dcec0097a0",
+            "src/lib.rs": "cb4a4b10c6e89542c5bb0810c780730fa711149da108770070567ca23bc8591e",
+            "src/reader.rs": "a08c188f0442390e9b57abd92b94bc7cc401f044848dfeb5cd10f5a9244f4a0c",
+            "src/serializer.rs": "0675ea85b8300affc92197aee1d74085969ca087d6aa5ed08182568201fc5f67",
+            "src/string_record.rs": "3c30b700d01dd876083a72406a6093642528304bfa69600b4bec54aa8086211a",
+            "src/tutorial.rs": "57e4566b038ff49163a190dc93a2dcad887d0743ee7b1d20c958820818621c3b",
+            "src/writer.rs": "0e709b86ca5c5bbe2f3c146f45056a41c07a77cf079a7a3d23736fe71a677133",
+            "tests/tests.rs": "3b53bb569ad32838462c2b8316e1bf89d83c502838df9159fd1258b1eafacb3d"
+          }
+        },
+        {
+          "name": "csv-core",
+          "version": "0.1.13",
+          "license": "Unlicense/MIT",
+          "archive_sha256": "704a3c26996a80471189265814dbc2c257598b96b8a7feae2d31ace646bb9782",
+          "files": {
+            ".cargo_vcs_info.json": "2a0f2750a010fc7b24b51c8231a4ab2543f0bfcb234a31d00465e01757914e03",
+            "COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+            "Cargo.lock": "2312eb58ec10ff1e92bf0f1575a1f678a17ec440596100302f31054108b37e52",
+            "Cargo.toml": "7f4dc01a1cec3ae4ae89f466f9ebfc18232338662f763d7e9d561c900e9430d8",
+            "Cargo.toml.orig": "3c3ea65fd98cd5faff6e4c34c537e3869a51adc5b97f676b2388622e336d86df",
+            "LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+            "README.md": "a825a649e366e6e18a59a6fa038f698b3535025d1949f18966b84e3971628030",
+            "UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+            "benches/bench.rs": "f25bc1dabf5f7fa4b89b6b5f444313346ef883c0d56ead2f50ba8301422305dc",
+            "src/lib.rs": "fe26486d344174279a7ad155afd56dbedad78fb17e46672623d769bf4a4ca3fd",
+            "src/reader.rs": "f6afc1ff07b4bcc50aa609b758a3a15f777f1985c89f97739e0de4745057b308",
+            "src/writer.rs": "3694981d0546f96bf7138a6a9de8130f1e03636ffe8f7819087322bb00949c82"
+          }
+        },
+        {
+          "name": "itoa",
+          "version": "1.0.18",
+          "license": "MIT OR Apache-2.0",
+          "archive_sha256": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+          "files": {
+            ".cargo_vcs_info.json": "e0165305f3b22a9ab4217a121f85379aa56c2675caa7afedc0a7468fc187600b",
+            ".github/FUNDING.yml": "b017158736b3c9751a2d21edfce7fe61c8954e2fced8da8dd3013c2f3e295bd9",
+            ".github/workflows/ci.yml": "89c4f60223daf03217ea7c1e8879135b11d2554bd1e57dd9eff5c02f1adc7909",
+            ".gitignore": "07d64eb09a56c853b7853a47276799b38d7d6d25a4314b0c1abc10432c214e17",
+            "Cargo.lock": "1cd64090b8e883963bb08d91e6968cc1e83ffdba4f4b2f47651ce9d351a8a947",
+            "Cargo.toml": "894c215e4e7e973b556b0e9627bf9b6a719a043fac9b5af9838660816392a09f",
+            "Cargo.toml.orig": "44ca1ae5d9b48743305b57f3367051289512037e7836b8b3693b68d48dec0483",
+            "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+            "LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+            "README.md": "1305bd79675db0194915d9bc91bd0b3cf9487bc1126e05bf46b48ab43edce44b",
+            "benches/bench.rs": "29a0bdb973848007d681e571c57487e21e1bfb7aed5980c2190dba354498b154",
+            "src/lib.rs": "e962338e1886873aa7c3399ec89aa5378ccbfed712b9690f043628079390a34f",
+            "src/u128_ext.rs": "498cc94f13805e551248fd82f47cc318f51d953a5002a9f8698858cd12fbae3c",
+            "tests/test.rs": "b22f8a8ed89edcbb4140b74f5edd7f2adf3cb0e363990dd6010cd6ebe0dc36b7"
+          }
+        },
+        {
+          "name": "memchr",
+          "version": "2.8.3",
+          "license": "Unlicense OR MIT",
+          "archive_sha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+          "files": {
+            ".cargo_vcs_info.json": "739b57f156ae78ce5ad0f2bc44ff727f1a9d48e743bc266e8e3ab8c35baa5ecb",
+            ".gitignore": "0dbac962f4ec8a8f95158677e768b3163914026973cd77a9043c30c55ef84638",
+            ".ignore": "ae8b19032d4fc418b99ccae9e7cc3996b1386665d0bd5edc5634a158e7d2f6a2",
+            ".vim/coc-settings.json": "cdc5e2b88bddbdbd1b85f21389c4d882720e4c4488ad566c43fccd9124f2e3bf",
+            "AI_POLICY.md": "eb058d5b8387f03159cf6ef868100459d7e01f49499733028fcc916bc97c1cc4",
+            "CONTRIBUTING.md": "f5b2b4a9a3dbcd9a6f2654eb97dd7135e6af3717b9a3f037a9cbf714e387af76",
+            "COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+            "Cargo.lock": "54b66d3eabcf4993f06c5b556ab1df0082dd14985529e301124590280dbe0554",
+            "Cargo.toml": "a14f68b8fa55f15fd03b15dced37bcf66a0a628f568eedc82817cdb7f9281951",
+            "Cargo.toml.orig": "2d004168044e88b00f971e65d7e6c988a555aa00d7ef4d0ceb5b5a9c228fb0c9",
+            "LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+            "README.md": "92a74aaffe011bdaa06fbc34a01686a6eba58ca1322e976759417a547fddf734",
+            "UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+            "rustfmt.toml": "1ca600239a27401c4a43f363cf3f38183a212affc1f31bff3ae93234bbaec228",
+            "src/arch/aarch64/memchr.rs": "5bb70f915084e629d940dbc322f5b9096b2e658cf63fea8a2f6e7550412e73a0",
+            "src/arch/aarch64/mod.rs": "44cd1a614bd66f1e66fc86c541d3c3b8d3a14a644c13e8bf816df3f555eac2d4",
+            "src/arch/aarch64/neon/memchr.rs": "e8c00b8fb2c7e2711832ae3cedefe59f32ebedd7dfa4d0ec6de2a566c979daea",
+            "src/arch/aarch64/neon/mod.rs": "eab6d56c2b2354db4ee395f40282cd49f97e2ab853547be5de6e65fbe1b2f634",
+            "src/arch/aarch64/neon/packedpair.rs": "32d3e4cd0dd9b6c8382e5308cbd896d20242c90b12862c44a5de6a8b4d6126df",
+            "src/arch/all/memchr.rs": "b0b1214aa573ed5d02ae62a77c42c773065566b50274d4096e37817d65ab1594",
+            "src/arch/all/mod.rs": "05f3fc2b069682eb1545fc6366d167bb620a454365dac8b8dd6cde6cd64de18a",
+            "src/arch/all/packedpair/default_rank.rs": "abffd1b5b8b7a3be95c03dd1105b905c246a379854dc56f1e846ea7c4408f2c7",
+            "src/arch/all/packedpair/mod.rs": "292b66042c5b5c78bba33db6526aeae6904db803d601fcdd29032b87b3eb3754",
+            "src/arch/all/rabinkarp.rs": "06038cce1cbead7b088e541ba41bcc1c095c34bde483b7df6ad9f77a49c1063c",
+            "src/arch/all/shiftor.rs": "0d79117f52a1e4795843603a3bb0b45397df4ad5e4184bbc923658dab9dc3b5f",
+            "src/arch/all/twoway.rs": "0b27eb1cd7402c1375a50466f8f66a68cb2806c3f69a647340b2759793eed4f8",
+            "src/arch/generic/memchr.rs": "ee2a77afcbf506655e352eb3cd42451a70cc2c39e3da487b2985638bc09ced3e",
+            "src/arch/generic/mod.rs": "1dd75f61e0ea2563b8205a08aaa7b55500130aa331d18b9e9f995724b66c7a39",
+            "src/arch/generic/packedpair.rs": "892d6ee28f0f5007c973d11d697e43e6f6888341b15ea95ce4571e9584069dc5",
+            "src/arch/mod.rs": "ca3960b7e2ed28d1b3c121710a870430531aad792f64d4dcb4ca4709d6cbda30",
+            "src/arch/wasm32/memchr.rs": "d88ac79f891d8530f505f5035062d3da274a05d66c611480c75430d52709d052",
+            "src/arch/wasm32/mod.rs": "a20377aa8fe07d68594879101dc73061e4f51d9c8d812b593b1f376e3c8add79",
+            "src/arch/wasm32/simd128/memchr.rs": "bac2c4c43fe710c83a6f2b1118fede043be89dd821d4b532907f129f09fdb5cf",
+            "src/arch/wasm32/simd128/mod.rs": "c157b373faedbfd65323be432e25bc411d97aa1b7bc58e76048614c7b2bf3bf6",
+            "src/arch/wasm32/simd128/packedpair.rs": "288ba6e5eee6a7a8e5e45c64cff1aa5d72d996c2a6bc228be372c75789f08e45",
+            "src/arch/x86_64/avx2/memchr.rs": "576ec0c30f49874f7fd9f6caeb490d56132c0fbbaa4d877b1aa532cafce19323",
+            "src/arch/x86_64/avx2/mod.rs": "0033d1b712d0b10f0f273ef9aa8caa53e05e49f4c56a64f39af0b9df97eec584",
+            "src/arch/x86_64/avx2/packedpair.rs": "87b69cb4301815906127db4f6370f572c7c5d5dad35c0946c00ad888dbcaec8c",
+            "src/arch/x86_64/memchr.rs": "4cf0611c926c3016d1b640880ef14e5654a8d1c1b480fe9a5965956be7eeeeef",
+            "src/arch/x86_64/mod.rs": "61b2aa876942fd3e78714c2ae21e356c8634545c06995020f443fa50218df027",
+            "src/arch/x86_64/sse2/memchr.rs": "0de0444e26d885eaf866220578752aac871e03bebee7b4f5de7fe8a35f5fa97f",
+            "src/arch/x86_64/sse2/mod.rs": "38b70ae52a64ec974dbb91d04d6ca8013d9e06d1fe4af852206bbc2faf1c59aa",
+            "src/arch/x86_64/sse2/packedpair.rs": "ad893c5ab9525966693e742673fb666f54ff9102949fc91c5e61642c8ad2f110",
+            "src/cow.rs": "2b053e393d3841f780425b3b0da5bec4f187603fa7c271b045ecb7d885b23395",
+            "src/ext.rs": "210f89d1e32211bc64414cbd56e97b4f56ce8a8832d321d77a9fe519634e27ea",
+            "src/lib.rs": "614f778a41e88a29ea0ceb8e92c839dbb6b5a61c967f8bfd962975e18f932c71",
+            "src/macros.rs": "3e4b39252bfa471fad384160a43f113ebfec7bec46a85d16f006622881dd2081",
+            "src/memchr.rs": "6ae779ec5d00f443075316e0105edf30b489a38e2e96325bec14ccecd014145b",
+            "src/memmem/mod.rs": "d869159f0d0c1915d7acc42a6a4aa3c97c049ddc043e6566afeb78ad290995d1",
+            "src/memmem/searcher.rs": "84f6a23bef907696cb672e6898c15fb87008058abc100dde58519d8ec5ebca5d",
+            "src/tests/memchr/mod.rs": "269f8e4b4f7f5ea458f27a3c174eb1020ffb2484eeba9464170beb51747df69b",
+            "src/tests/memchr/naive.rs": "6a0bee033e5edfb5b1d5769a5fa1c78388f7e9ff7bb91cb67f0ad029289e00e7",
+            "src/tests/memchr/prop.rs": "1854eea2338c405fe4635aac430f51e10d2069cd37a7489ddaff47da95f8720b",
+            "src/tests/mod.rs": "7cec8f809e279310a465c6a7725087970f219a676cc76c83de30c695bb490740",
+            "src/tests/packedpair.rs": "b02ec4fbb61a8653cb5f2268c31bc9168b8043347f2abdcc74081acf83b98e15",
+            "src/tests/substring/mod.rs": "c7660d10749363ac4687e7da2b5fda60768230425df8ba416c0c28b8d56a5c74",
+            "src/tests/substring/naive.rs": "df6f55d165382b8a53762ba4c324926cac13ebc62cde1805f4ce08740b326483",
+            "src/tests/substring/prop.rs": "38c15992609b5681a95d838ae6f2933e00a1219f2c971bfba245f96e0729fcdc",
+            "src/vector.rs": "9b104d0bda9b8e18b10c41633513637af84346282bf113f3be3813725605fe31"
+          }
+        },
+        {
+          "name": "proc-macro2",
+          "version": "1.0.107",
+          "license": "MIT OR Apache-2.0",
+          "archive_sha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+          "files": {
+            ".cargo_vcs_info.json": "0a870b23ea0c10231ed5a850b8fe8f23dd74926e90594e49a35a7e1b5e8a92f5",
+            ".github/FUNDING.yml": "b017158736b3c9751a2d21edfce7fe61c8954e2fced8da8dd3013c2f3e295bd9",
+            ".github/workflows/ci.yml": "f0003fd6c9bd0f9208f552a57dd5dd76fee714a7d0be286cecc98f06add580ff",
+            ".gitignore": "07d64eb09a56c853b7853a47276799b38d7d6d25a4314b0c1abc10432c214e17",
+            "Cargo.lock": "30daf1b1e7557b089dfe7783a6cdd8bd7b4f82b31eaaa554c1afbca448f3a936",
+            "Cargo.toml": "6bdbe54a7f052e552dcfca90351764476e2767237ec3f954df8bd9f602861056",
+            "Cargo.toml.orig": "e04a009c48ea3e9b017807ea9183e330cc909a9cc0e754c5c6b3f7c0b29fb9de",
+            "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+            "LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+            "README.md": "8eebdcf2f9a5034693589a9982adf06c2aac5c9f078c07a44400d293ed5b4a8e",
+            "build.rs": "baeb20b52f6b536be8657a566591a507bb2e34a45cf8baa42b135510a0c3c729",
+            "rust-toolchain.toml": "6bbb61302978c736b2da03e4fb40e3beab908f85d533ab46fd541e637b5f3e0f",
+            "src/detection.rs": "ed9a5f9a979ab01247d7a68eeb1afa3c13209334c5bfff0f9289cb07e5bb4e8b",
+            "src/extra.rs": "29f094473279a29b71c3cc9f5fa27c2e2c30c670390cf7e4b7cf451486cc857e",
+            "src/fallback.rs": "416a3d24349c163d47f62ac8ae61c28ba6dc4990f04f3d5dacde030b86582d06",
+            "src/lib.rs": "ed6bf5e3c3b4fc952d4bdf9b48b149087bceaebf5392befce0bc6cae590a008d",
+            "src/location.rs": "9225c5a55f03b56cce42bc55ceb509e8216a5e0b24c94aa1cd071b04e3d6c15f",
+            "src/marker.rs": "c11c5a1be8bdf18be3fcd224393f350a9aae7ce282e19ce583c84910c6903a8f",
+            "src/num.rs": "82d625cbcd255965e46231ac3af1b74ab8bff9787c799e8ed1f978de146cb0b5",
+            "src/parse.rs": "1257d423e9311dda9db0239ff244dfe7b028c1048ab8a83d76daec6068b05114",
+            "src/probe/proc_macro_span.rs": "53853f0c70170c9695294b8867821664d9b8f1c901957b003003a3c26987abbe",
+            "src/probe/proc_macro_span_file.rs": "e7fb4cf8852d9d589bfa3321d8d5cdc8cccb45606ec816a6b8a08f73e416b9ce",
+            "src/probe/proc_macro_span_location.rs": "e022386204b6e042b3c55a6c809923849a2f915199bcbf3be72d0b7c8ffa7f83",
+            "src/probe.rs": "2b57e8ebf46a7c60ee2762f23f16d24ee9ddb8f1acd0a7faf7a99cf2e4187151",
+            "src/rcvec.rs": "d6e4c1ea42f75e63465fce50ca83f9257536ccdc0345fe78b0037aa2c08c5e37",
+            "src/rustc_literal_escaper.rs": "fb3f2f93a09b84f539e6ef514d4b403ee16f2112ff04642099170a60828318ee",
+            "src/wrapper.rs": "21a563ef1eec685e3d60ee0479812f212c578dc6d405053b7827c46f6801fdc6",
+            "tests/comments.rs": "11520f6baee23b9258db904f4c256fd3877493f754e2b99041f73a330e74a911",
+            "tests/features.rs": "7e52c0c801019b271bf11a994c2e1799a1429b0c1a3a34e551a23971797fe412",
+            "tests/marker.rs": "f16299460587d6c65603ed809f1a3b81853e4b99d6cb44d0b68bb07259d7e9f8",
+            "tests/test.rs": "7d58c3a754241ffdec84e4e9ac799852071db71d77359de164ca7ba6217020e9",
+            "tests/test_fmt.rs": "1fa3a817bf934c3bb38942e56eecb70ef525710c6bcfec0356adec654b053c0b",
+            "tests/test_size.rs": "7ed5f07c3ccc74c4d09f3c1c43542fbbe23417146761558a0fd4659e19ae1afc"
+          }
+        },
+        {
+          "name": "quote",
+          "version": "1.0.47",
+          "license": "MIT OR Apache-2.0",
+          "archive_sha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+          "files": {
+            ".cargo_vcs_info.json": "1452b78f41bb8c7dbf526da57f134ac6d75cf80b7cc539494bab5e133907ce0e",
+            ".github/FUNDING.yml": "b017158736b3c9751a2d21edfce7fe61c8954e2fced8da8dd3013c2f3e295bd9",
+            ".github/workflows/ci.yml": "fb61965972f379dbd9bd98ea5d45ffd67fd79b30e71ef667f69e8b65134923c2",
+            ".gitignore": "07d64eb09a56c853b7853a47276799b38d7d6d25a4314b0c1abc10432c214e17",
+            "Cargo.lock": "a8d837a5066c75ed2af8a982eb6f8ebdfb96f94ddb06978fec45827f4ea1348c",
+            "Cargo.toml": "13d8c50837f14aff48cd622349f98fb2c46350b7a0c08fd574cf7de4def27d06",
+            "Cargo.toml.orig": "acbbe8c10dc81f648339333c8fa3e0aa787ad5887b105d1947bc522553d87d73",
+            "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+            "LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+            "README.md": "9d6af721967088b8263c0544c0c3c459206998252dd5632a3bdf87cb27ec92be",
+            "build.rs": "cd6808c02e476b09a520105e2c6f6d325cccb1ecd542cbbcc836a0ae6f6fb0f1",
+            "rust-toolchain.toml": "6bbb61302978c736b2da03e4fb40e3beab908f85d533ab46fd541e637b5f3e0f",
+            "src/ext.rs": "dabcf1dbf9a81c2dccbfb85f81a08120f5a15be40616d51434ed4ebdfe0c7283",
+            "src/format.rs": "662db1f14106d79aacab400a3176a75989a4437ecaaa85ab88cd9a40b750cc5b",
+            "src/ident_fragment.rs": "eed1a7407182c00ddfdc98741eaa6e234a6d2c01755e95f943b27926b8c92243",
+            "src/lib.rs": "e01ca26adfe51a087813d1fc1154efd8a8c9cb5b5a81f314194b4904a4422c71",
+            "src/runtime.rs": "fdb7986b31141627408b51381607f66ef4b69dd81b080c2f6489da267e96b2ba",
+            "src/spanned.rs": "713678bf5cb3b4bf2f119dcf64d188a63dc59455a724c3d2567ceab83b734d73",
+            "src/to_tokens.rs": "1b07b676afce2f666bac6f454758d066758033fc85e9cd9d2d12d58ad2eb36e1",
+            "tests/compiletest.rs": "4e381aa8ca3eabb7ac14d1e0c3700b3223e47640547a6988cfa13ad68255f60f",
+            "tests/test.rs": "023d6b57ba5ba199a04d9757e3b1464c2bc09579b035ea82c047e08d89d19226",
+            "tests/ui/does-not-have-iter-interpolated-dup.rs": "ad13eea21d4cdd2ab6c082f633392e1ff20fb0d1af5f2177041e0bf7f30da695",
+            "tests/ui/does-not-have-iter-interpolated-dup.stderr": "c7bbbc8860b9ec0e87e725412a139841c3046aaf465f7190c94f935ab037a996",
+            "tests/ui/does-not-have-iter-interpolated.rs": "83a5b3f240651adcbe4b6e51076d76d653ad439b37442cf4054f1fd3c073f3b7",
+            "tests/ui/does-not-have-iter-interpolated.stderr": "6ca839345f8119f7eb3acd2fc6a37833dbcc861c02d8961727db01a29318fcc6",
+            "tests/ui/does-not-have-iter-separated.rs": "fe413c48331d5e3a7ae5fef6a5892a90c72f610d54595879eb49d0a94154ba3f",
+            "tests/ui/does-not-have-iter-separated.stderr": "ff2312aa4623e79eb7f5810cf0e6d992cd57779f0a01c5855a92a1f102086123",
+            "tests/ui/does-not-have-iter.rs": "09dc9499d861b63cebb0848b855b78e2dc9497bfde37ba6339f3625ae009a62f",
+            "tests/ui/does-not-have-iter.stderr": "21408398d12876b82416cfd57b7919ca4210f5fb8f79d7d921b2bfed5879ac4d",
+            "tests/ui/not-quotable.rs": "5759d0884943417609f28faadc70254a3e2fd3d9bd6ff7297a3fb70a77fafd8a",
+            "tests/ui/not-quotable.stderr": "a9748bc9a0a72a17f9c1f96e9b12be3686e9d7d51f120796516e26e5cebf62ad",
+            "tests/ui/not-repeatable.rs": "a4b115c04e4e41049a05f5b69450503fbffeba031218b4189cb931839f7f9a9c",
+            "tests/ui/not-repeatable.stderr": "72105d3dec4e8ed2a657db7d397e30d452c26c1488cb1e18e23c2d1d137a6f6d",
+            "tests/ui/wrong-type-span.rs": "6195e35ea844c0c52ba1cff5d790c3a371af6915d137d377834ad984229ef9ea",
+            "tests/ui/wrong-type-span.stderr": "cad072e40e0ecc04f375122ae41aede2f0da2a9244492b3fcf70249e59d1b128"
+          }
+        },
+        {
+          "name": "ryu",
+          "version": "1.0.23",
+          "license": "Apache-2.0 OR BSL-1.0",
+          "archive_sha256": "9774ba4a74de5f7b1c1451ed6cd5285a32eddb5cccb8cc655a4e50009e06477f",
+          "files": {
+            ".cargo_vcs_info.json": "ec5fd614270b6b3413b6b5bc5aa5f6af1d780535b87bec8d30afe70b5a111bf5",
+            ".github/FUNDING.yml": "b017158736b3c9751a2d21edfce7fe61c8954e2fced8da8dd3013c2f3e295bd9",
+            ".github/workflows/ci.yml": "55255a520e9d87a2c601e84990e71bb12b416b52bf816a6eb062b46ee275b8f5",
+            ".gitignore": "9e7191f6d2a558f9d69ce7376c6e052f9e52005f5847223c87e4759d284299af",
+            "Cargo.lock": "07e11187906a5a35b83d13a85742df0f1843bdda74b9810be30475dd8cf51b84",
+            "Cargo.toml": "410de3eae58a75b9d2558d0a4e3ed43c2c8317781ffbd30a7cbe4aebaa833e1a",
+            "Cargo.toml.orig": "21cfb51ebcbf5e468c1a246cf3d6d4ab7adfe12c577c424c454f8086af967562",
+            "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+            "LICENSE-BOOST": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+            "README.md": "e9eb0ceb34ff12f11acaab161d374f585543bbe6a9e827b34ace5c1b41844821",
+            "benches/bench.rs": "06fc162566376801dbdbd091bfecb0dc3414a2abe7da55ba57c680ade9177f25",
+            "examples/upstream_benchmark.rs": "cc1a31c913449aba1ab735b51dc1cc398983dd93224e4da47604ac1ef4f5d96e",
+            "src/buffer/mod.rs": "e29fea93a1af8e3a25e2045489f4264cf50e708c0b2edfcb51ec95582e63fcd0",
+            "src/common.rs": "cae347e97fc30c50a964f80425e8c3e69ece2b8ab81f9b81b9baa7fcec64a001",
+            "src/d2s.rs": "f2612785ebe510c935b979dc5f66f6b8c818ca8a4cf0364ce1fe1d41fea39592",
+            "src/d2s_full_table.rs": "9b0186acbc6d65dc55c17e16125be707a2bfb920d22b35d33234b4cc38566a36",
+            "src/d2s_intrinsics.rs": "bbf15472f4299942312e80a992cbc2f47f85f17ed193f24084534434dbfb26e7",
+            "src/d2s_small_table.rs": "db3bbe4002d816785b0ee233c330f19fa7002f31dab47dc6f67b266996fe3ae4",
+            "src/digit_table.rs": "02351ca54cb8cb3679f635115dd094f32fd91750e9f66103c1ee9ec3db507072",
+            "src/f2s.rs": "ace23f2d4459055bbb8544c2efc09753fec27ff3ce44648e8015e8aff5696b0c",
+            "src/f2s_intrinsics.rs": "4667c34aab7637f2330df7bbd4c178c0ba1dd5854ff15b9a36a96fd5f527fb66",
+            "src/lib.rs": "ec6dc1b2b40fa14a9af5185991c1bebab3b6dc1f0947a81020a376eade8dae1c",
+            "src/parse.rs": "7f8aa7e007caf5dcb03abdc4238157724bb742d0823a3b8a01646fa1f1129154",
+            "src/pretty/exponent.rs": "87b2a2625bf43bf987f8b84f35ffe554853f9af5b850dac1c8b8810c9a4399ca",
+            "src/pretty/mantissa.rs": "1301cd5d35e7cbcedacad36c296893a94dfa7154ebe4146d6466769ed67934b4",
+            "src/pretty/mod.rs": "49b0701a2f7b896e3ff23221761a48b4445a048d9ae63207d8934ff1969de795",
+            "src/s2d.rs": "5637c35a1dc0979f69ef434d8e1c8a9da40e54820cbd12081c795da5aff04fb4",
+            "src/s2f.rs": "0c46a7dd17b93d5b44c3ed05396289aba9c8e96757364722eb470090ebbcada5",
+            "src/tests.rs": "4c1bfe1e7e6515779528dddcfd53ba3f6333618132e53a9c675b2bca69e9f8b0",
+            "tests/common_test.rs": "599781a637d9b9756858aabfe5c38a0734a550debd3d94774f33792b7b3c8240",
+            "tests/d2s_intrinsics_test.rs": "15d11b70810bf04f33f8b185bf7f010a436a4edb47fa4648b1a036568c2c5d15",
+            "tests/d2s_table_test.rs": "7e06679c3486feab200ebd82d090457f0cdae2503610d721ced3739dbc86c574",
+            "tests/d2s_test.rs": "5cadb01403383bfef181d22cc0d8764e4f46f7a84655166e6b75081132498fc7",
+            "tests/exhaustive.rs": "9b54ee69d695ac3121df7f44812494722fd1af53f6da263dd2ee1a4d38c50d03",
+            "tests/f2s_test.rs": "168f6e32d86fb98fda9afad0022e3b189e9e1f60756de8c9338913c0668ff768",
+            "tests/macros/mod.rs": "8e90a674b3960f9516cb38f4eea0e0981ff902c3b33572ebdb6c5528d3ffa72c",
+            "tests/s2d_test.rs": "75c3a1044881718db65e05f25c9f6e1d005392dddb2e8dafb799668bb6a9a5c3",
+            "tests/s2f_test.rs": "ca44faee70f56f9ef51349418c41a67561fc46ae07c5d2bf0fe6f95ffd1a44f6"
+          }
+        },
+        {
+          "name": "serde_core",
+          "version": "1.0.229",
+          "license": "MIT OR Apache-2.0",
+          "archive_sha256": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48",
+          "files": {
+            ".cargo_vcs_info.json": "7ca00590d04aedf8f24c48a1d56f7201cc12fb884918496f43534e766d406ae6",
+            "Cargo.lock": "f40b34bbb302517161d24864b7792615547087146efa895ce811d27d8a30e363",
+            "Cargo.toml": "c6049e170e4f7c2b48749fefab59db583bfac4e466cde6d0c53e4f49bc5044f7",
+            "Cargo.toml.orig": "2f3b7354d4f734e80c0e01ea399fb43c87cb393a84666f43d597f66af5450409",
+            "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+            "LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+            "README.md": "d9ca174c5818d7885265f0242d3193dd2963c2ee1da84aed8b938ec6a6990e58",
+            "build.rs": "7bc6b1eec8913ff4cd8e4b9b92cd04a82a4f38beb30a0b73a64c1e6e49f07b5f",
+            "src/crate_root.rs": "157ca402e23c32f11a4f1797c81afb5e9f08df96768012cf3e3199153aafb2dd",
+            "src/de/ignored_any.rs": "6480f2b2a83dc4764d01b2eec7309729eef2492eede2e5ee98d23a60b05198eb",
+            "src/de/impls.rs": "2f8e2ef9d343875bb996319e69feae0dee2287e2548cedd8d3c752b64812331c",
+            "src/de/mod.rs": "5ec8602d593915e0cf480b0ce67b02f6ab066dac34725237d2c7b4a6ef12a845",
+            "src/de/value.rs": "fb6fef6d23d95d516c6e1d6b5cefd8b98ba3881214a82a8a7e0a8ffbb0a12083",
+            "src/format.rs": "c85071b016df643b161859682d21ce34fa0ebf2a3bdbeeea69859da48f5d934f",
+            "src/lib.rs": "4e5c396d38ff5d9abf45b826a67ec3444654ed0802d057f46400ebe26f5879f8",
+            "src/macros.rs": "a61c9d19b210697304328e6bb9380a1de713e21042256df90a2b4553f178b0be",
+            "src/private/content.rs": "5fdfb2bb95ecc80375507acb813a4c640496385e56fc99ab448f6b19e01fcc01",
+            "src/private/doc.rs": "abe656c015267555ca26ebbcf2f4dcc52c719a0b9ade3a5ed4635b2784699b8c",
+            "src/private/mod.rs": "3bb3427ec80077b9df1853aa17681de796de0179d74871a96b88b72469de6cfc",
+            "src/private/seed.rs": "3f6e098c5bd314788370dcaf3ab0152fcd7feb6bcf36a9c51808938cd58071eb",
+            "src/private/size_hint.rs": "350694a2abaad94ca5d33958710a5bb8973a2ea1a3dcc50a41405c943761b81f",
+            "src/private/string.rs": "c1500fd4b64c24a5e45fa5f48c85c802816d6954a2999a72fc5a8861687212d4",
+            "src/ser/fmt.rs": "bd129d9f085933b76dafef6eb43ffac893c1f6484a3064dcd82faeeebc3b203c",
+            "src/ser/impls.rs": "5ee7efc439345e8665da0bd79bc06c02a0506e5fd0f3a4cf11af0c7197eaa643",
+            "src/ser/impossible.rs": "283f628d5107aa030d2e96eeb1dee187f0ac18c24d517edeb51738ab15dfb871",
+            "src/ser/mod.rs": "ec097d92c8545356961e977a4c9650361cadd1d3a243d805ae7b0e0e589ae803",
+            "src/std_error.rs": "b36fd6a2b6898770b9f1c51517eb362af115767d0f7cb4a713e1b949530ffa8a"
+          }
+        },
+        {
+          "name": "serde_derive",
+          "version": "1.0.229",
+          "license": "MIT OR Apache-2.0",
+          "archive_sha256": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348",
+          "files": {
+            ".cargo_vcs_info.json": "0b5d17eb470ba78f4d915159f7545c9178e21e63b52e1c033f6c4cb97a0f188a",
+            "Cargo.lock": "745122d422b997c60bdae98ca48376f2fa2e8817fb02ba6b2db4160ae1fb0088",
+            "Cargo.toml": "d2581160ffa61baa386f882e08b0db20051dc3c782a82268d6473998b61c926e",
+            "Cargo.toml.orig": "c8e1a7cff52301a94da8bb1a1eeff9e729bf0c5cab63945a1633b7808f82c91c",
+            "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+            "LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+            "README.md": "0a33359b87747c0ae2437374c1dd4fc4d151ae3122b3931e2757b45d0ed519b8",
+            "crates-io.md": "00b72e63d4f3393e28f9a219c8cb8c122013d82f0d10d6d551e239b13c5ba9e4",
+            "src/bound.rs": "7daa248b3b1121bba90c5a184bbd9b630d46bca4b4c1b5814df97f494bf1ee9e",
+            "src/de/enum_.rs": "5a099a25034e4f9364d421a53cfb4428ea8a94fd66515c66207bf8bfb7c4db4f",
+            "src/de/enum_adjacently.rs": "987d3a9fc7eda53776f0ccc3fbe64147ccfc8caf2ee202d3ad6432daf033a194",
+            "src/de/enum_externally.rs": "d001b7eab7f89165f29c7459a12c2baf4898c0ff456c219afabb5d19c20462e3",
+            "src/de/enum_internally.rs": "9d898dbc1c46262f695ef7ba1660b2af70de48e07bbac8f44b740326b7c5b303",
+            "src/de/enum_untagged.rs": "b66ad3cea36ee786d50270f6648f1075c1e615b5f04173b47f034a251df5220e",
+            "src/de/identifier.rs": "b653c26f4274e5c323e3f893c6f9a2b21bd5c873abdc2a801f0289a5e56a9f6c",
+            "src/de/struct_.rs": "7b26982ce59504a9bb5a18c3ab56eee2d75e70fd465774ff035d15c50452c118",
+            "src/de/tuple.rs": "5496ee711b935b17269960f4a0cfcb7d23de668db9489dfca7276ce1fcdf0f6f",
+            "src/de/unit.rs": "b792db7952fc2e4719fdce9552fe4ba1836086cc967ae9a5b919c28b30f2b4a0",
+            "src/de.rs": "a04fdb321ce47b479b42b2dd0ca1cfd57db88e06451d7dc95303c582fedc135c",
+            "src/deprecated.rs": "cff374e86ea5f134913a2a194a68d7c2510ffd5214956d10b9c496e90a20a952",
+            "src/dummy.rs": "dce9d53f7f6efb41043d6dbd741e03e65fe0a56b2f739a041184036cd7491b16",
+            "src/fragment.rs": "6757cb4c3131d4300f093572efc273c4ab5a20e3e1efb54a311dcfa52d0bd6eb",
+            "src/internals/ast.rs": "bc6244a25f536cfee82f14a29df25b7e9bc299a639debe702b9bb060c1ac99fb",
+            "src/internals/attr.rs": "7abe82fde303a3c31f967c13e0ee1afe49ea584d882b9d2c32b067888e1c8225",
+            "src/internals/case.rs": "10c8dda2b32d8c6c6b63cf09cdc63d02375af7e95ecefe8fecb34f93b65191bb",
+            "src/internals/check.rs": "86ea817316638ec33f70ecdf9634a31c934fd3df84533e3e315816dc130f0bff",
+            "src/internals/ctxt.rs": "79c058495febd402facbfa24d8a82d0d53fd91a6497ad4e9595a4dcca2e0e0bc",
+            "src/internals/mod.rs": "c1ece6bbce5a5e8a2bf5d6d9a29e85551258db9c610fab73ac19c6b7d8cf98fd",
+            "src/internals/name.rs": "9bc1553d7b493794cd436664ee6b43fccb914f271fa86705ae2937ae923a876f",
+            "src/internals/receiver.rs": "c75e0ba04602c5771d662004f32b82bf01e11c1905153ba4c073969788b75abe",
+            "src/internals/respan.rs": "899753859c58ce5f532a3ec4584796a52f13ed5a0533191e48c953ba5c1b52ff",
+            "src/internals/symbol.rs": "d2590f1c8356d6a10923476b558c39a85b77392ba09c92fa97e05e2c403e73c7",
+            "src/lib.rs": "9c8efaaaad77caa41178ca4316bff1ccbb7a864673d88639d258b7c5619a4ad4",
+            "src/pretend.rs": "b3e4928f49b1f380c91afc575733586e5bced5d76f02847736c267c00872df91",
+            "src/ser.rs": "18b3a4d06cd721c402835b17f008a63fdbaad379734f0fd4132aa28d8ea5c1de",
+            "src/this.rs": "87818dc80cbb521b51938a653d09daf10aafc220bb10425948de82ad670fcb85"
+          }
+        },
+        {
+          "name": "simd-csv",
+          "version": "0.14.0",
+          "license": "MIT",
+          "archive_sha256": "131b52919dd05c58d395a06cd09bfb55d25a06ca3c1acec7ec2a22696bff4cdb",
+          "files": {
+            ".cargo_vcs_info.json": "d49736f87bfeddf728617aaefda1257465555a5cf31c0707cdeca618cfe310ec",
+            ".github/workflows/tests.yml": "7d9b714fb0e5d7eece7da6747162a7c4f19726e793558557bc8f40d9771f0402",
+            ".gitignore": "fde20dbbc9f6f4d3084a432b9767b168eaa7a99c877370c70a6072538bc2777a",
+            "Cargo.lock": "73b9e5cf3acb36b6d0c69a183363cd4e198134ba204775a339c3dc763e9c28fd",
+            "Cargo.toml": "21004b30c2f48b2a7baf3a418ca78dfcf1ed726f1ada659530aca91163a26dde",
+            "Cargo.toml.orig": "e1fef4c1c4e4376739ce19beae7a39633956d9f543a072d4e18f4a5f04e657f2",
+            "LICENSE.txt": "501695210244859acb700ede568ab7ce57350937cb9af8e651721d53ad884aa6",
+            "README.md": "f516dd30453e5eee868d9a7d971b4c51938c9e3c17c6e511adc34fe114ee860d",
+            "clippy.toml": "d141089a5edd91c83ae211257638df2ef1ca53f66b30faa98b22ea1447faeeff",
+            "examples/count.rs": "8f0664f088010f6dd791c7e7fd6f66eae9afc5aa427639a37201a9687dcb27e3",
+            "examples/instructions.rs": "162e2aade0d1515d317994e22f092683b76ee7f2e46ab142418279f18f92d342",
+            "examples/integrity.rs": "2d0369246cafe5a538646c68808322ea0c1f8eb44acd2847fd7bc91fd3b3ebb5",
+            "examples/passthrough.rs": "b205b0672c0e5bd3cd416173aa76c71981583f706614b541a810d1d4b31f064a",
+            "examples/seek.rs": "c2574a89e48a5f76276b39d13307e6b2812342222b3bb4092eee196881f22c7c",
+            "rust-toolchain.toml": "a49124a43a8076e4db93172eca81a034890d241360eb40d58b41fc41bb796134",
+            "scripts/bench.moonblade": "b3767ea0f703d894b309f2d8085f2eb78de46ca05ce7f2b6ade148f0f7dc190d",
+            "scripts/bench.sh": "44773d325859ee37c66a5c58f030eb052b02412ae5b2f7193e3717e1076dfc0c",
+            "scripts/ftest.sh": "4bb31280e2cc1287705e6fd75a9e4af89e2df1435c2fef9a4f518b6d5de3ed83",
+            "scripts/grid.sh": "6844f02050b477554fd37d407d802eadaf471c4153e362795f4ab2c8ca752631",
+            "scripts/methods-bench.sh": "ddec9392eeeb5d06cd81dfd5451431ef0223a7918bff63bb6f85e939ab8c9e05",
+            "scripts/misc.txt": "b55569fe6bc7d3ff81ad2084c6bf73d59ec1e4d0052e3c2466ff62cb298f092b",
+            "scripts/writer-bench.sh": "d941a19849baa0c1ee6b31136b926c4be58b60b06432a3cd03ab88712ac24a55",
+            "src/binary.rs": "d4362af0d0b3148bf841b39abcff21540d1d79dbca1f95ac49e14f2216f17ccb",
+            "src/buffer.rs": "f2846427bc0da670176fa37e9063e39321ce32d62b1e3be83a06dbb52552bad9",
+            "src/core.rs": "bba2ddb0f8ce7cbd493f27a7ffa21b51dc82aa40538abcf6f33eae3e4bfd39e7",
+            "src/debug.rs": "a7c48774ba51caf096377132bce213b525c5938dd0e3c3dc1fafae6b6997c9c6",
+            "src/error.rs": "70094548300390d946c11f0979ae3fab4578122807ef4afaa1223096b5884d7d",
+            "src/ext.rs": "eb6d99a5ef8868854279ad256d8510f689f7eeed60c19110e9d0b00a42b3dc93",
+            "src/lib.rs": "779af8a3c11c29033cdf70af8120c04833df97932539589ffff30353386f1920",
+            "src/line_reader.rs": "1a41903d3e33aff62a978ce1b1e3d00509f4e835099680135cb7220214ddaa1b",
+            "src/peeker.rs": "f8aad408bd451f19357ec92fd4de44e6f1cdb88de003cd7e989ee7daa14be8a3",
+            "src/reader.rs": "b005131d2c304518f97cdf10c31a2e416118ebdd42edf8e7cb67d4375bb33049",
+            "src/records.rs": "2fb521059bf0465871a36b6bf7128066018ea59021ffc182f85e8ec6d1ae1d9c",
+            "src/searcher.rs": "7031b95a0070bd24a58f8d4592fc3ef907ed250c371d779930a2d5142910e344",
+            "src/seeker.rs": "f017465c4098205ecdc563055ff04a93c871e69804de5c73e61559326ae18e67",
+            "src/select/dsl.rs": "8aa645726628423c1759c82492f885726754be9bfb1aefef62fd63b783426a46",
+            "src/select/headers.rs": "28176e560226219de09144fe62218e48279c6086b54b4b3a8ecce4b1afa12eea",
+            "src/select/mod.rs": "d61b0f5d98bb1cd4658d03ddfef7f2077711ac23ce8c1540f566c0ccb09241a1",
+            "src/select/selection.rs": "d3102a1cbe036bf4f0045b4f1e5bcebcfd8a35bb2ca16971695328aefa0688ca",
+            "src/splitter.rs": "6e3663c7011ad73bb70d54ff8e21d0bca6421b1a9cded832b21480ef7900b557",
+            "src/total_reader.rs": "e8c0b2fb6cd3a79b27e9216e90c0ce18c8a2dd187df9ff117f93a5d949bcd01d",
+            "src/utils.rs": "9a7bf0f97c0e81886491f5d13fc2ca8f4819c1abbc70484e6fa045fcaa4bc96d",
+            "src/writer.rs": "12ffa8f33dd3cf643f36fb79c93a5acccefde1692788a38959b0526b7ec8e13b",
+            "src/zero_copy_reader.rs": "47ab573b19d4b9a8a2abb98cb13de2143a28eed723b0f61886f48fa3850fbc24"
+          }
+        },
+        {
+          "name": "syn",
+          "version": "3.0.9",
+          "license": "MIT OR Apache-2.0",
+          "archive_sha256": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b",
+          "files": {
+            ".cargo_vcs_info.json": "cee294e3a4f8d4422a82e49ee3224414ea309f9c2e717533d97f0c960f3b8eab",
+            "Cargo.lock": "5f4c517504cd387d67423ed245a18bba376df929cdbaf444e310251c731ffc5b",
+            "Cargo.toml": "b6f7f6069d92142d3e294f84855a68049bebc5b886c557ed4ae980ddbc866e1c",
+            "Cargo.toml.orig": "d80272529ba81ff84369a6dd390a1eb3de56e01cdc7633e81a7cd7f9512d41cc",
+            "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+            "LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+            "README.md": "a00f270c7f468863f28b9984547872efb57c7db1b9beb6e685852dc24de6846e",
+            "benches/file.rs": "6f2ae7748d1576cff48e4ef55d4e87e2f5bb7898a36aa99ea6dd6ed0f72a4e3c",
+            "benches/rust.rs": "4ad250087795831d7c79b130d47927b5c733052c9659de039c08835b74be72b1",
+            "src/attr.rs": "2108cf48c98ed0a7833ec73b841fccc254c733453a7e69127b0255541bbc9572",
+            "src/bigint.rs": "21cf6cf0c8e175421a6579321878e140d6cd2c975e5bdac4eadde25907d7e879",
+            "src/buffer.rs": "ddb6d50a9e79dc1db86d819d41dbf532e172997c8e0101d73c95052835756c50",
+            "src/classify.rs": "980e81540ddf0414bbfa6fc4f543127d39da84337732a6353473afbd547267f0",
+            "src/custom_keyword.rs": "322114e36ae43a2f8605506fb4568efdbc2986853e2fee74bd10a4ca0fb60c69",
+            "src/custom_punctuation.rs": "67134b7685ce89eddb7bf4ee3c9a48e5eb8ecbb1703cd49a01cbb115239fb814",
+            "src/data.rs": "78280858745d59b721098c7d7f8aa99dddd9e519908d75a1c4444c9c455875d6",
+            "src/derive.rs": "4927cfd64d2c61bb9ee8462b83d5bbce77e3f85c3a03a5565ecf6f08d55367c3",
+            "src/discouraged.rs": "7b5ca0fb3120970d028ddd4efc69363fea278a0b6ed5160d82295c326b3b08ac",
+            "src/drops.rs": "c48e679507424c08716b48256a06d59fe55e877de336c40f0df56cfd80e23826",
+            "src/error.rs": "5ed698f9dd63f16775e48455919a626a246d2ac38d682c1ba37a0ff561ed0a7b",
+            "src/export.rs": "d9039ba7f1455089139cf8a6871159f0ec57949cc730b42fe3c318a8397d3368",
+            "src/expr.rs": "9196c144305eda8bdd63e117c8126aef2170af1dae08a951e4af70399bed8f5a",
+            "src/ext.rs": "8bc0d0ffab88c73d2305c9f588e6b5285501de8869308162f91019c83bc5bdf1",
+            "src/file.rs": "4513d0f1f4a4d78ba94c0895e97aadc0c2ebcf6f5da36abf762e77e813bc9aea",
+            "src/fixup.rs": "7647cde30efdce96b1488ae805788c168d4499b464b7d421abc17ea8ffde66f2",
+            "src/gen/clone.rs": "342704f87c06f11b4b6b60689df5f55e7a9a67d656b9286cc23a364f485c135f",
+            "src/gen/debug.rs": "29782ea05d86b95e98bb664d6688c413c871dc78f5dc9ee81f584aaa63e85558",
+            "src/gen/eq.rs": "15f2b5070ea8fccf07dbff6bf2fdc027c6d913599b5c1a8e8a5bc9e39e601133",
+            "src/gen/fold.rs": "4804ee04ce6ed8437a9e5d2a54a3ca91f711098034f95ac7102ca0928783dc3e",
+            "src/gen/hash.rs": "ac638e8b56722dd890bd06297a2902b9015cf85e2c50432258b050e43cc1d4cf",
+            "src/gen/token.css": "f79afb8272b8c9b6fe63716c6be5c53d8e7c5ca5473bf3ec891b6e1be9887716",
+            "src/gen/visit.rs": "32414282294ae0d0fbbe863c51cf26c2fc3fb6843dbf715d96f5ad69f3048c2c",
+            "src/gen/visit_mut.rs": "1d76d69baddc4f1354399cab7309a5a2738b3850ad249f793b596fc854c4e8d1",
+            "src/generics.rs": "a563693b6c9ec11d61b2ce7f869763a3c967879dd9306743f01203cd9555cda1",
+            "src/group.rs": "61e067094aa930b6550dc3717a5aaeef7dabfdcf1a177f83fb636598fa7e4e72",
+            "src/ident.rs": "a17e32b0d997649c4c986d1c9eef24be5331cd9ab478604932297b55f785487a",
+            "src/item.rs": "11529dc48c5045d3b0f7947d05ea5aadf0f389f4a8e0b25222333042721ab10f",
+            "src/lib.rs": "bbd84571900844f1c73bf784ead1adb2c1ac07163e2038920bae9c0bc132e9e5",
+            "src/lifetime.rs": "2f3a240a4a0d9536dd1e3255d5ae0d64efcc46f295cf565a09e8ac33cd3d3487",
+            "src/lit.rs": "b474ef6e974844ba972c0fcedf3e075f03e822faf4e55a9b27f648efe7121098",
+            "src/lookahead.rs": "ea51bbf9a23d68238f8324a51675f5815fb3e5fc08c6bab93bc2648d3342c38f",
+            "src/mac.rs": "fdce8291f71adef3f69975f229156dca2309ca232ed943061afaf96220908ab8",
+            "src/macros.rs": "dfc278625948d727ef06e058a94483bbcc551b62b8eb736dc7cd9e0a4777866f",
+            "src/meta.rs": "d8703f8cbc5fd6465c367214eac38efca0f8388bdef8ac5e6f863835fbd3b30f",
+            "src/op.rs": "5cc4916e1a6b2eb02bd830d208cd3a0f03d917770d69edcf1ea6e6e5ea051757",
+            "src/parse.rs": "e692d6e895ac79a14680b89a7c29611995126953238176bdb50d2a3c2fb2d9e3",
+            "src/parse_macro_input.rs": "e4e22b63d0496d06a4ca17742a22467ed93f08a739081324773828bad63175ee",
+            "src/parse_quote.rs": "c0ae210cfe6d6b8f6758cff1f44283acd9df5ed67d88911875079fb28d4d1b67",
+            "src/pat.rs": "3258bdaca2be2c692cd9bb09a89f811f53b176939a57ce46c0d89284628fc830",
+            "src/path.rs": "088ff7dc2cd278efc32017722887d6849866e54ab7d7ae47710edf785c0cc478",
+            "src/precedence.rs": "301f5cc51e1bbb35aeb64f6ed1b21d6f61d83f6c048aec9896976ee0011b948e",
+            "src/print.rs": "22910bf0521ab868ebd7c62601c55912d12cfb400c65723e08e5cfa3a2d111c0",
+            "src/punctuated.rs": "4f89d821eaccdda89eea267c4731f8f61bb7736d6693dc7459a859d130e48daa",
+            "src/restriction.rs": "9506f1dd5710a380a8298dc8b345a0849a011e447e1aca08c4ca29543a65273b",
+            "src/scan_expr.rs": "1afda43a7f4e9d426859a90d8a62a58c6654f3be41bb274d4884a56ac08f8eee",
+            "src/sealed.rs": "6ece3b3dcb30f6bb98b93d83759ca7712ee8592bef9c0511141039c38765db0e",
+            "src/span.rs": "0a48e375e5c9768f6f64174a91ba6a255f4b021e2fb3548d8494e617f142601b",
+            "src/spanned.rs": "b53ce23f10935cf202da0f5a430e9feca9f4858bbd6efbe896acf17d3cfce540",
+            "src/stmt.rs": "60718ffd8e4b72bae9ea620670276af3bd407f248f2c5e3bd945a2ea8c541661",
+            "src/thread.rs": "b91e33c563c2ea584fcd7c5454998303173f4227bdb19504776e61d09b60675c",
+            "src/token.rs": "fddf7540f6c87e088ca2e4cd59a4769bc99989907a71e0d7cb42ee6ec067a6ac",
+            "src/tt.rs": "d5b9df076504b1506e0b05dafb9006fd0772fdb8d4b8b8dcc315dbca3277331a",
+            "src/ty.rs": "63bbf2272575d40ba632b54ca51857f43410bc22c20ff3ecedee3d3f52dd84e5",
+            "src/verbatim.rs": "503055ba92ebb97da71a8a7cae1e6606969aadfb965b0d6c7e56693f9ef66b0a",
+            "src/whitespace.rs": "9cdcbfe9045b259046329a795bc1105ab5a871471a6d3f7318d275ee53f7a825",
+            "tests/common/eq.rs": "bb7e40bf43a7628e305fc1afaa4c0b540e7bb2f25f4a3b9d3ac4c317bbb58a29",
+            "tests/common/mod.rs": "b752aa8f1faf8c6abf1286a12fb50b6c257ec1889d81bcdb3dc3257134695a89",
+            "tests/common/parse.rs": "b1685e9e0f0569f48d66ddd92d787a12933a1d2f95e7c9ae974a3648763f989b",
+            "tests/common/visit.rs": "a260ecd2ce7853cd3644e19aba08e8d358a656fd3fb0f1287cea40c59c9e62c9",
+            "tests/debug/gen.rs": "75b59398bb58e8d05c5ee5598b88163564b480c866af3dddb9bcc69e8df8459a",
+            "tests/debug/mod.rs": "1259df940bbcaa968a837e402d6853f2efa38d2260e306d42f17f9e8ef74fae5",
+            "tests/macros/mod.rs": "d2294a79e341c623ae671dd363e99965d78dda7f340b0cc038267207adfacae2",
+            "tests/regression/issue1108.rs": "f32db35244a674e22ff824ca9e5bbec2184e287b59f022db68c418b5878a2edc",
+            "tests/regression/issue1235.rs": "a2266b10c3f7c7af5734817ab0a3e8b309b51e7d177b63f26e67e6b744d280b0",
+            "tests/regression.rs": "e9565ea0efecb4136f099164ffcfa26e1996b0a27fb9c6659e90ad9bdd42e7b6",
+            "tests/repo/mod.rs": "a86074ef6992d93768d9af0e6d8bac21cc9a3378d158a3e1edde0e12a9ebf959",
+            "tests/repo/progress.rs": "11219e4ae5e0175d5ddc743907a57b8c4e750e709687c3df53728d6af994a86f",
+            "tests/snapshot/mod.rs": "4a101272c5abe6ca9f3501e0cacacee9a0ccf7ca773348a239e5b046d0316a7e",
+            "tests/test_attribute.rs": "8a4429b7cfe2360bb73beae54a62ae3255ebbd5181467a8608d6f858c2711728",
+            "tests/test_derive_input.rs": "ac6fff053bded4ca30f88343cbf984a319119b58805f56058bd6ad61a1f60972",
+            "tests/test_expr.rs": "0356f48052aaa837147fcab33185703e24c0bac5f4d007234f3e86c7cf5a3faa",
+            "tests/test_generics.rs": "2bd20cbaab8ff268e6e283ae9564f064f352deab7d3d4beafb7f41baa2b862cf",
+            "tests/test_grouping.rs": "fe3de6e8824f0722ab6450c6dfc374f6e0f8fe75c87c4dd56b2cb00a2197ed58",
+            "tests/test_ident.rs": "d5850e817720e774cd397a46dbc5298c57933823c18e20805e84503fc9387e8f",
+            "tests/test_item.rs": "49f7130127da9077dc39cb1c3b9a70b55f62c39555b48bf9c7f5bb07fc506531",
+            "tests/test_lit.rs": "4130efa425d14ed3ad9a1c2a00ef4b29782c9d1cf9e29ff9dddd3b23b2e3ddee",
+            "tests/test_meta.rs": "5b0fdee0decbd07476c9673403a662de385901b4bf60600c26ac879893f5bf9c",
+            "tests/test_parse_buffer.rs": "1c8cbbf457603bd0a83348079591f843f7ef0533a6275a0c76533e2d07dd321a",
+            "tests/test_parse_quote.rs": "2fc6fcd5f6ab063fb26dd64e087a8a0799f0650b7249c1c4f3b08b870b89ed22",
+            "tests/test_parse_stream.rs": "b6b533432173123d6d01d8d2cb33714bc50b30b16ffbb6116f93937221ad4594",
+            "tests/test_pat.rs": "91458c108f6d8a1660e5633cde6441b0e583f7fa8f36375dcf0a051301eb3d34",
+            "tests/test_path.rs": "4957de8bd9e0c158cfa91dc12ec3b16132d243f0d1f3184d827ac6da5ab1739f",
+            "tests/test_precedence.rs": "fd6da10bb2414f1a6fc6d18dbbcd773bae9179b405abb06de5874f09848f3887",
+            "tests/test_punctuated.rs": "efed2c281b6965d71b065c7606631ba1989af6e7b5f5d1ca1033f8b968dc076c",
+            "tests/test_receiver.rs": "c94e39e57b21844b9c89f9da672da33e83046a409f6d8d00422652f92e703d43",
+            "tests/test_round_trip.rs": "b784443cfc084e48f1b9fd4d1b2583d19d6e1ec9e5f4137fafc288dd3a44fc49",
+            "tests/test_shebang.rs": "785345c798689328060d59a715ed1a54f7a72e9d0305f2f2a1ed84102bcf100b",
+            "tests/test_size.rs": "2928bfc73c6a1dc1a7a4fc31bbd1ce8583f97aea4b3adf747dad325bfa748ef0",
+            "tests/test_stmt.rs": "7f54d395303447bdb639cb100d8611c2d945cab975c9efbb8569c78e4b333f07",
+            "tests/test_token_trees.rs": "c30b921a96739c9334ec2bdd06552729891e0251b9d8fbdf0b8f5cc897babee5",
+            "tests/test_ty.rs": "5b70d0bc3a02ef6b06f39e4ba5a29df56f1e2237b365f9a0ea1f146b1e2386d2",
+            "tests/test_unparenthesize.rs": "a304a65af2cd4ec4b9ab1925727ebfc25b8cb39296f8e6d316d882c381c568da",
+            "tests/test_visibility.rs": "811a5df8923426bc24f1bc5e6e346dbbde5ce2ae3143867d81332200ad082494",
+            "tests/zzz_stable.rs": "2a862e59cb446235ed99aec0e6ada8e16d3ecc30229b29d825b7c0bbc2602989"
+          }
+        },
+        {
+          "name": "unicode-ident",
+          "version": "1.0.27",
+          "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+          "archive_sha256": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563",
+          "files": {
+            ".cargo_vcs_info.json": "68a4d49004541c1a4bfe6564b7c8e9853de2c3a5fa528c98cc6017e6103c146b",
+            ".gitattributes": "ae8eb6d0bcfdf98794d1f0d4134ca8999c30ae0f6d4fe7f1a5858dcf92e30394",
+            ".github/FUNDING.yml": "b017158736b3c9751a2d21edfce7fe61c8954e2fced8da8dd3013c2f3e295bd9",
+            ".github/workflows/ci.yml": "e7b498453efe559a78a82b62a81edd3cc4f5b823de66a6c0a095c2f4f898db54",
+            ".gitignore": "ab4f11740636387dbd09e6f976467f0168d1d51cd888db6a736ee1f867874b40",
+            "Cargo.lock": "23969020af8208d45c398d923058ef9e31b24cfa771abdf9f2b66ec5c2e19cf4",
+            "Cargo.toml": "c0e96a9c7ee62f5f9ab12de69e0ad44826ad753911d47638f605c936f7ea2c1c",
+            "Cargo.toml.orig": "f8e378f36485876a74dfc98cec2612cad5f585903dc9f38ffe7a43f622426ed1",
+            "LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+            "LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+            "LICENSE-UNICODE": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+            "README.md": "46d3b1dce1874b2f5dae6bc40d0133bc4e377eb682fffb6cee2a8a605ee93f6f",
+            "benches/xid.rs": "7eb058c1140a253f7177af8868a95aabb1b92c52dc7eee5abbfeadb507d7845d",
+            "src/lib.rs": "791145588ec0a58595868a0de11df90b31ecdbcd5142e1aaa8cdaad12aaf3783",
+            "src/tables.rs": "88cc4f427e7335cda9549cf07e3068a78c53f54804ae3057f184295872eb40a4",
+            "tests/compare.rs": "f2311271aa1db7380e5bf153ef83ee99777e14579e4f28c2b1a3e21877ffe715",
+            "tests/fst/.gitignore": "2cd419079c0a08bb15766520880998651dd1c72c55347a31f43357595b16ac10",
+            "tests/fst/mod.rs": "69a3aaf59acd8bca962ecc6234be56be8c0934ab79b253162f10eb881523901f",
+            "tests/fst/xid_continue.fst": "a4c8f6daf453fba6d12daeb5e10192839edf930250234309049b4325406b5979",
+            "tests/fst/xid_start.fst": "5e177e91fdf0cc2f117bd66277803aa21bc4d563357f6d81a9d4250456f9fa2f",
+            "tests/roaring/mod.rs": "f5c6d55463a7f53e92a493cf046d717149250fbafc0e0fe94bdb531377bf8b11",
+            "tests/static_size.rs": "3839bf677f957da8f3e88747db2abaef921dd0d0002e9490148ecb83fda2baf2",
+            "tests/tables/mod.rs": "e6949172d10fc4b2431ce7546269bfd4f9146454c8c3e31faf5e5d80c16a8ab6",
+            "tests/tables/tables.rs": "c73d017f6fb27c7bb014ea6b0ccc2d54cac0fca492c2aed93bf7800c1534eef3",
+            "tests/trie/mod.rs": "d4acbb716bcbaf80660039797f45e138ed8bbd66749fa3b19b1a971574679cc9",
+            "tests/trie/trie.rs": "e4443f7d9595edba29e2df17a8830478b23fe359e7366fb5bd75c57598e3cc53"
+          }
+        }
+      ]
+    },
+    "binaries": {
+      "libcsv": {
+        "path": "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison/libcsv",
+        "sha256": "6adabe351370dab31cfc89736b1e1b6bdc75bd493995ac3b4642c605157a2066",
+        "sections": {
+          ".text": "02e6b1473a2d706ae487666934a0f1544ac5c223f239961517da2121406df1a9",
+          ".rodata": "7429be9ca348a51bead5d4789b644d2640c96d1a0afbb11122cccdd9767da043",
+          ".data": "032a53173b2f720bfb42d07049cb1132730dc1de59252ea7dbe40c277db7e6e6",
+          ".eh_frame": "611677d7168f1cae7bfc924d1628008aa0ce76925256a581b105d6d2337a02cf"
+        }
+      },
+      "rust": {
+        "path": "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/comparison/rust",
+        "sha256": "accfb88b05b90e3809ae14c7ff84e3db295f8d252786173eff8794c9486c998d",
+        "sections": {
+          ".text": "ffced1c39d597f977b080804f6d4620184580657825da3e7b73004e44795e09f",
+          ".rodata": "3dd35ee264d06dd24a6e1a921c4a014dd2d0c39b7b84de5654910bfd0b26393e",
+          ".data": "6e0dbad1185d3700ce3f412034460e8a68c3823106669dd4b300d5ad6402e32d",
+          ".eh_frame": "7ff5be72d3f2f6ddf344a5e673da21a5f52df8f1e51d1b0743e55eb4e4a9fe99"
+        }
+      }
+    }
+  }
+}

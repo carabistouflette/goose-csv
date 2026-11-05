@@ -1,0 +1,32 @@
+{
+  "seed": 712901,
+  "cases": 5601,
+  "writer_cases": 823,
+  "parser_inputs": 560,
+  "contract_errors": 137,
+  "corpus_sha256": "5bdfd290ed53838a275a6f9f1793b24534ffc5a5e75421e81c305b3e69392b1d",
+  "expected_sha256": "122d143b1b83af13b4af7c63a67f962a4b77bae8bd53853d7682687a0b77cca5",
+  "stdout_sha256": "122d143b1b83af13b4af7c63a67f962a4b77bae8bd53853d7682687a0b77cca5",
+  "python": "3.14.9 (main, Oct 25 2026, 14:52:47) [GCC 16.2.1 20260810]",
+  "python_csv_version": "1.0",
+  "platform": "Linux-7.2.11-arch1-1-x86_64-with-glibc2.44",
+  "command": [
+    "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/oracle"
+  ],
+  "executable_sha256": "34f531f4bf55aa2871b1234661b691308546ffb7a8a08411dc440f352b1af4f2",
+  "source_sha256": {
+    "csv.goose": "40d10abdd89761f3fb7b24a74160b14a090ad1e851201df8df33a1be4ce7efc1",
+    "tests/api.goose": "a829117f5b9fefa335f04b026ef00e69806a0fafb61481565e11fca0ac7caf86",
+    "tests/fuzz.goose": "b87666d6345dbc6abeb8b0bcf94c86560c7c40b232a972bfb60a83f6365544fa",
+    "tests/oracle.goose": "6236264c19c5ec4f7dbea4a1c5e603a6511b7ef5f6481abb8dd2a9d7540945f3",
+    "tests/support.goose": "73feaaeeff180514d4bfe3144ed20132bcfe5d8456e44b3f381f080f0e5bcbbf",
+    "tests/oracle.py": "ddaf22911dd4a58bacd0adb2daab548a3a55d1fc36fe2ba84bac76ae2baa44e5"
+  },
+  "source_head": "0376fece8625827d6ef2754d48d40df8204ec24f",
+  "source_status": "",
+  "notes": [
+    "Latin-1 is a reversible byte/str bridge, not encoding validation",
+    "Malformed expectations follow the explicit contract; Python csv is more permissive for some forms",
+    "Finite seeded differential corpus, not coverage-guided fuzzing or certification"
+  ]
+}

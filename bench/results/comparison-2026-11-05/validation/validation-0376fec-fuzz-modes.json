@@ -1,0 +1,261 @@
+{
+  "inputs": {
+    "source": {
+      "head": "0376fece8625827d6ef2754d48d40df8204ec24f",
+      "status": "",
+      "files": {
+        ".github/workflows/ci.yml": {
+          "sha256": "793f2adfc87ef6a9c19dcdbad94bca116bfc523cbc305bce55ac66b899c6d69b",
+          "mode": 33152
+        },
+        ".gitignore": {
+          "sha256": "05e54dbc334efb147afc9252c28ccd90f2facab20fd426da7608841ff165f1e1",
+          "mode": 33152
+        },
+        "CHANGELOG.md": {
+          "sha256": "007ad6b2de980ea97051c47d3e244b0233a12f07648ca4e41c19f04495b02671",
+          "mode": 33152
+        },
+        "CONTRIBUTING.md": {
+          "sha256": "d54fdda2c0624287259b23aab08e2c23e832ddaa24ba81dee9333cc6710d1d0c",
+          "mode": 33152
+        },
+        "GOOSE_REVISION": {
+          "sha256": "64e14b181dfe96743211738fb0f1b1f7798ea940da2ca50ff122e6f028c24e15",
+          "mode": 33152
+        },
+        "LICENSE": {
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "mode": 33152
+        },
+        "Makefile": {
+          "sha256": "cf169ef978b5d443ccf47627c9dc34b86b0e96662c64b5ce54a829ebc9073126",
+          "mode": 33152
+        },
+        "README.md": {
+          "sha256": "66e5e64087936fc7d27d95c5d5a82e5170c07ae62b3936026764a43ea8407148",
+          "mode": 33152
+        },
+        "SECURITY.md": {
+          "sha256": "2e69b1b3e4b651aa94a601c791a733df7191bb799a12c1167831a9321e93f332",
+          "mode": 33152
+        },
+        "THIRD_PARTY_NOTICES.md": {
+          "sha256": "f0a815cf990f4dfba092c6fc01d0bb153a215c932ae818a240cd1b9aa222b5cb",
+          "mode": 33152
+        },
+        "bench/README.md": {
+          "sha256": "4c4302d73319926c4d09f82824c31f0c3afaf5f709cb23662b620f7b507333db",
+          "mode": 33152
+        },
+        "bench/bench.goose": {
+          "sha256": "ac301ec51d0f0cfb4296a9a12b63a681e0bf76ad768f4a5df8b857cf71e91557",
+          "mode": 33152
+        },
+        "bench/compare/CONTRACT.md": {
+          "sha256": "d301493037004ea0f4039cbd1627c8d8e66ba89edd02a18a6d0bf5930485fd45",
+          "mode": 33152
+        },
+        "bench/compare/README.md": {
+          "sha256": "cbf6aa5eb7cc65a334d64f227ad3dc4f1bbdef7cfedbea181286a83034025b31",
+          "mode": 33152
+        },
+        "bench/compare/REVIEWS.md": {
+          "sha256": "a0fde697bb905ed80ce1e43f840a70dc7a715cd0bad6bacd05433daad3bab0da",
+          "mode": 33152
+        },
+        "bench/compare/build.py": {
+          "sha256": "3fb4b73126d46a9e936b3451e3a9bd398cf8d870908da2c0a759e2f596d67b89",
+          "mode": 33152
+        },
+        "bench/compare/driver.goose": {
+          "sha256": "74a44304d6c65ac9059652ce91c7f1bd9172a09b523b758da71c67437ca8fb94",
+          "mode": 33152
+        },
+        "bench/compare/fixtures.py": {
+          "sha256": "c45a7bc7194cab0a388728f2d6acabf2adf7e18e5c194e2507b32214cb7b9c7f",
+          "mode": 33152
+        },
+        "bench/compare/libcsv_driver.c": {
+          "sha256": "890ae819ca50ec29bb5209f2c8768b2345a9c4f082522d591307ef7461f146fc",
+          "mode": 33152
+        },
+        "bench/compare/measure.py": {
+          "sha256": "0cddaa08a7f36c639fc2295b0b88e39f3093f87c673673723fbff355d98c6f2f",
+          "mode": 33152
+        },
+        "bench/compare/qualify.py": {
+          "sha256": "70c00192014f63203bba8da768119286c56edf6b8b12286a54c42ce239752aae",
+          "mode": 33152
+        },
+        "bench/compare/rust/Cargo.lock": {
+          "sha256": "aba4e9f1b0fbed3246fdf9b58175d1e34c575251b4fbbd28de9c805e7c1f196a",
+          "mode": 33152
+        },
+        "bench/compare/rust/Cargo.toml": {
+          "sha256": "50f94e83dcf7fad7c60fb697018c9f3083f7c441648c1e1e7786e8b4c519dc6a",
+          "mode": 33152
+        },
+        "bench/compare/rust/src/main.rs": {
+          "sha256": "8ed55eb200d143f90802fcd8c51dcf2d195096634029c3043e44d61625535281",
+          "mode": 33152
+        },
+        "bench/measure.py": {
+          "sha256": "5154d5485a07a73e54cf2753e532b3be6374c4305b87a56ae351cbfacec2aca8",
+          "mode": 33152
+        },
+        "bench/results/2026-11-05/raw.json": {
+          "sha256": "2b4cdfa480da810da4412e2e3b5eec069689adda1888f950053e81db5542bfea",
+          "mode": 33152
+        },
+        "bench/results/2026-11-05/run.log": {
+          "sha256": "98bba9bbe92980f70fc8dd5db9683645ddf0f5b424533c53371e51fecc3c8151",
+          "mode": 33152
+        },
+        "csv.goose": {
+          "sha256": "40d10abdd89761f3fb7b24a74160b14a090ad1e851201df8df33a1be4ce7efc1",
+          "mode": 33152
+        },
+        "docs/ALTERNATIVES.md": {
+          "sha256": "55c6d43966c8193c4375d2b4d876edba0791089f55a3047c557eeaf051f57570",
+          "mode": 33152
+        },
+        "docs/DESIGN.md": {
+          "sha256": "35459f9be1d4b07440cdb9191067b52b8aa5439bce9aa3c5930300b7adb2ecaa",
+          "mode": 33152
+        },
+        "docs/VALIDATION.md": {
+          "sha256": "16cbceae3021428fef34c996e067c0dcefeadba855f7782ed6441af501001108",
+          "mode": 33152
+        },
+        "examples/stream.goose": {
+          "sha256": "78fdb77b154fe280b63dd5da7bea4b57d8dac486241c19ba245a54b45a1c3354",
+          "mode": 33152
+        },
+        "scripts/provenance.py": {
+          "sha256": "42a117b333881bc42f25c2fa79861867e31183e7d7f73e5c6be3335d8edacc0c",
+          "mode": 33152
+        },
+        "scripts/sanitize.py": {
+          "sha256": "6ac293b0c853d284218c061d8264497d4beec8ec33b673a8bb44005019c23423",
+          "mode": 33152
+        },
+        "scripts/setup-goose.sh": {
+          "sha256": "a258081d49cd91986ebbc17a5b2bec7b0acbde54821416143bbac7feec6977e2",
+          "mode": 33216
+        },
+        "tests/api.goose": {
+          "sha256": "a829117f5b9fefa335f04b026ef00e69806a0fafb61481565e11fca0ac7caf86",
+          "mode": 33152
+        },
+        "tests/fuzz.goose": {
+          "sha256": "b87666d6345dbc6abeb8b0bcf94c86560c7c40b232a972bfb60a83f6365544fa",
+          "mode": 33152
+        },
+        "tests/oracle.goose": {
+          "sha256": "6236264c19c5ec4f7dbea4a1c5e603a6511b7ef5f6481abb8dd2a9d7540945f3",
+          "mode": 33152
+        },
+        "tests/oracle.py": {
+          "sha256": "ddaf22911dd4a58bacd0adb2daab548a3a55d1fc36fe2ba84bac76ae2baa44e5",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/clang-sanitize.json": {
+          "sha256": "05be1bb6ac07e8b250aacb5ddbfe9d1d086aacba363aab9e3872479df5b31dac",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/clang-sanitize.log": {
+          "sha256": "ce714af04019e5730c35012e574e1fb84ae35296a08ed78737206c50d0a9c383",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/gcc-sanitize.json": {
+          "sha256": "998f2d1f8998bd7bbd9ac5c1f4747d1c1d07d2e4d83fb5f2cf59bc02f4dcb628",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/gcc-sanitize.log": {
+          "sha256": "db33ee0d4cab5d349700972f6de8a8ea1cce46b1a0f62df758e549ff0daebe98",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/oracle-debug.json": {
+          "sha256": "296a36da17dc0fe9a7cd57c52da336866aa8185f41a8e228edeb61b91a065818",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/oracle-jit.json": {
+          "sha256": "d8229fcc388b8ff571007b88a61bc33aba2a9c3e66ba0d4a67d321b670b13a80",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/oracle-native.json": {
+          "sha256": "15d372e7ec534eb38169e81844173db0b9eadba5bb1d51d638677b0ddb45256f",
+          "mode": 33152
+        },
+        "tests/results/2026-11-05/public.log": {
+          "sha256": "4620dc9f4fba9cee8ff12ae1b2aed596b8ab6b3ecebf9a9133803d0a55da40b3",
+          "mode": 33152
+        },
+        "tests/support.goose": {
+          "sha256": "73feaaeeff180514d4bfe3144ed20132bcfe5d8456e44b3f381f080f0e5bcbbf",
+          "mode": 33152
+        }
+      }
+    },
+    "goose_revision": "eadca409f68210893f366e60d0c2f0dc29a339be",
+    "tools": {
+      "goose": {
+        "path": "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "sha256": "d6992f984453e28b1e9fc2540236063c0c9db67634a99b57a9a46ea58704c313",
+        "version": "goose eadca40 (runtime 3025e5810379)"
+      },
+      "cc": {
+        "path": "/usr/bin/gcc",
+        "sha256": "8aac907d6fbf40394b424b5fa4a2ad1aa291dac7d3a0315c5b415c1f5ace1287",
+        "version": "gcc (GCC) 16.2.1 20260810\nCopyright (C) 2026 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+      },
+      "python": {
+        "path": "/usr/bin/python3.14",
+        "sha256": "122ce07db306cd111fd10e27125460362610452983a64903c470afd66b6403bd",
+        "version": "3.14.9 (main, Oct 25 2026, 14:52:47) [GCC 16.2.1 20260810]"
+      }
+    }
+  },
+  "fuzz_runs": 10000,
+  "seed": 81297,
+  "executions": [
+    {
+      "command": [
+        "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "run",
+        "tests/fuzz.goose",
+        "--",
+        "10000"
+      ],
+      "stdout": "csv seeded mutation fuzz: 10000 cases, seed 81297, checksum 1172115575\n",
+      "stderr": "",
+      "returncode": 0,
+      "executable_sha256": "d6992f984453e28b1e9fc2540236063c0c9db67634a99b57a9a46ea58704c313"
+    },
+    {
+      "command": [
+        "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "run",
+        "tests/fuzz.goose",
+        "--debug",
+        "--",
+        "10000"
+      ],
+      "stdout": "csv seeded mutation fuzz: 10000 cases, seed 81297, checksum 1172115575\n",
+      "stderr": "",
+      "returncode": 0,
+      "executable_sha256": "d6992f984453e28b1e9fc2540236063c0c9db67634a99b57a9a46ea58704c313"
+    },
+    {
+      "command": [
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/fuzz",
+        "10000"
+      ],
+      "stdout": "csv seeded mutation fuzz: 10000 cases, seed 81297, checksum 1172115575\n",
+      "stderr": "",
+      "returncode": 0,
+      "executable_sha256": "9aaa465e0a440cdf15a3c8297b60e86bcb17c07b01e26d501fa8b91e54f38728"
+    }
+  ]
+}

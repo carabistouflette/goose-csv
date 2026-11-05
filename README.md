@@ -80,3 +80,7 @@ GCC/Clang `make sanitize SANITIZER_CC=...`, and `make bench`.
 See [contributing](CONTRIBUTING.md), [security](SECURITY.md),
 [notices](THIRD_PARTY_NOTICES.md). See [validation](docs/VALIDATION.md) and [baseline methodology](bench/README.md)
 for exact tested sources, corpus, compilers, measurements and limitations.
+
+The [native feature/performance comparison](docs/COMPARISON.md) publishes pinned
+alternatives, all retained trials, large-field gains and short-field regressions.
+Its optimized caller tier is separate from the initial baseline measurements.
