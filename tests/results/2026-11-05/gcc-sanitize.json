@@ -1,0 +1,392 @@
+{
+  "recorded_at_utc": "2026-11-05T00:40:43.595640+00:00",
+  "inputs": {
+    "source": {
+      "head": "e17b37d6864c3f4cacc56108880e29a865907e42",
+      "status": "",
+      "files": {
+        ".github/workflows/ci.yml": {
+          "sha256": "30b7b2611b0da68c67223cf9f98397b05bdec3680e10b192b21cf83e452fd46f",
+          "mode": 33152
+        },
+        ".gitignore": {
+          "sha256": "1209ea25e255b24d5fc0e78c50c61037d78cc4f7c7e65cc4a22bd23a4cd2eec5",
+          "mode": 33152
+        },
+        "CHANGELOG.md": {
+          "sha256": "007ad6b2de980ea97051c47d3e244b0233a12f07648ca4e41c19f04495b02671",
+          "mode": 33152
+        },
+        "CONTRIBUTING.md": {
+          "sha256": "d54fdda2c0624287259b23aab08e2c23e832ddaa24ba81dee9333cc6710d1d0c",
+          "mode": 33152
+        },
+        "GOOSE_REVISION": {
+          "sha256": "64e14b181dfe96743211738fb0f1b1f7798ea940da2ca50ff122e6f028c24e15",
+          "mode": 33152
+        },
+        "LICENSE": {
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "mode": 33152
+        },
+        "Makefile": {
+          "sha256": "40d9da99c05bdf9bb3098f9b3185b57b47531f9bac1362a740f216ce14aa2bfb",
+          "mode": 33152
+        },
+        "README.md": {
+          "sha256": "490d95cd5da729d699048a26ebedda5663c9a0e0d85166d78104c38b9ead3552",
+          "mode": 33152
+        },
+        "SECURITY.md": {
+          "sha256": "2e69b1b3e4b651aa94a601c791a733df7191bb799a12c1167831a9321e93f332",
+          "mode": 33152
+        },
+        "THIRD_PARTY_NOTICES.md": {
+          "sha256": "f0a815cf990f4dfba092c6fc01d0bb153a215c932ae818a240cd1b9aa222b5cb",
+          "mode": 33152
+        },
+        "bench/README.md": {
+          "sha256": "4c4302d73319926c4d09f82824c31f0c3afaf5f709cb23662b620f7b507333db",
+          "mode": 33152
+        },
+        "bench/bench.goose": {
+          "sha256": "ac301ec51d0f0cfb4296a9a12b63a681e0bf76ad768f4a5df8b857cf71e91557",
+          "mode": 33152
+        },
+        "bench/measure.py": {
+          "sha256": "5154d5485a07a73e54cf2753e532b3be6374c4305b87a56ae351cbfacec2aca8",
+          "mode": 33152
+        },
+        "csv.goose": {
+          "sha256": "960908743ad097c8df52f6457bb0c0c8f1e3f833f4212c82828da2acc942174f",
+          "mode": 33152
+        },
+        "docs/DESIGN.md": {
+          "sha256": "35459f9be1d4b07440cdb9191067b52b8aa5439bce9aa3c5930300b7adb2ecaa",
+          "mode": 33152
+        },
+        "examples/stream.goose": {
+          "sha256": "78fdb77b154fe280b63dd5da7bea4b57d8dac486241c19ba245a54b45a1c3354",
+          "mode": 33152
+        },
+        "scripts/provenance.py": {
+          "sha256": "42a117b333881bc42f25c2fa79861867e31183e7d7f73e5c6be3335d8edacc0c",
+          "mode": 33152
+        },
+        "scripts/sanitize.py": {
+          "sha256": "6ac293b0c853d284218c061d8264497d4beec8ec33b673a8bb44005019c23423",
+          "mode": 33152
+        },
+        "scripts/setup-goose.sh": {
+          "sha256": "a258081d49cd91986ebbc17a5b2bec7b0acbde54821416143bbac7feec6977e2",
+          "mode": 33216
+        },
+        "tests/api.goose": {
+          "sha256": "61e92177942a8e1f4fbb6ea35dd6e6dbb373ac8d0ecfeae9efe24ce8c766bddf",
+          "mode": 33152
+        },
+        "tests/fuzz.goose": {
+          "sha256": "b87666d6345dbc6abeb8b0bcf94c86560c7c40b232a972bfb60a83f6365544fa",
+          "mode": 33152
+        },
+        "tests/oracle.goose": {
+          "sha256": "6236264c19c5ec4f7dbea4a1c5e603a6511b7ef5f6481abb8dd2a9d7540945f3",
+          "mode": 33152
+        },
+        "tests/oracle.py": {
+          "sha256": "a0091d4775faf089591859d0263d5249943e48343177206693ec965414b533e2",
+          "mode": 33152
+        },
+        "tests/support.goose": {
+          "sha256": "73feaaeeff180514d4bfe3144ed20132bcfe5d8456e44b3f381f080f0e5bcbbf",
+          "mode": 33152
+        }
+      }
+    },
+    "goose_revision": "eadca409f68210893f366e60d0c2f0dc29a339be",
+    "tools": {
+      "goose": {
+        "path": "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "sha256": "d6992f984453e28b1e9fc2540236063c0c9db67634a99b57a9a46ea58704c313",
+        "version": "goose eadca40 (runtime 3025e5810379)"
+      },
+      "cc": {
+        "path": "/usr/bin/gcc",
+        "sha256": "8aac907d6fbf40394b424b5fa4a2ad1aa291dac7d3a0315c5b415c1f5ace1287",
+        "version": "gcc (GCC) 16.2.1 20260810\nCopyright (C) 2026 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+      },
+      "python": {
+        "path": "/usr/bin/python3.14",
+        "sha256": "122ce07db306cd111fd10e27125460362610452983a64903c470afd66b6403bd",
+        "version": "3.14.9 (main, Oct 25 2026, 14:52:47) [GCC 16.2.1 20260810]"
+      }
+    }
+  },
+  "platform": "Linux-7.2.11-arch1-1-x86_64-with-glibc2.44",
+  "affinity": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    7
+  ],
+  "compiler_commands": [
+    [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-O2",
+      "/home/arobin/.goose/build/prog/api-41121691/api.c",
+      "-o",
+      "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api",
+      "-lm",
+      "-pthread",
+      "-ldl",
+      "-O1",
+      "-g",
+      "-fno-omit-frame-pointer",
+      "-fsanitize=address,undefined",
+      "-UNDEBUG",
+      "-no-pie"
+    ],
+    [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-O0",
+      "-g",
+      "/home/arobin/.goose/build/prog/api-41121691/api.c",
+      "-o",
+      "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api-debug",
+      "-lm",
+      "-pthread",
+      "-ldl",
+      "-O1",
+      "-g",
+      "-fno-omit-frame-pointer",
+      "-fsanitize=address,undefined",
+      "-UNDEBUG",
+      "-no-pie"
+    ],
+    [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-O2",
+      "/home/arobin/.goose/build/prog/oracle-34e8deb0/oracle.c",
+      "-o",
+      "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/oracle",
+      "-lm",
+      "-pthread",
+      "-ldl",
+      "-O1",
+      "-g",
+      "-fno-omit-frame-pointer",
+      "-fsanitize=address,undefined",
+      "-UNDEBUG",
+      "-no-pie"
+    ],
+    [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    [
+      "/usr/bin/gcc",
+      "--version"
+    ],
+    [
+      "/usr/bin/gcc",
+      "-O2",
+      "/home/arobin/.goose/build/prog/fuzz-44d326cf/fuzz.c",
+      "-o",
+      "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/fuzz",
+      "-lm",
+      "-pthread",
+      "-ldl",
+      "-O1",
+      "-g",
+      "-fno-omit-frame-pointer",
+      "-fsanitize=address,undefined",
+      "-UNDEBUG",
+      "-no-pie"
+    ]
+  ],
+  "compiler_commands_sha256": "efe7a20165d388806ccce6b87f3c9b0239a4d6909c17780bf52af40f2fdc00f6",
+  "binaries": {
+    "api": {
+      "path": "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api",
+      "sha256": "7313451fe5249c8237b967711530439419b59ceb6b4497f7f78e6ab3ce0699fe"
+    },
+    "api-debug": {
+      "path": "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api-debug",
+      "sha256": "2100dd4eafb7b31640ca950cfb10f358fb081aee06fa40f5b90af63770291075"
+    },
+    "oracle": {
+      "path": "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/oracle",
+      "sha256": "b56cce7dc8dd4f92e12bea1497c726c74d119a8a4b07c5125a99603ba38fd5e1"
+    },
+    "fuzz": {
+      "path": "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/fuzz",
+      "sha256": "0cc21e4a9717e491c44e7e311bf093262d5ba74d1ed2669f1c7dabe0e0c3d300"
+    }
+  },
+  "executions": [
+    {
+      "command": [
+        "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "build",
+        "tests/api.goose",
+        "--standalone",
+        "--cc",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/cc",
+        "-o",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api"
+      ],
+      "returncode": 0,
+      "stdout": "built /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "build",
+        "tests/api.goose",
+        "--standalone",
+        "--debug",
+        "--cc",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/cc",
+        "-o",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api-debug"
+      ],
+      "returncode": 0,
+      "stdout": "built /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api-debug\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "build",
+        "tests/oracle.goose",
+        "--standalone",
+        "--cc",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/cc",
+        "-o",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/oracle"
+      ],
+      "returncode": 0,
+      "stdout": "built /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/oracle\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/goose-http-standalone-kn_xeeq3/.toolchain/goose/build/goose",
+        "build",
+        "tests/fuzz.goose",
+        "--standalone",
+        "--cc",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/cc",
+        "-o",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/fuzz"
+      ],
+      "returncode": 0,
+      "stdout": "built /home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/fuzz\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api"
+      ],
+      "returncode": 0,
+      "stdout": "csv public API: split boundaries, limits, ownership, lifecycle and atomic writer checks passed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/api-debug"
+      ],
+      "returncode": 0,
+      "stdout": "csv public API: split boundaries, limits, ownership, lifecycle and atomic writer checks passed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/fuzz",
+        "10000"
+      ],
+      "returncode": 0,
+      "stdout": "csv seeded mutation fuzz: 10000 cases, seed 81297, checksum 1172115575\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "tests/oracle.py",
+        "--binary",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/oracle",
+        "--output",
+        "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/oracle-results.json"
+      ],
+      "returncode": 0,
+      "stdout": "csv Python oracle: 3716 differential/contract cases passed; corpus b4a7baf25fcac684e05810d10e55d57b2fe4cad929f780cb32c081a436136fb6\n",
+      "stderr": ""
+    }
+  ],
+  "oracle": {
+    "seed": 712901,
+    "cases": 3716,
+    "writer_cases": 707,
+    "parser_inputs": 514,
+    "contract_errors": 12,
+    "corpus_sha256": "b4a7baf25fcac684e05810d10e55d57b2fe4cad929f780cb32c081a436136fb6",
+    "expected_sha256": "2a54a6f95677451a14846d2701380b3424625a94c2325c2bc8009087c702b634",
+    "stdout_sha256": "2a54a6f95677451a14846d2701380b3424625a94c2325c2bc8009087c702b634",
+    "python": "3.14.9 (main, Oct 25 2026, 14:52:47) [GCC 16.2.1 20260810]",
+    "python_csv_version": "1.0",
+    "platform": "Linux-7.2.11-arch1-1-x86_64-with-glibc2.44",
+    "command": [
+      "/home/arobin/Work/Projects/goose-libs/libraries/goose-csv/.build/sanitize/gcc-6nuc_r9l/oracle"
+    ],
+    "executable_sha256": "b56cce7dc8dd4f92e12bea1497c726c74d119a8a4b07c5125a99603ba38fd5e1",
+    "source_sha256": {
+      "csv.goose": "960908743ad097c8df52f6457bb0c0c8f1e3f833f4212c82828da2acc942174f",
+      "tests/api.goose": "61e92177942a8e1f4fbb6ea35dd6e6dbb373ac8d0ecfeae9efe24ce8c766bddf",
+      "tests/fuzz.goose": "b87666d6345dbc6abeb8b0bcf94c86560c7c40b232a972bfb60a83f6365544fa",
+      "tests/oracle.goose": "6236264c19c5ec4f7dbea4a1c5e603a6511b7ef5f6481abb8dd2a9d7540945f3",
+      "tests/support.goose": "73feaaeeff180514d4bfe3144ed20132bcfe5d8456e44b3f381f080f0e5bcbbf",
+      "tests/oracle.py": "a0091d4775faf089591859d0263d5249943e48343177206693ec965414b533e2"
+    },
+    "source_head": "e17b37d6864c3f4cacc56108880e29a865907e42",
+    "source_status": "",
+    "notes": [
+      "Latin-1 is a reversible byte/str bridge, not encoding validation",
+      "Malformed expectations follow the explicit contract; Python csv is more permissive for some forms",
+      "Finite seeded differential corpus, not coverage-guided fuzzing or certification"
+    ]
+  },
+  "fuzz_seed": 81297,
+  "fuzz_runs": 10000,
+  "notes": [
+    "Instrumented actual generated Goose/runtime C; installed system libraries not rebuilt",
+    "Finite seeded mutation/roundtrip fuzzing, not coverage-guided fuzzing or certification"
+  ]
+}
