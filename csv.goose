@@ -2,10 +2,11 @@
 namespace csv;
 import std;
 
-const MAX_FIELD_BYTES: i64 = 16777216;
-const MAX_ROW_BYTES:   i64 = 67108864;
-const MAX_TOTAL_BYTES: i64 = 1152921504606846976;
-const MAX_FIELDS:      i64 = 65536;
+const MAX_FIELD_BYTES: i64              = 16777216;
+const MAX_ROW_BYTES:   i64              = 67108864;
+const MAX_TOTAL_BYTES: i64              = 1152921504606846976;
+const MAX_FIELDS:      i64              = 65536;
+const NO_FIELDS:       (const u8[:])[0] = [];
 struct Limits {
     max_field_bytes: i64 = 1048576,
     max_row_bytes:   i64 = 4194304,

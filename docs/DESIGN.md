@@ -34,7 +34,8 @@ standard-library csv. Differences above are deliberate and tested explicitly.
 - Row is a root owner of decoded bytes plus offset/length spans. field_count(row)
   reports the number of fields; field(row,index) takes a zero-based in-range index
   and returns a borrowed view (invalid indexing follows Goose bounds behavior).
-  Retain a Row by not passing it as a later output. Views follow Goose borrow rules.
+  Retain a Row by not passing it as a later output. Views refer to that Row and
+  can change or be invalidated when it is reused; finish reading them first.
 - Reader, Writer and Row are caller-owned root owners, not ordinary copyable
   values. Reader stores partial bytes/spans directly, not a nested Row root. Do
   not modify, serialize or exchange internal fields. Default Reader/Writer states
@@ -47,6 +48,9 @@ standard-library csv. Differences above are deliberate and tested explicitly.
   Step is NeedInput/Row/End/Error. It consumes at most one completed row, retains
   no input views, and stops exactly after that row's ending. Caller resumes at
   chunk[consumed..]. Empty chunks are allowed. Row output changes only on Row.
+  Input chunks must not borrow output Row storage or Reader internals: replacing
+  an output owner must not alter the caller's remaining input. Goose supports
+  aliases; do not assume the compiler rejects every disallowed alias.
 - finish(Reader&, Row&) signals EOF. It can emit one final unterminated Row, then
   End; repeated finish returns End. Read on a finished reader with nonempty input
   is InvalidState. Read(empty) on a finished reader returns End.
@@ -60,7 +64,8 @@ standard-library csv. Differences above are deliberate and tested explicitly.
   with exactly one encoded CRLF row. Preflight bounds before encoding; on any
   reported failure writer state and previous output are unchanged, permitting a
   corrected retry. A private scratch buffer avoids destructive input/output alias
-  interactions where the compiler permits borrowing them at the call.
+  interactions where the compiler permits borrowing them at the call. Use the
+  typed NO_FIELDS constant for a zero-field row (bare [] inference is conservative).
 
 LF-only input in CRLF-only mode reports UnexpectedLf; a CR lacking its LF reports
 ExpectedLf.
@@ -82,11 +87,11 @@ bytes/appending spans or computing writer sizes. Check field-count capacity
 before creating fields; a comma already implies an additional field. Reader
 storage holds only its current row plus the caller's previous output capacity,
 reused as independent components. Completed rows copy bytes/spans to the caller
-  before clearing partial storage, linear in total emitted bytes/fields. Writer
-  preflights then encodes into bounded scratch and copies to caller output. No
-  O(1) growable-buffer swap or copyable-root promise is made; std::swap aliases/
-  copies nonfixed values and is not used for ownership transfer. Prior caller
-  output capacity and previously used limits can affect retained capacity.
+before clearing partial storage, linear in total emitted bytes/fields. Writer
+preflights then encodes into bounded scratch and copies to caller output. No
+O(1) growable-buffer swap or copyable-root promise is made; std::swap aliases/
+copies nonfixed values and is not used for ownership transfer. Prior caller
+output capacity and previously used limits can affect retained capacity.
 Logical limits do not imply exact allocator/RSS bounds; runtime allocation failure
 follows Goose runtime behavior. No whole input copy, per-byte rescanning or growing
 queue of rows. Reader O(input bytes), writer O(input bytes + fields + output bytes).
