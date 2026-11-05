@@ -76,6 +76,12 @@ def main():
             raise RuntimeError("matching canonical-path identical-code controls required")
         if control["inputs"]["tools"] != frozen["tools"] or control["flags"] != FLAGS:
             raise RuntimeError("control tools/flags differ")
+    build_affinity = set(build_record["build_affinity"])
+    if len(build_affinity) != 1 or not build_affinity <= os.sched_getaffinity(0):
+        raise RuntimeError("build receipt must select one available build CPU")
+    if args.phase == "compare" and control["build_affinity"] != sorted(build_affinity):
+        raise RuntimeError("control build CPU differs")
+    os.sched_setaffinity(0, build_affinity)
     builds, variants = {}, {}
     for label, revision in (("A", BASELINE), ("B", BASELINE if args.phase == "control" else "WORKTREE")):
         builds[label] = build_goose(goose, cc, revision, folder)
@@ -183,6 +189,7 @@ def main():
         groups.setdefault(key, []).append(row["elapsed_ns"] / row["counts"][1])
     result = {"recorded_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
               "phase": args.phase, "inputs": frozen, "harness": harness, "flags": FLAGS,
+              "build_affinity": sorted(build_affinity),
               "controls_sha256": hashlib.sha256(control_bytes).hexdigest() if control_bytes else None,
               "build_record_sha256": hashlib.sha256(build_receipt_bytes).hexdigest(), "builds": builds,
               "journal_sha256": sha256(journal_path),

@@ -114,3 +114,10 @@ wrapper, changing quote-count vectorization and dense-writer throughput. The
 optimized caller tier is a harness change, not another library speedup. It uses
 fresh matching A/A controls and separate comparison records. Neither tier proves
 that every application context or compiler will make the same decisions.
+
+Builds select one CPU (`build.py --cpu`, default first allowed CPU), recorded in
+the build receipt. The recorder rebuilds baseline and candidate with that same
+build affinity, then selects its separate runtime CPU. This stabilizes native
+CPU detection and distinguishes build placement from measured affinity. Local
+comparison builds use CPU 2 and measured programs use CPU 4; these are placement
+choices on a shared host, with no isolation claim.

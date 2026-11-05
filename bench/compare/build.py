@@ -175,15 +175,21 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--goose", type=Path, required=True)
     parser.add_argument("--cc", default="gcc")
+    parser.add_argument("--cpu", type=int, help="fixed build CPU; default first allowed CPU")
     parser.add_argument("--revision", default="WORKTREE")
     parser.add_argument("--goose-only", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    allowed = os.sched_getaffinity(0)
+    build_cpu = min(allowed) if args.cpu is None else args.cpu
+    if build_cpu not in allowed:
+        parser.error("build CPU is outside allowed affinity")
+    os.sched_setaffinity(0, {build_cpu})
     goose, compiler = args.goose.resolve(strict=True), Path(shutil.which(args.cc)).resolve(strict=True)
     frozen = inputs(goose, compiler)
     folder = ROOT / ".build/comparison"
     folder.mkdir(parents=True, exist_ok=True)
-    result = {"inputs": frozen, "goose": build_goose(goose, compiler, args.revision, folder)}
+    result = {"inputs": frozen, "build_affinity": sorted(os.sched_getaffinity(0)), "goose": build_goose(goose, compiler, args.revision, folder)}
     if not args.goose_only:
         result["alternatives"] = alternatives(compiler, folder)
     if inputs(goose, compiler) != frozen:
