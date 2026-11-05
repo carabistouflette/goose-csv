@@ -32,7 +32,7 @@ fn dump_row(row: const csv::Row&) {
 fn report(records: i64, bytes: i64, checksum: i64, elapsed: i64, ok: bool) {
     print("S ", records, " ", bytes, " ", checksum, " ", elapsed, " ", if ok { "ok" } else { "error" });
 }
-fn parse(data: const u8[:], chunk: i64, repeats: i64, dump: bool) {
+inline fn parse(data: const u8[:], chunk: i64, repeats: i64, dump: bool) {
     var reader = csv::Reader { .. }; var row = csv::Row { .. };
     assert(csv::init(reader, csv::Limits { max_total_bytes: csv::MAX_TOTAL_BYTES, .. }).error == csv::Error.None);
     var records: i64 = 0; var bytes: i64 = 0; var checksum: i64 = 0;
@@ -94,7 +94,7 @@ fn load(data: Dataset&, path: const u8[:]) {
     // All backing bytes are stable before views are constructed.
     for s in data.spans { data.fields.push(data.raw[s.start..s.start + s.len]); }
 }
-fn encode(data: const Dataset&, repeats: i64, dump: bool) {
+inline fn encode(data: const Dataset&, repeats: i64, dump: bool) {
     var writer = csv::Writer { .. }; var output: u8[>..] = [];
     assert(csv::init(writer, csv::Limits { max_total_bytes: csv::MAX_TOTAL_BYTES, .. }).error == csv::Error.None);
     var records: i64 = 0; var bytes: i64 = 0; var checksum: i64 = 0;

@@ -99,3 +99,18 @@ establish equivalent exact budgets, strict malformed rejection, lifecycle/error
 coordinates, retry atomicity, allocation/RSS behavior or a universal fastest CSV
 implementation. Accepted source changes additionally require the existing public
 API/oracle/fuzz and GCC/Clang sanitizer gates.
+
+## Caller context
+
+The optimized native caller tier explicitly inlines the Goose benchmark's
+`parse` and `encode` entry wrappers for both released baseline and candidate.
+This keeps Root dataset provenance visible to the compiler despite changes in
+the opposite mode. Other adapters retain their existing legal optimizations;
+no extra copies, validation or forced non-inlining are imposed on them.
+
+The original caller records remain real results for their original harness.
+In particular, a larger reader caused the compiler to stop inlining the writer
+wrapper, changing quote-count vectorization and dense-writer throughput. The
+optimized caller tier is a harness change, not another library speedup. It uses
+fresh matching A/A controls and separate comparison records. Neither tier proves
+that every application context or compiler will make the same decisions.
