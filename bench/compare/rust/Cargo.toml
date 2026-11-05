@@ -1,0 +1,16 @@
+[package]
+name = "goose-csv-compare"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+csv = "=1.4.0"
+csv-core = "=0.1.13"
+simd-csv = "=0.14.0"
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = "thin"
+overflow-checks = true

@@ -18,7 +18,8 @@ check:
 	"$(GOOSE)" check tests/fuzz.goose
 	"$(GOOSE)" check examples/stream.goose
 	"$(GOOSE)" check bench/bench.goose
-	python3 -m py_compile tests/*.py scripts/*.py bench/*.py
+	"$(GOOSE)" check bench/compare/driver.goose
+	python3 -m py_compile tests/*.py scripts/*.py bench/*.py bench/compare/*.py
 	git diff --check
 test:
 	mkdir -p .build

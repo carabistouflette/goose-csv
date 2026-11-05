@@ -1,3 +1,4 @@
 .build/
 .toolchain/
 __pycache__/
+bench/compare/rust/target/
