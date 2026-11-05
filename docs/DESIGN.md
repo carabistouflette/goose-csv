@@ -31,15 +31,18 @@ standard-library csv. Differences above are deliberate and tested explicitly.
 - Defaults: field 1 MiB, row 4 MiB, total 64 MiB, fields 4096. All zero limits are valid.
   Hard ceilings: field 16 MiB, row 64 MiB, total 2^60, fields 65536. Negative or above
   ceiling options are invalid. Limits are snapshotted at initialization.
-- Row owns decoded bytes plus offset/length spans; field(row,index) returns a
-  borrowed view. The caller can retain/copy a row. Views follow Goose borrow
-  rules and cannot survive mutation of their owning Row.
-- Reader and Writer are caller-owned ordinary values with internal state. Do not
-  modify, serialize or exchange their internal fields. Default states are inactive.
-  Copies fork progress with independently owned storage under Goose value rules.
+- Row is a root owner of decoded bytes plus offset/length spans. field_count(row)
+  reports the number of fields; field(row,index) takes a zero-based in-range index
+  and returns a borrowed view (invalid indexing follows Goose bounds behavior).
+  Retain a Row by not passing it as a later output. Views follow Goose borrow rules.
+- Reader, Writer and Row are caller-owned root owners, not ordinary copyable
+  values. Reader stores partial bytes/spans directly, not a nested Row root. Do
+  not modify, serialize or exchange internal fields. Default Reader/Writer states
+  are inactive; roots cannot be copied, nested, reassigned or returned by value.
 - init(Reader&, limits=default, allow_lf=true) and init(Writer&, limits=default)
   validate before mutation. Invalid initialization leaves old state unchanged;
-  valid initialization resets counters/storage and drops previously held buffers.
+  valid initialization resets counters and clears individual storage components.
+  Capacity retention follows Goose runtime behavior, not an OS-memory guarantee.
 - read(Reader&, chunk: const u8[:], Row&) returns Progress {step, consumed, status}.
   Step is NeedInput/Row/End/Error. It consumes at most one completed row, retains
   no input views, and stops exactly after that row's ending. Caller resumes at
@@ -48,12 +51,19 @@ standard-library csv. Differences above are deliberate and tested explicitly.
   End; repeated finish returns End. Read on a finished reader with nonempty input
   is InvalidState. Read(empty) on a finished reader returns End.
 - Parser errors are sticky until init; subsequent operations consume zero bytes
-  and return the first Status. Uninitialized operations return InvalidState.
+  and return the first Status. Nonempty read after End also makes InvalidState
+  sticky; subsequent finish/read return that error until init. Uninitialized
+  reader operations similarly make InvalidState sticky. Writer failures do not
+  poison its state. An emitted Row validates its prefix only: callers must drive
+  the entire input through finish/End before claiming whole-input validity.
 - write(Writer&, fields: const (const u8[:])[:], output: u8[>..]&) replaces output
   with exactly one encoded CRLF row. Preflight bounds before encoding; on any
   reported failure writer state and previous output are unchanged, permitting a
   corrected retry. A private scratch buffer avoids destructive input/output alias
   interactions where the compiler permits borrowing them at the call.
+
+LF-only input in CRLF-only mode reports UnexpectedLf; a CR lacking its LF reports
+ExpectedLf.
 
 ## Errors and accounting
 
@@ -64,25 +74,32 @@ byte; valid prefix bytes remain counted and internal partial state is poisoned.
 Success coordinates are unspecified. Writer errors identify the failing field
 (and next record); offset is start of the unwritten row because no bytes escaped.
 Errors: None, InvalidOptions, InvalidState, UnexpectedQuote, AfterQuote,
-ExpectedLf, UnclosedQuote, FieldLimit, RowLimit, TotalLimit, FieldCountLimit.
+ExpectedLf, UnexpectedLf, UnclosedQuote, FieldLimit, RowLimit, TotalLimit, FieldCountLimit.
 If multiple constraints fail simultaneously, precedence is unspecified.
 
 No unbounded addition or counter wrap. Check subtraction budgets before accepting
 bytes/appending spans or computing writer sizes. Check field-count capacity
 before creating fields; a comma already implies an additional field. Reader
 storage holds only its current row plus the caller's previous output capacity,
-reused through swaps. Writer holds one bounded scratch row plus caller output.
+reused as independent components. Completed rows copy bytes/spans to the caller
+  before clearing partial storage, linear in total emitted bytes/fields. Writer
+  preflights then encodes into bounded scratch and copies to caller output. No
+  O(1) growable-buffer swap or copyable-root promise is made; std::swap aliases/
+  copies nonfixed values and is not used for ownership transfer. Prior caller
+  output capacity and previously used limits can affect retained capacity.
 Logical limits do not imply exact allocator/RSS bounds; runtime allocation failure
 follows Goose runtime behavior. No whole input copy, per-byte rescanning or growing
 queue of rows. Reader O(input bytes), writer O(input bytes + fields + output bytes).
-Writer uses bounded per-field quote metadata if needed and copies safe runs.
+Writer uses bounded per-field quote metadata and copies safe runs.
 
 ## Validation and release gates
 
 Public regressions for every split of representative CRLF/escaped-quote/UTF-8-byte
 inputs, EOF variants, blank rows, malformed quotes, exact limits/overflow and
 terminal state; output preservation and writer retry. Test retained-row ownership,
-reuse/reset and all public entry paths. Independent Python csv reader/writer
+reuse/reset and all public entry paths. Canonical output may exceed reader
+  limits when LF/unterminated rows gain CRLF or a sole empty field gains quotes;
+  roundtrip checks distinguish valid writer bounds rejection from codec failure. Independent Python csv reader/writer
 oracle for the shared dialect, plus explicit divergence cases; bounded seeded
 public-interface mutation fuzzing and roundtrip checks. Do not label random fuzz
 coverage as coverage-guided/native-libFuzzer coverage.
