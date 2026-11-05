@@ -115,47 +115,47 @@ fn emit(reader: Reader&, row: Row&) {
     reader._active = false; reader._phase = Phase.Start; reader._records++;
 }
 // Reader roots pass many component references; inline only the per-byte step.
-inline fn _advance(reader: Reader&, byte: u8) -> Step {
+inline fn _advance(reader: Reader&, byte: u8) -> bool, bool {
     // Budgets are checked before counting the candidate byte or growing storage.
     if reader._total >= reader._limits.max_total_bytes {
-        fail(reader, Error.TotalLimit); return Step.Error;
+        fail(reader, Error.TotalLimit); return false, false;
     }
     if reader._row_bytes >= reader._limits.max_row_bytes {
-        fail(reader, Error.RowLimit); return Step.Error;
+        fail(reader, Error.RowLimit); return false, false;
     }
     var complete = false;
     if reader._phase == Phase.AfterCr {
-        if byte != '\n' { fail(reader, Error.ExpectedLf); return Step.Error; }
+        if byte != '\n' { fail(reader, Error.ExpectedLf); return false, false; }
         complete = true;
     } else if reader._phase == Phase.Quoted {
         if byte == '"' { reader._phase = Phase.QuoteEnd; }
-        else if !append_byte(reader, byte) { return Step.Error; }
+        else if !append_byte(reader, byte) { return false, false; }
     } else if reader._phase == Phase.QuoteEnd && byte == '"' {
-        if !append_byte(reader, byte) { return Step.Error; }
+        if !append_byte(reader, byte) { return false, false; }
         reader._phase = Phase.Quoted;
     } else if byte == ',' {
-        if !comma(reader) { return Step.Error; }
+        if !comma(reader) { return false, false; }
     } else if byte == '\r' || byte == '\n' {
         if byte == '\n' && !reader._allow_lf {
-            fail(reader, Error.UnexpectedLf); return Step.Error;
+            fail(reader, Error.UnexpectedLf); return false, false;
         }
-        if !end_record(reader) { return Step.Error; }
+        if !end_record(reader) { return false, false; }
         if byte == '\r' { reader._phase = Phase.AfterCr; }
         else { complete = true; }
     } else if reader._phase == Phase.QuoteEnd {
-        fail(reader, Error.AfterQuote); return Step.Error;
+        fail(reader, Error.AfterQuote); return false, false;
     } else if byte == '"' {
         if reader._phase != Phase.Start {
-            fail(reader, Error.UnexpectedQuote); return Step.Error;
+            fail(reader, Error.UnexpectedQuote); return false, false;
         }
-        if !current_field(reader) { return Step.Error; }
+        if !current_field(reader) { return false, false; }
         reader._phase = Phase.Quoted; reader._active = true;
     } else {
-        if !append_byte(reader, byte) { return Step.Error; }
+        if !append_byte(reader, byte) { return false, false; }
         reader._phase = Phase.Bare; reader._active = true;
     }
     reader._total++; reader._row_bytes++;
-    return if complete { Step.Row } else { Step.NeedInput };
+    return true, complete;
 }
 fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     var consumed: i64 = 0;
@@ -188,10 +188,10 @@ fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
                 continue;
             }
         }
-        let step = _advance(reader, byte);
-        if step == Step.Error { return error_progress(reader, consumed); }
+        let accepted, complete = _advance(reader, byte);
+        if !accepted { return error_progress(reader, consumed); }
         consumed++;
-        if step == Step.Row { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
+        if complete { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
     }
     return Progress { step: Step.NeedInput, consumed: consumed, .. };
 }
@@ -207,10 +207,10 @@ fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     if chunk.len >= 16 { return _read_runs(reader, chunk, row); }
     var consumed: i64 = 0;
     for byte in chunk {
-        let step = _advance(reader, byte);
-        if step == Step.Error { return error_progress(reader, consumed); }
+        let accepted, complete = _advance(reader, byte);
+        if !accepted { return error_progress(reader, consumed); }
         consumed++;
-        if step == Step.Row { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
+        if complete { emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. }; }
     }
     return Progress { step: Step.NeedInput, consumed: consumed, .. };
 }
@@ -251,16 +251,17 @@ fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> S
         if text.len > writer._limits.max_field_bytes { return writer_status(writer, Error.FieldLimit, i + 1); }
         var quoted = fields.len == 1 && text.len == 0;
         var escapes: i64 = 0;
-        if text.len < 32 {
-            for byte in text {
-                if byte == '"' { quoted = true; escapes++; }
-                else if byte == ',' || byte == '\r' || byte == '\n' { quoted = true; }
-            }
-        } else {
-            let first = find_any(text, _BARE_STOPS);
+        let prefix = min(text.len, 32);
+        for byte in text[..prefix] {
+            if byte == '"' { quoted = true; escapes++; }
+            else if byte == ',' || byte == '\r' || byte == '\n' { quoted = true; }
+        }
+        if prefix < text.len {
+            let rest = text[prefix..];
+            let first = if quoted { find_any(rest, _QUOTE_STOP) } else { find_any(rest, _BARE_STOPS) };
             if first >= 0 {
                 quoted = true;
-                var at = first;
+                var at = prefix + first;
                 while at < text.len {
                     if text[at] == '"' { escapes++; }
                     let next = find_any(text[at + 1..], _QUOTE_STOP);

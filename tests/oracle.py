@@ -42,6 +42,7 @@ def corpus():
             [bytes(range(256))], [b"=1+1", b"@SUM(A1)", b"-3", b"+4"]]
     for _ in range(700):
         rows.append([rng.randbytes(rng.randrange(41)) for _ in range(rng.randrange(9))])
+    baseline_writer_cases = len(rows)
     for n in (15, 16, 17, 31, 32, 33, 63, 64, 65, 255, 256, 257):
         run = b"x" * n
         rows.extend([[run], [run + b'"' + run, b"tail"], [run + b"\r\n" + run],
@@ -53,11 +54,12 @@ def corpus():
         rows.append([b"," + (b"x" * gap + b'"') * 8])
     for n in (31, 32, 33):
         rows.append([b'"' + b"x" * (n - 2) + b'"'])
+        rows.extend([[b"x" * n + b","], [b"x" * n + b"\r\n"], [b"x" * (n - 1) + b'""tail']])
     for i, row in enumerate(rows):
         command = "W " + " ".join(map(str, DEFAULT)) + " " + str(len(row))
         if row: command += " " + " ".join(token(x) for x in row)
         cases.append((f"writer-{i}", command, "W " + token(encoded_row(row))))
-        if i >= 707:
+        if i >= baseline_writer_cases:
             size = len(encoded_row(row))
             for kind in ("row", "total"):
                 for delta in (0, -1):
