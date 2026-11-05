@@ -114,7 +114,7 @@ fn emit(reader: Reader&, row: Row&) {
     reader._row_bytes = 0; reader._field_no = 1; reader._field_start = 0;
     reader._active = false; reader._phase = Phase.Start; reader._records++;
 }
-fn _advance(reader: Reader&, byte: u8) -> Step {
+inline fn _advance(reader: Reader&, byte: u8) -> Step {
     // Budgets are checked before counting the candidate byte or growing storage.
     if reader._total >= reader._limits.max_total_bytes {
         fail(reader, Error.TotalLimit); return Step.Error;
@@ -156,7 +156,7 @@ fn _advance(reader: Reader&, byte: u8) -> Step {
     reader._total++; reader._row_bytes++;
     return if complete { Step.Row } else { Step.NeedInput };
 }
-fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
+inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     var consumed: i64 = 0;
     while consumed < chunk.len {
         let byte = chunk[consumed];
@@ -194,7 +194,7 @@ fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     }
     return Progress { step: Step.NeedInput, consumed: consumed, .. };
 }
-fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
+inline fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     if reader._phase == Phase.Failed { return error_progress(reader); }
     if reader._phase == Phase.Inactive {
         fail(reader, Error.InvalidState); return error_progress(reader);
@@ -236,7 +236,7 @@ fn finish(reader: Reader&, row: Row&) -> Progress {
 fn writer_status(writer: const Writer&, error: Error, field_no: i64 = 1) -> Status {
     return Status { error: error, offset: writer._total, record: writer._records + 1, field: field_no };
 }
-fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> Status {
+inline fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> Status {
     if !writer._initialized { return writer_status(writer, Error.InvalidState); }
     if fields.len > writer._limits.max_fields { return writer_status(writer, Error.FieldCountLimit, writer._limits.max_fields + 1); }
     // Preflight mutates no writer/output state, so a corrected row can retry.
@@ -278,8 +278,14 @@ fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> S
         if additional > writer._limits.max_row_bytes - size { return writer_status(writer, Error.RowLimit, i + 1); }
         if additional > writer._limits.max_total_bytes - writer._total - size { return writer_status(writer, Error.TotalLimit, i + 1); }
         size += additional;
-        let plan = (if quoted { _PLAN_QUOTED } else { 0 as u8 }) | (if escapes > 0 { _PLAN_ESCAPES } else { 0 as u8 }) |
-            (if text.len < 32 || escapes > text.len / 16 { _PLAN_SCALAR } else { 0 as u8 });
+        var plan: u8 = 0;
+        if quoted {
+            plan = _PLAN_QUOTED;
+            if escapes > 0 {
+                plan |= _PLAN_ESCAPES;
+                if text.len < 32 || escapes > text.len / 16 { plan |= _PLAN_SCALAR; }
+            }
+        }
         plans.push(plan);
     }
     writer._scratch.clear();
