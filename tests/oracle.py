@@ -127,6 +127,29 @@ def corpus():
         for chunk in sorted({1, 2, 3, max(1, len(wire))}):
             command = f"P {chunk} {int(allow)} " + " ".join(map(str, limits)) + " " + token(wire)
             cases.append((f"contract-error-{i}-chunk-{chunk}", command, expected))
+    # Independently cross dispatch guards: chunk size, remaining budgets and
+    # optional opening quote must not alter the first rejected byte or old rows.
+    for quoted in (False, True):
+        payload = b"x" * 96
+        wire = (b'"' + payload + b'"' if quoted else payload) + b"\r\n"
+        for prior in (b"", b"ok\n"):
+            prefix = "R 1 6f6b;" if prior else ""
+            for kind in ("field", "row", "total"):
+                for remaining in ((31, 32, 33) if kind == "field" else (63, 64, 65)):
+                    limits = list(DEFAULT)
+                    index = {"field": 0, "row": 1, "total": 2}[kind]
+                    limits[index] = remaining + (len(prior) if kind == "total" else 0)
+                    offset = len(prior) + remaining + (int(quoted) if kind == "field" else 0)
+                    expected = prefix + f"E {kind.title()}Limit {offset} {2 if prior else 1} 1"
+                    for chunk in (63, 64, 65, len(prior + wire)):
+                        command = f"P {chunk} 1 " + " ".join(map(str, limits)) + " " + token(prior + wire)
+                        cases.append((f"dispatch-{quoted}-{bool(prior)}-{kind}-{remaining}-{chunk}", command, expected))
+        for first in (31, 32, 33):
+            fields = [b"x" * first + (b"," if quoted else b""), b"y" * 256]
+            valid = encoded_row(fields)
+            for chunk in (63, 64, 65, len(valid)):
+                command = f"P {chunk} 1 " + " ".join(map(str, DEFAULT)) + " " + token(valid)
+                cases.append((f"dispatch-prefix-{quoted}-{first}-{chunk}", command, rows_response([fields])))
     return cases, {"writer_cases": len(rows), "parser_inputs": len(samples), "contract_errors": len(invalid)}
 
 def source_identity():

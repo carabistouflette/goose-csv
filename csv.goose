@@ -157,19 +157,19 @@ inline fn _advance(reader: Reader&, byte: u8) -> bool, bool {
     reader._total++; reader._row_bytes++;
     return true, complete;
 }
-inline fn _read_scalar(reader: Reader&, chunk: const u8[:], row: Row&, base: i64 = 0) -> Progress {
+inline fn _read_scalar(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     var accepted_bytes: i64 = 0;
     for byte in chunk {
         let accepted, complete = _advance(reader, byte);
-        if !accepted { return error_progress(reader, base + accepted_bytes); }
+        if !accepted { return error_progress(reader, accepted_bytes); }
         accepted_bytes++;
         if complete {
-            let consumed = base + accepted_bytes;
+            let consumed = accepted_bytes;
             emit(reader, row);
             return Progress { step: Step.Row, consumed: consumed, .. };
         }
     }
-    return Progress { step: Step.NeedInput, consumed: base + chunk.len, .. };
+    return Progress { step: Step.NeedInput, consumed: chunk.len, .. };
 }
 // Select bulk scanning only for a promising initial field prefix.
 // Later long fields can stay scalar until the caller supplies another chunk.
@@ -229,6 +229,7 @@ inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress
             emit(reader, row); return Progress { step: Step.Row, consumed: consumed, .. };
         }
     }
+    // Keep the tail local: passing rest with mutable row loses the borrow proof.
     var consumed = chunk.len - rest.len;
     for byte in rest {
         let accepted, complete = _advance(reader, byte);
