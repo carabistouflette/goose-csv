@@ -62,7 +62,6 @@ def execute(binary, engine, operation, path, chunk, repeats=1, dump=True):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--build-record", type=Path, required=True)
-    parser.add_argument("--binaries", type=Path, default=ROOT / ".build/comparison")
     parser.add_argument("--output", type=Path, default=ROOT / ".build/comparison/qualification.json")
     args = parser.parse_args()
     receipt_bytes = args.build_record.read_bytes()
@@ -71,8 +70,9 @@ def main():
     goose_tool, cc_tool = (Path(frozen["tools"][name]["path"]) for name in ("goose", "cc"))
     if inputs(goose_tool, cc_tool) != frozen:
         raise RuntimeError("qualification source/tools differ from build receipt")
-    commands = binaries(args.binaries.resolve())
     expected_binaries = {"goose": receipt["goose"]["binary"], **receipt["alternatives"]["binaries"]}
+    commands = {engine: Path(expected_binaries["rust" if engine in ("rust-csv", "csv-core", "simd-csv") else engine]["path"])
+                for engine in ENGINES}
     for name, expected in expected_binaries.items():
         if artifact(Path(expected["path"])) != expected:
             raise RuntimeError(f"qualification executable differs from build receipt: {name}")

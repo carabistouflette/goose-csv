@@ -44,7 +44,7 @@ error coordinates. Successful premature native EOF is recorded as incomplete
 input even when a parser accepts the prefix.
 
 The corpus preserves the original six fixture contents and adds a long escaped
-field plus deterministic variable mixed records, 1024-column records and
+field, clustered quotes and deterministic variable mixed records, 1024-column records and
 escape-heavy data (seed 712911). Python `csv` independently encodes and completely
 decodes every shared fixture before any native timer. This bounded corpus does
 not establish results on arbitrary production datasets.
@@ -77,7 +77,10 @@ The recorder calibrates each case/engine to at least 100 ms, retains every
 calibration separately, then takes seven samples with alternating engine and
 fixture order. Native monotonic timers exclude process startup, fixture reads and
 initial setup. Timing includes row materialization, buffer growth on first use,
-signatures and complete per-record writer output. Rust buffered writers flush
+signatures and complete per-record writer output. Libcsv preallocates the corpus
+worst-case row output before timing; the other adapters begin with their default
+or 4 KiB storage and grow as needed. Cold allocation latency is not measured.
+Rust buffered writers flush
 every record into an owned reusable sink without shared-mutation adapter overhead.
 csv-core uses reusable caller buffers; libcsv callbacks copy fields into an owned
 reusable row. Goose keeps strict grammar and limit checks, with its supported
