@@ -157,7 +157,7 @@ inline fn _advance(reader: Reader&, byte: u8) -> bool, bool {
     reader._total++; reader._row_bytes++;
     return true, complete;
 }
-fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
+inline fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     var consumed: i64 = 0;
     while consumed < chunk.len {
         let byte = chunk[consumed];
@@ -195,7 +195,7 @@ fn _read_runs(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     }
     return Progress { step: Step.NeedInput, consumed: consumed, .. };
 }
-fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
+inline fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
     if reader._phase == Phase.Failed { return error_progress(reader); }
     if reader._phase == Phase.Inactive {
         fail(reader, Error.InvalidState); return error_progress(reader);
