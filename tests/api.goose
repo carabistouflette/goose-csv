@@ -94,6 +94,30 @@ fn failure(data: const u8[:], limits: csv::Limits, error: csv::Error,
     assert(csv::read(reader, "ok\n", row).step == csv::Step.Row);
     expect(row, ["ok"]);
 }
+fn run_checks() {
+    let defaults = csv::Limits { .. };
+    for n in [15, 16, 17, 31, 32, 33, 63, 64, 65, 255, 256, 257] {
+        var plain: u8[>..] = []; for _ in n { plain.push('x'); }
+        let fields: (const u8[:])[2] = [plain[..], "tail"];
+        let one:    (const u8[:])[1] = [plain[..]];
+        let wire = str(plain, ",tail\r\n");
+        for point in [0, 15, 16, 17, n] {
+            let cut = min(point, wire.len);
+            one_row(wire, fields, cut, cut);
+        }
+        let quoted = str("\"", plain, "\"");
+        one_row(quoted, one, n, n + 1);
+        failure(str(plain, "\""), defaults, csv::Error.UnexpectedQuote, n, 1, 1);
+        failure(str("\"", plain, "\"!"), defaults, csv::Error.AfterQuote, n + 2, 1, 1);
+        failure(plain, csv::Limits { max_field_bytes: n - 1, .. }, csv::Error.FieldLimit, n - 1, 1, 1);
+        failure(quoted, csv::Limits { max_field_bytes: n - 1, .. }, csv::Error.FieldLimit, n, 1, 1);
+        failure(plain, csv::Limits { max_row_bytes: n - 1, .. }, csv::Error.RowLimit, n - 1, 1, 1);
+        failure(plain, csv::Limits { max_total_bytes: n - 1, .. }, csv::Error.TotalLimit, n - 1, 1, 1);
+        failure(plain, csv::Limits { max_field_bytes: n - 1, max_row_bytes: n - 1, max_total_bytes: n - 1, .. },
+            csv::Error.TotalLimit, n - 1, 1, 1);
+        failure(plain, csv::Limits { max_fields: 0, .. }, csv::Error.FieldCountLimit, 0, 1, 1);
+    }
+}
 fn reader_checks() {
     all_splits("a,b\r\n", ["a", "b"]);
     all_splits("\"a\"\"b\",c\r\n", ["a\"b", "c"]);
@@ -282,6 +306,6 @@ fn many_field_checks() {
     assert(csv::field_count(row) == csv::MAX_FIELDS);
 }
 fn main() {
-    reader_checks(); lifecycle_checks(); writer_checks(); large_field_checks(); many_field_checks();
+    reader_checks(); run_checks(); lifecycle_checks(); writer_checks(); large_field_checks(); many_field_checks();
     print("csv public API: split boundaries, limits, ownership, lifecycle and atomic writer checks passed");
 }

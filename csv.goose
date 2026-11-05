@@ -7,6 +7,9 @@ const MAX_ROW_BYTES:   i64              = 67108864;
 const MAX_TOTAL_BYTES: i64              = 1152921504606846976;
 const MAX_FIELDS:      i64              = 65536;
 const NO_FIELDS:       (const u8[:])[0] = [];
+// Prepared once; the pinned standard runtime supplies bounded portable scanning.
+const _BARE_STOPS: ByteSet = byte_set(",\"\r\n");
+const _QUOTE_STOP: ByteSet = byte_set("\"");
 struct Limits {
     max_field_bytes: i64 = 1048576,
     max_row_bytes:   i64 = 4194304,
@@ -118,13 +121,34 @@ fn read(reader: Reader&, chunk: const u8[:], row: Row&) -> Progress {
         fail(reader, Error.InvalidState); return error_progress(reader);
     }
     var consumed: i64 = 0;
-    for byte in chunk {
+    while consumed < chunk.len {
+        let byte = chunk[consumed];
         // Budgets are checked before counting the candidate byte or growing storage.
         if reader._total >= reader._limits.max_total_bytes {
             fail(reader, Error.TotalLimit); return error_progress(reader, consumed);
         }
         if reader._row_bytes >= reader._limits.max_row_bytes {
             fail(reader, Error.RowLimit); return error_progress(reader, consumed);
+        }
+        // A run cannot cross syntax or any budget. The scalar path handles the
+        // first boundary byte, preserving error precedence and exact coordinates.
+        if chunk.len - consumed >= 16 && ((reader._phase == Phase.Quoted && byte != '"') ||
+            ((reader._phase == Phase.Start || reader._phase == Phase.Bare) && byte != ',' && byte != '"' && byte != '\r' && byte != '\n')) {
+            if !current_field(reader) { return error_progress(reader, consumed); }
+            let available = min(chunk.len - consumed, min(reader._limits.max_total_bytes - reader._total,
+                min(reader._limits.max_row_bytes - reader._row_bytes,
+                    reader._limits.max_field_bytes - (reader._bytes.len - reader._field_start))));
+            if available >= 16 {
+                let input = chunk[consumed..consumed + available];
+                let stop = if reader._phase == Phase.Quoted { find_any(input, _QUOTE_STOP) } else { find_any(input, _BARE_STOPS) };
+                let count = if stop < 0 { available } else { stop };
+                if count > 0 {
+                    reader._bytes.append(input[..count]);
+                    if reader._phase != Phase.Quoted { reader._phase = Phase.Bare; reader._active = true; }
+                    reader._total += count; reader._row_bytes += count; consumed += count;
+                    continue;
+                }
+            }
         }
         var complete = false;
         if reader._phase == Phase.AfterCr {
@@ -201,9 +225,16 @@ fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> S
         if text.len > writer._limits.max_field_bytes { return writer_status(writer, Error.FieldLimit, i + 1); }
         var quoted = fields.len == 1 && text.len == 0;
         var escapes: i64 = 0;
-        for byte in text {
-            if byte == '"' { quoted = true; escapes++; }
-            else if byte == ',' || byte == '\r' || byte == '\n' { quoted = true; }
+        let first = find_any(text, _BARE_STOPS);
+        if first >= 0 {
+            quoted = true;
+            var at = first;
+            while at < text.len {
+                if text[at] == '"' { escapes++; }
+                let next = find_any(text[at + 1..], _QUOTE_STOP);
+                if next < 0 { break; }
+                at += next + 1;
+            }
         }
         // text and escape counts are each <= MAX_FIELD_BYTES, so this cannot wrap.
         let additional = text.len + escapes + (if quoted { 2 } else { 0 }) + (if i > 0 { 1 } else { 0 });
@@ -218,10 +249,11 @@ fn write(writer: Writer&, fields: const (const u8[:])[:], output: u8[>..]&) -> S
         if quotes[i] {
             writer._scratch.push('"');
             var start: i64 = 0;
-            for j in text.len {
-                if text[j] == '"' {
-                    writer._scratch.append(text[start..j]); writer._scratch.append("\"\""); start = j + 1;
-                }
+            while start < text.len {
+                let found = find_any(text[start..], _QUOTE_STOP);
+                if found < 0 { break; }
+                let at = start + found;
+                writer._scratch.append(text[start..at]); writer._scratch.append("\"\""); start = at + 1;
             }
             writer._scratch.append(text[start..]); writer._scratch.push('"');
         } else { writer._scratch.append(text); }

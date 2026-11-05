@@ -42,6 +42,11 @@ def corpus():
             [bytes(range(256))], [b"=1+1", b"@SUM(A1)", b"-3", b"+4"]]
     for _ in range(700):
         rows.append([rng.randbytes(rng.randrange(41)) for _ in range(rng.randrange(9))])
+    for n in (15, 16, 17, 31, 32, 33, 63, 64, 65, 255, 256, 257):
+        run = b"x" * n
+        rows.extend([[run], [run + b'"' + run, b"tail"], [run + b"\r\n" + run]])
+        samples.extend([run + b",tail\r\n", b'"' + run + b'""' + run + b'"\r\n',
+                        b'"' + run + b"\r\n" + run + b'"\r\n'])
     for i, row in enumerate(rows):
         command = "W " + " ".join(map(str, DEFAULT)) + " " + str(len(row))
         if row: command += " " + " ".join(token(x) for x in row)
@@ -71,6 +76,21 @@ def corpus():
         (b"a\nb\n", (DEFAULT[0], DEFAULT[1], 3, DEFAULT[3]), True, "TotalLimit", 3, 2, 1),
         (b"a,b", (*DEFAULT[:3], 1), True, "FieldCountLimit", 1, 1, 2),
     ]
+    # Runs must stop before the same first syntax/budget error as scalar reading.
+    for n in (15, 16, 17, 31, 32, 33, 63, 64, 65, 255, 256, 257):
+        run = b"x" * n
+        invalid.extend([
+            (run + b'"', DEFAULT, True, "UnexpectedQuote", n, 1, 1),
+            (b'"' + run + b'"!', DEFAULT, True, "AfterQuote", n + 2, 1, 1),
+            (b'"' + run, DEFAULT, True, "UnclosedQuote", n + 1, 1, 1),
+            (run + b"\rx", DEFAULT, True, "ExpectedLf", n + 1, 1, 1),
+            (run, (n - 1, *DEFAULT[1:]), True, "FieldLimit", n - 1, 1, 1),
+            (b'"' + run + b'"', (n - 1, *DEFAULT[1:]), True, "FieldLimit", n, 1, 1),
+            (run, (DEFAULT[0], n - 1, DEFAULT[2], DEFAULT[3]), True, "RowLimit", n - 1, 1, 1),
+            (run, (DEFAULT[0], DEFAULT[1], n - 1, DEFAULT[3]), True, "TotalLimit", n - 1, 1, 1),
+            (run, (n - 1, n - 1, n - 1, DEFAULT[3]), True, "TotalLimit", n - 1, 1, 1),
+            (run, (*DEFAULT[:3], 0), True, "FieldCountLimit", 0, 1, 1),
+        ])
     for i, (wire, limits, allow, error, offset, record, field) in enumerate(invalid):
         # Deliberately stricter quote/error expectations than Python recovery.
         prefix = "R 2 61 62;" if i == 5 else "R 1 61;" if i == 10 else ""
