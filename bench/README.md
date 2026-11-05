@@ -35,7 +35,7 @@ Goose driver checks every decoded setup field against the originals. Monotonic
 and sampled data signatures. Parser signatures use field count, decoded lengths
 and first/middle/last bytes; writer signatures use actual output length and those
 sampled bytes. Full final fields/output are checked outside case timing. These
-signatures prevent result elision but are not cryptographic integrity proofs.
+signatures resist dead-code elimination but are not cryptographic integrity proofs.
 
 Initialization, fixture/block construction, full setup checks and reporting are
 outside the native case timer. Separate process wall times include all of them

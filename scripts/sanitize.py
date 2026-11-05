@@ -51,8 +51,11 @@ def main():
     if inputs(goose, compiler) != frozen: raise RuntimeError('Source/tools changed during execution; results rejected')
     if any(sha256(v['path']) != v['sha256'] for v in binaries.values()): raise RuntimeError('Executable changed; results rejected')
     commands = [json.loads(line) for line in transcript.read_text().splitlines()]
-    links = [c for c in commands if any(a.startswith('@') and a.endswith('/link-cc.rsp') for a in c)]
-    if len(links) < 4 or any(any(f not in c for f in flags) for c in links):
+    # Pure-Goose programs compile/link a generated C file directly.
+    targets = {v['path'] for v in binaries.values()}
+    links = [c for c in commands if '-o' in c and c.index('-o') + 1 < len(c)
+             and c[c.index('-o') + 1] in targets]
+    if {c[c.index('-o') + 1] for c in links} != targets or any(c[-len(flags)-1:-1] != flags for c in links):
         raise RuntimeError('Actual generated C compiler commands lack sanitizer/assertion flags')
     result = {'recorded_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
               'inputs':frozen,'platform':platform.platform(),'affinity':sorted(os.sched_getaffinity(0)),

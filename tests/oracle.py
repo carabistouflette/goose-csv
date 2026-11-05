@@ -101,7 +101,7 @@ def main():
     payload = "".join(line + "\n" for _, line, _ in cases)
     expected = [value for _, _, value in cases]
     result = subprocess.run(command, input=payload, capture_output=True, text=True, cwd=ROOT, timeout=180)
-    if result.returncode:
+    if result.returncode or result.stderr:
         raise AssertionError(f"oracle driver exit {result.returncode}: stdout={result.stdout[-1500:]!r} stderr={result.stderr[-3000:]!r}")
     actual = result.stdout.splitlines()
     if actual != expected:

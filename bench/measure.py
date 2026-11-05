@@ -180,7 +180,8 @@ def main():
     if sha256(binary) != binary_sha:
         raise RuntimeError("Benchmark binary changed during execution; observations rejected")
     commands = [json.loads(line) for line in transcript.read_text().splitlines()]
-    program_links = [entry for entry in commands if any(arg.startswith("@") and arg.endswith("/link-cc.rsp") for arg in entry)]
+    program_links = [entry for entry in commands if "-o" in entry and entry.index("-o") + 1 < len(entry)
+                     and entry[entry.index("-o") + 1] == str(binary)]
     if not program_links or any(entry[-2:] != ["-O2", "-UNDEBUG"] for entry in program_links):
         raise RuntimeError("Actual program compiler transcript lacks trailing -O2 -UNDEBUG")
     result = {"recorded_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
