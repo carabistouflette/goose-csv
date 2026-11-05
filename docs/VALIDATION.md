@@ -1,4 +1,8 @@
-# CSV validation — 2026-11-05
+# CSV validation records
+
+The sections below retain their original tested-source identities. They are
+historical evidence, not a claim that the latest main ran under those commits.
+See [AUDIT.md](AUDIT.md) for the current source check and runnable examples.
 
 Validated module, tests and measurement tooling:
 `e17b37d6864c3f4cacc56108880e29a865907e42`, clean working tree. Raw evidence,

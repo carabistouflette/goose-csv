@@ -1,8 +1,11 @@
-# CSV baseline measurements
+# Historical six-fixture baseline
 
-This records the current pure-Goose implementation. It does not compare libraries
-or establish universal performance superiority. Profile a concrete workload before
-adding an optimization or private native accelerator.
+The committed `results/2026-11-05/raw.json` measures the original scalar
+implementation `e17b37d6864c3f4cacc56108880e29a865907e42`, later released in
+alpha.1. It does not measure the alpha.2 reader/writer. For the current code
+comparison and checked source match, see [COMPARISON.md](../docs/COMPARISON.md)
+and [AUDIT.md](../docs/AUDIT.md). The commands below produce new records for
+whichever clean checkout is run; they do not reproduce the old source automatically.
 
 ```sh
 python3 bench/measure.py --goose /absolute/path/to/matching/goose --cc gcc
@@ -47,5 +50,5 @@ sample, order, raw stdout, actual byte/row count and checksum is retained.
 The JSON output records CPU model/platform/libc, allowed affinity, optional
 benchmark-child affinity, shared-host load before/after, compiler transcript and
 binary hash. Affinity does not imply an exclusive core or isolated host. No
-outlier removal, timing-based CI gate, algorithmic coverage claim, hard RSS bound
+outlier removal, throughput-based CI gate, algorithmic coverage claim, hard RSS bound
 or claim that setup/system libraries were sanitizer-instrumented is made here.

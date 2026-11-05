@@ -1,10 +1,9 @@
 # CSV comparison and optimization contract
 
-User target: goose-csv reader AND writer, feature coverage and performance against
-credible alternatives, then maximize measured performance without weakening the
-released public contract. Frozen baseline/release/parent pin:
+Protocol for comparing the Goose reader/writer with native alternatives while
+keeping the documented syntax, limits and ownership behavior. Frozen comparison baseline (alpha.1):
 4ec59cf17685f85e537cac264527d28af8ab9f2f (v0.1.0-alpha.1).
-No source/pin/tag changes in sibling libraries or the parent checkout/index.
+
 
 ## Comparison gates
 

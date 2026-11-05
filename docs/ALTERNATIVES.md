@@ -1,5 +1,8 @@
 # CSV comparison alternatives
 
+Research snapshot for the recorded comparison, not a rolling latest-version
+recommendation. See [the current source check](AUDIT.md).
+
 Research date: 2026-11-05. Scope: reader **and** writer comparison against frozen
 `4ec59cf17685f85e537cac264527d28af8ab9f2f` (v0.1.0-alpha.1), following the
 [comparison contract](../bench/compare/CONTRACT.md). This is source research, not

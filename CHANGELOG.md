@@ -2,13 +2,15 @@
 
 ## Unreleased
 
-Bounded ordinary-run reader scanning and writer quote/escape plans improve
-long-field throughput while retaining strict grammar, exact budgets and atomic
-writer retry. Short-field reader regressions and native alternative differences
-are explicit in [the comparison report](docs/COMPARISON.md); no universal speedup
-or SOTA ranking is established. Pinned optional benchmark adapters, feature
-probes, matched-path controls and every timing trial accompany the report.
+Documentation cleanup and checked example/benchmark source links.
 
-Initial experimental pure Goose streaming reader/writer with strict quoting,
-explicit newline policy, owned rows, bounded field/row/total/field-count state,
-precise reader errors, explicit EOF and atomic bounded writer rows.
+## v0.1.0-alpha.2
+
+Bounded run scanning and writer quote/escape plans. Long-field throughput improves
+in the recorded workloads; several short-field readers are slower than alpha.1.
+See [the comparison](docs/COMPARISON.md) for all cases and limits.
+
+## v0.1.0-alpha.1
+
+Initial byte-stream reader/writer: strict quoting, explicit newline policy,
+owned rows, field/row/total/field-count limits, errors and atomic writer retry.

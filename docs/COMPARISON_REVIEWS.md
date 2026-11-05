@@ -1,5 +1,8 @@
 # CSV comparison review record
 
+Historical review record. Current user documentation starts at the [README](../README.md).
+
+
 Independent AI reviewers worked read-only on separate adapter fairness, safety,
 measurement, qualification, production security/quality and final publication
 reviews. The implementation owner made fixes and ran the gates. Reviews are

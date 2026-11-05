@@ -4,7 +4,8 @@ This optional tooling compares the released Goose byte codec with exact Rust
 `csv=1.4.0`, `csv-core=0.1.13`, `simd-csv=0.14.0` and libcsv source
 `b1d5212831842ee5869d99bc208a21837e4037d5`. See the
 [contract](CONTRACT.md) and [research/feature matrix](../../docs/ALTERNATIVES.md).
-No throughput or SOTA conclusion follows from adding tooling.
+For recorded results and their checked source match, see
+[COMPARISON.md](../../docs/COMPARISON.md) and [AUDIT.md](../../docs/AUDIT.md).
 
 The library keeps its standard-library-only build. Cargo and downloaded libcsv
 are benchmark dependencies only, stored in ignored directories. Their licenses
@@ -68,7 +69,7 @@ executable paths. Source snapshot, generated C, entire executable and executable
 section hashes must match before timing. Control timings are labeled A/B even
 though code is identical; they describe noise, not an optimization. A changed
 harness/toolchain requires new controls. Later candidates use those same paths;
-only our ignored snapshot is written, never a release checkout or parent index.
+the builds write an ignored source snapshot.
 Every run freezes source/tool, fixture, receipt and executable identities and
 checks them after execution. Append-only raw JSONL journals retain calibrations,
 samples and incomplete/rejected-run reasons; old output paths are refused.

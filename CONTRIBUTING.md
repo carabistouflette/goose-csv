@@ -22,3 +22,12 @@ Profile before optimizing. Preserve every benchmark fixture and raw sample with
 exact source/compiler/binary/flags/platform/affinity provenance and limitations.
 No timing thresholds in CI, exclusive-host claims or universal superiority from
 microbenchmarks. Report vulnerabilities privately; see SECURITY.md.
+
+## Setup
+
+Development needs Git, Make, CMake >=3.27, a C/C++20 toolchain and Python >=3.11.
+Clang is also needed for the Clang sanitizer checks. Build the pinned Goose
+compiler with `make setup`, or pass `GOOSE=/absolute/path/to/matching/goose`.
+Optional native comparisons additionally need Cargo/rustup and downloaded libcsv;
+see [the comparison guide](bench/compare/README.md). They are not library runtime
+dependencies. No pip packages are required for CSV tests.

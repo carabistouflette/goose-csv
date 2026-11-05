@@ -1,5 +1,8 @@
 # Comparison tooling reviews
 
+Historical review record. Current user documentation starts at the [README](../../README.md).
+
+
 2026-11-05, before any comparative performance claim or production optimization.
 Independent reviewers read the controlled benchmark adapters and methodology;
 none wrote production source, ran timing or changed release/parent pins.

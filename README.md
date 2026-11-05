@@ -1,11 +1,23 @@
 # goose-csv
 
-Bounded streaming CSV reader/writer for Goose. Pure Goose, Apache-2.0.
-Experimental interface; initially Linux x86-64 validation. No stability promise
-before 1.0. Applications own I/O, encoding, headers, types and spreadsheet policy.
+Read CSV from byte chunks and write complete CSV rows in Goose. The reader keeps
+one unfinished row; the writer checks limits before replacing your output.
+Pure Goose, Apache-2.0.
+
+Experimental API, tested on Linux x86-64/glibc. The latest release is
+[v0.1.0-alpha.2](https://github.com/carabistouflette/goose-csv/releases/tag/v0.1.0-alpha.2)
+at `60165e4053d4b2eaa01dc34b2fd3e7411558f0e1`. Main adds documentation;
+[the source check](docs/AUDIT.md) identifies which measured code is unchanged.
+Alpha.1 uses the earlier scalar implementation; its results are separate.
+
+## Quickstart
+
+Install the Goose revision in [GOOSE_REVISION](GOOSE_REVISION), save this as
+`main.goose`, then run `goose run main.goose`. Package imports belong in the
+application's root source file.
 
 ```goose
-import csv from "carabistouflette/goose-csv@e17b37d6864c3f4cacc56108880e29a865907e42";
+import csv from "carabistouflette/goose-csv@60165e4053d4b2eaa01dc34b2fd3e7411558f0e1";
 import std;
 fn main() {
     var reader = csv::Reader { .. };
@@ -18,69 +30,66 @@ fn main() {
 }
 ```
 
-Declare the package in the application root; no other source dependencies.
-See [complete reader/writer example](examples/stream.goose) and
-[precise interface/dialect/limits](docs/DESIGN.md).
+For chunked input and writing, see [examples/stream.goose](examples/stream.goose).
+From a checkout with the pinned compiler, run:
+
+```sh
+make setup
+.toolchain/goose/build/goose run examples/stream.goose
+```
+
+## API
 
 | Operation | Result |
 | --- | --- |
-| `init(reader, limits, allow_lf)` | Initialize/reset; defaults supported |
-| `read(reader, chunk, row)` | Progress(step, consumed, status), at most one Row |
-| `finish(reader, row)` | EOF: final unterminated Row, then End |
-| `field_count(row)` / `field(row, index)` | Count / zero-based in-range borrowed view |
-| `init(writer, limits)` | Initialize/reset Writer |
-| `write(writer, fields, output)` | Replace output with one complete CRLF row |
+| `init(reader, limits, allow_lf)` | Initialize or reset the reader |
+| `read(reader, chunk, row)` | Consume through at most one Row; return step, consumed count and status |
+| `finish(reader, row)` | Signal EOF; possibly return a final Row, then End |
+| `field_count(row)` / `field(row, index)` | Count fields / borrow an in-range field |
+| `init(writer, limits)` | Initialize or reset the writer |
+| `write(writer, fields, output)` | Replace output with one CRLF-terminated row |
 
-Resume at chunk[consumed..] after Row. NeedInput consumes the chunk; empty chunks
-are valid. Row output changes only on Row. Reader errors are sticky until init;
-nonempty read after End is also sticky InvalidState. Repeated finish/read(empty)
-return End. Finish all input successfully before claiming whole-input validity.
+After a Row, resume at `chunk[consumed..]`. NeedInput consumes the chunk. Output
+changes only on Row. Finish the entire input successfully before treating the
+whole file as valid. Reader errors remain until reset; writer errors preserve
+state/output so a corrected row can be retried.
 
-Reader, Writer and Row are root owners, not copyable/nestable/returnable values.
-Retain a row by leaving its owner untouched. Views can change or become invalid
-when its Row is reused. Input must not borrow output Row or Reader internals.
-Goose permits aliases; do not assume every disallowed alias is caught statically.
-Do not modify internal fields. Writer preflight failures preserve state/output
-for retry; bounded scratch protects ordinary permitted input/output aliases.
-Use explicitly typed byte-view fields, and csv::NO_FIELDS for zero fields.
+Reader, Writer and Row are noncopyable root owners. Field views belong to their
+Row and may become invalid when it is reused. Input must not borrow output Row
+or Reader internals; not every disallowed alias is caught by the compiler.
+Use typed `csv::NO_FIELDS` for a zero-field row. Do not modify internal state.
 
-Comma/double-quote/doubled-quote dialect: exact spaces, quoted CR/LF preserved,
-outside CRLF or default LF-only (allow_lf=false selects CRLF-only), no bare CR or
-quote recovery. EOF can end the last row. Blank record has zero fields, quoted
-empty has one, trailing comma adds an empty field, trailing ending adds no row.
-Writer emits CRLF and quotes a sole empty field. Bytes are opaque, including NUL
-and high bytes. No BOM removal/UTF-8 validation or spreadsheet formula rewriting.
-See [RFC4180](https://www.rfc-editor.org/rfc/rfc4180) for common quoting conventions;
-our byte/newline/empty-row differences are explicit in the design.
+## Format and limits
 
-| Limits | Default | Hard maximum |
+Comma separator, double quotes, doubled quote escapes. Quoted CR/LF and spaces
+are preserved. Outside quotes, CRLF and default LF are accepted;
+`allow_lf=false` requires CRLF. Bare CR and malformed quoting are errors.
+Blank records have zero fields; quoted empty has one; trailing comma adds an
+empty field. EOF may end a row. The writer emits CRLF.
+
+Bytes are opaque, including NUL/high bytes. Applications handle encoding,
+headers, types and spreadsheet formula safety; quoting alone does not make
+formulas safe. See the [full contract](docs/DESIGN.md) for errors and ownership.
+
+| Logical limit | Default | Hard maximum |
 | --- | --- | --- |
-| Decoded field bytes | 1 MiB | 16 MiB |
-| Wire row bytes, including quotes/delimiters/ending | 4 MiB | 64 MiB |
-| Total accepted/emitted wire bytes per instance | 64 MiB | 2^60 |
+| Decoded bytes per field | 1 MiB | 16 MiB |
+| Wire bytes per row, including syntax/ending | 4 MiB | 64 MiB |
+| Total accepted/emitted wire bytes | 64 MiB | 2^60 |
 | Fields per row | 4096 | 65536 |
 
-Zero limits are valid; invalid options preserve old state. Status has error,
-zero-based absolute wire offset and one-based record/field. Reader offending
-bytes are excluded from consumed; EOF offset is one past accepted input. Writer
-offset is start of the unwritten row. Success coordinates/error precedence are
-unspecified. Canonical output may require more wire bytes than LF/EOF input.
+Zero limits are valid. Invalid options preserve state. Logical limits are not
+allocator/RSS ceilings: retained capacity, previous output and runtime allocation
+behavior matter. Completed rows and writer output are copied.
 
-Storage is current-row plus caller output with completed-row component copies;
-writer preflights then scratch-encodes and copies output. Work is linear in bytes
-and fields. No whole-file queue or O(1) ownership-swap promise. Logical limits are
-not exact allocator/RSS guarantees: prior limits/capacity and runtime high-water
-storage matter. Allocation failure follows Goose runtime behavior.
+## Performance and development
 
-Development: pinned Goose (GOOSE_REVISION), CMake >=3.27, C/C++20 toolchain, Make,
-Python >=3.11 and Clang. No pip/runtime packages. Use GOOSE=PATH for an existing
-matching compiler. Run `make setup`, `make format check test test-debug`, both
-GCC/Clang `make sanitize SANITIZER_CC=...`, and `make bench`.
+The [comparison](docs/COMPARISON.md) includes slower cases: several short-field
+readers are slower than alpha.1. Long-field gains depend on layout and caller
+compilation. It reports the recorded machine/toolchain, every workload and sample
+range; it does not establish a universal fastest CSV library or memory advantage.
 
-See [contributing](CONTRIBUTING.md), [security](SECURITY.md),
-[notices](THIRD_PARTY_NOTICES.md). See [validation](docs/VALIDATION.md) and [baseline methodology](bench/README.md)
-for exact tested sources, corpus, compilers, measurements and limitations.
-
-The [native feature/performance comparison](docs/COMPARISON.md) publishes pinned
-alternatives, all retained trials, large-field gains and short-field regressions.
-Its optimized caller tier is separate from the initial baseline measurements.
+For development, see [CONTRIBUTING.md](CONTRIBUTING.md). Tests and historical
+records are described in [validation](docs/VALIDATION.md); benchmark commands are
+in [bench/compare/README.md](bench/compare/README.md). See also
+[security](SECURITY.md) and [third-party notices](THIRD_PARTY_NOTICES.md).

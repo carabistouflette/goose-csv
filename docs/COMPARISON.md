@@ -3,7 +3,10 @@
 Measured implementation and optimized-caller harness source: `0376fece8625827d6ef2754d48d40df8204ec24f`.
 CSV source SHA-256: `40d10abdd89761f3fb7b24a74160b14a090ad1e851201df8df33a1be4ce7efc1`. Frozen released baseline:
 `4ec59cf17685f85e537cac264527d28af8ab9f2f` (`v0.1.0-alpha.1`).
-The released tag and parent registration remain unchanged.
+The candidate was released as alpha.2 at `60165e4053d4b2eaa01dc34b2fd3e7411558f0e1`.
+[AUDIT.md](AUDIT.md) checks the relevant implementation, harness and dependency
+files against these records. Documentation changes do not turn old observations
+into new runs. Alpha.1 remains the baseline, not the latest release.
 
 The result is a scoped native-API comparison, not an established universal SOTA
 ranking. Goose retains its bounded strict byte contract. Other libraries keep
@@ -55,7 +58,22 @@ EOF; this is recorded as incomplete input, not described merely as BOM removal.
 All fields and output bytes are checked outside timed loops. Timed samples also
 require successful EOF, exact byte/row totals and identical signatures.
 
-## Measurement scope
+## Machine and measurement scope
+
+Recorded machine: Intel Core Ultra 7 258V; Linux 7.2.11-arch1-1 x86-64,
+glibc 2.44. Goose `eadca409f68210893f366e60d0c2f0dc29a339be`
+(runtime `3025e5810379`), GCC 16.2.1 20260810, Python 3.14.9;
+rustc 1.101.0-nightly (`822182db4`, 2026-10-13),
+Cargo 1.101.0-nightly (`29c5daa1a`, 2026-10-07). These are the measured
+tools, not a promise about another compiler or host. Binary hashes and
+transitive dependency archive/file hashes are in the linked build records.
+
+Each case/engine is calibrated to at least 100 ms before seven ordered samples
+per pass. Calibration runs are retained separately and excluded from the table.
+There is no separate discarded in-process warmup in this comparison: full-output
+qualification and separate calibration invocations precede the retained samples.
+Each timed process creates its input/state before its timer; first-use buffer
+growth remains included. There is no cache-flush or cold-start experiment.
 
 3 full comparison passes, 3150 retained samples, 25 cases,
 21 samples per engine/case. Eleven fixtures preserve the six original
@@ -113,8 +131,7 @@ controls or failed candidates are removed, and no correction is applied.
 This implementation chooses bounded long-run throughput while keeping syntax,
 limits, output ownership and retry semantics. It is not an unconditional speedup
 for short-row workloads. Applications should compare their own distributions
-before changing an immutable dependency pin. This work advances no released tag,
-parent pin or application adoption.
+before changing an immutable dependency pin. Alpha.2 uses this implementation; alpha.1 remains available for comparison.
 
 ## All measured cases
 
@@ -122,7 +139,7 @@ Decimal wire MB/s; higher is better. Values are medians across all retained
 samples. The interactive chart exposes full sample ranges. Differences in native
 contracts remain visible above; these are shared-valid-data API timings.
 
-| Fixture | Operation / chunk | Goose release | Goose candidate | Rust csv | csv-core | simd-csv | libcsv adapter | Candidate / release |
+| Fixture | Operation / chunk | Goose alpha.1 | Goose alpha.2 | Rust csv | csv-core | simd-csv | libcsv adapter | Alpha.2 / alpha.1 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | simple | parse / 1 | 89.4 | 83.7 | 38.3 | 53.8 | 36.7 | 110.1 | 0.94× |
 | simple | parse / 64 | 116.0 | 107.4 | 144.4 | 141.3 | 146.9 | 127.1 | 0.93× |
@@ -175,8 +192,8 @@ Evidence: [manifest](../bench/results/comparison-2026-11-05/MANIFEST.json),
 [validation](../bench/results/comparison-2026-11-05/validation/),
 [interactive chart](../bench/results/comparison-2026-11-05/comparison.html).
 
-The source stays a byte codec: it does not add installer/trust policy, spreadsheet
-formula policy, Unicode validation, header/type inference or sibling adoption.
+The library remains a byte codec. Applications supply encoding, header/type and
+spreadsheet policy.
 
 ## Reproduce the chart
 

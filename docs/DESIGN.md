@@ -2,7 +2,8 @@
 
 ## Scope and dialect
 
-Pure Goose module, no I/O or native acceleration initially. Comma separator,
+Pure Goose module with no I/O. Ordinary runs use the pinned standard runtime's
+byte-search functions. Comma separator,
 double-quote quoting and doubled quote escapes. Spaces remain data. Quoted CR/LF
 bytes are preserved exactly; outside quotes CR must be followed by LF. LF-only
 record endings are accepted by default, with an explicit allow_lf=false option.
@@ -80,7 +81,8 @@ Success coordinates are unspecified. Writer errors identify the failing field
 (and next record); offset is start of the unwritten row because no bytes escaped.
 Errors: None, InvalidOptions, InvalidState, UnexpectedQuote, AfterQuote,
 ExpectedLf, UnexpectedLf, UnclosedQuote, FieldLimit, RowLimit, TotalLimit, FieldCountLimit.
-If multiple constraints fail simultaneously, precedence is unspecified.
+When multiple constraints fail, precedence is generally unspecified. Writer
+preflight retains RowLimit before TotalLimit when the same field crosses both.
 
 No unbounded addition or counter wrap. Check subtraction budgets before accepting
 bytes/appending spans or computing writer sizes. Check field-count capacity
@@ -88,33 +90,16 @@ before creating fields; a comma already implies an additional field. Reader
 storage holds only its current row plus the caller's previous output capacity,
 reused as independent components. Completed rows copy bytes/spans to the caller
 before clearing partial storage, linear in total emitted bytes/fields. Writer
-preflights then encodes into bounded scratch and copies to caller output. No
-O(1) growable-buffer swap or copyable-root promise is made; std::swap aliases/
-copies nonfixed values and is not used for ownership transfer. Prior caller
-output capacity and previously used limits can affect retained capacity.
+preflights then encodes into bounded scratch and copies to caller output. Prior
+caller output capacity and previously used limits can affect retained capacity.
 Logical limits do not imply exact allocator/RSS bounds; runtime allocation failure
-follows Goose runtime behavior. No whole input copy, per-byte rescanning or growing
-queue of rows. Reader O(input bytes), writer O(input bytes + fields + output bytes).
+follows Goose runtime behavior. No whole-input buffer or growing queue of rows is used. Bounded lookahead
+does not rescan growing prefixes. Reader O(input bytes), writer O(input bytes + fields + output bytes).
 Writer uses bounded per-field quote metadata and copies safe runs.
 
-## Validation and release gates
+## Tests
 
-Public regressions for every split of representative CRLF/escaped-quote/UTF-8-byte
-inputs, EOF variants, blank rows, malformed quotes, exact limits/overflow and
-terminal state; output preservation and writer retry. Test retained-row ownership,
-reuse/reset and all public entry paths. Canonical output may exceed reader
-  limits when LF/unterminated rows gain CRLF or a sole empty field gains quotes;
-  roundtrip checks distinguish valid writer bounds rejection from codec failure. Independent Python csv reader/writer
-oracle for the shared dialect, plus explicit divergence cases; bounded seeded
-public-interface mutation fuzzing and roundtrip checks. Do not label random fuzz
-coverage as coverage-guided/native-libFuzzer coverage.
-
-Instrument generated Goose/runtime C with GCC/Clang ASan/UBSan; check JIT, debug
-and native public paths. Repeated independent interface/security/correctness/
-performance/test-quality reviews. Profile before optimizing. Retain raw benchmark
-samples with exact source/compiler/binary/flags/platform/fixture identities;
-shared-host timing is not exclusive/isolation or universal superiority evidence.
-CI runs correctness and benchmark smoke without timing thresholds; checks source
-formatting rather than repairing it. Public immutable source/license/dependency,
-anonymous clone/import and hosted CI evidence precede final owner handoff. Parent
-registration and sibling sources remain owned by their existing threads.
+See [validation](VALIDATION.md) for the public API, differential, chunk-boundary,
+limit, retry and sanitizer checks. The [comparison](COMPARISON.md) describes the
+performance measurements and their limits. [Contributing](../CONTRIBUTING.md)
+lists development commands.
